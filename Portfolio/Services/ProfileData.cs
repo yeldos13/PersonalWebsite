@@ -4,16 +4,63 @@ namespace Portfolio.Services;
 
 public static class ProfileData
 {
-    public static Profile Get() => new(
+    public static readonly string[] Languages = ["ru", "en"];
+
+    public static string Normalize(string? lang) =>
+        string.Equals(lang, "en", StringComparison.OrdinalIgnoreCase) ? "en" : "ru";
+
+    public static Profile Get(string? lang) => Normalize(lang) == "en" ? English : Russian;
+
+    private static readonly Contacts Contacts = new("@usermanean", "eldos.sozakbay@gmail.com", "+7 (777) 190-54-80");
+
+    private static IReadOnlyList<SkillGroup> SkillGroups(string languages, string platform, string data, string oop) =>
+    [
+        new(languages, "purple",
+        [
+            new("C#", "C#", "#9b4f96"),
+            new("SQL", "SQL", "#336791"),
+            new("JavaScript", "JS", "#c9a227"),
+            new("Java", "JV", "#e76f00"),
+            new("HTML", "HT", "#e34c26"),
+            new("UML", "UM", "#5a6b8c"),
+        ]),
+        new(platform, "blue",
+        [
+            new(".NET", "NT", "#512bd4"),
+            new("MVC", "MV", "#3b82f6"),
+            new("Windows Forms", "WF", "#0078d4"),
+            new("REST", "RS", "#10b981"),
+            new("SOAP", "SP", "#0ea5e9"),
+            new(oop, "OO", "#8b5cf6"),
+            new("Unit Testing", "UT", "#22c55e"),
+        ]),
+        new(data, "red",
+        [
+            new("PostgreSQL", "PG", "#336791"),
+            new("MS SQL Server", "MS", "#cc2927"),
+            new("NoSQL", "NS", "#4db33d"),
+            new("Apache Kafka", "KF", "#6b7280"),
+            new("Docker", "DK", "#2496ed"),
+            new("Git", "GT", "#f05032"),
+            new("CI/CD", "CI", "#f59e0b"),
+            new("Swagger", "SW", "#85ea2d"),
+            new("Jira", "JR", "#0052cc"),
+            new("StimulSoft", "SS", "#e11d48"),
+            new("Linux", "LX", "#fcc624"),
+            new("Visual Studio", "VS", "#5c2d91"),
+        ]),
+    ];
+
+    private static readonly Profile Russian = new(
         FullName: "Созакбай Ельдос Куатович",
-        ShortName: "Eldos",
+        ShortName: "Yeldos",
         Role: "Middle .NET Developer",
         Tagline: "Backend-разработчик на C# / .NET",
         Summary: "Почти 5 лет в коммерческой backend-разработке. Проектирую высоконагруженные распределённые " +
                  "системы, микросервисы и API — и слежу, чтобы они работали быстро: от SQL-запроса до async-пайплайна.",
         Location: "Астана, Казахстан",
         Citizenship: "Казахстан",
-        Contacts: new("@usermanean", "eldos.sozakbay@gmail.com", "+7 (777) 190-54-80"),
+        Contacts: Contacts,
         Stats:
         [
             new("4+", "Лет опыта"),
@@ -21,43 +68,7 @@ public static class ProfileData
             new("2", "Сертификата Cisco"),
             new("3", "Языка"),
         ],
-        SkillGroups:
-        [
-            new("Языки", "purple",
-            [
-                new("C#", "C#", "#9b4f96"),
-                new("SQL", "SQL", "#336791"),
-                new("JavaScript", "JS", "#c9a227"),
-                new("Java", "JV", "#e76f00"),
-                new("HTML", "HT", "#e34c26"),
-                new("UML", "UM", "#5a6b8c"),
-            ]),
-            new("Платформа и подходы", "blue",
-            [
-                new(".NET", "NT", "#512bd4"),
-                new("MVC", "MV", "#3b82f6"),
-                new("Windows Forms", "WF", "#0078d4"),
-                new("REST", "RS", "#10b981"),
-                new("SOAP", "SP", "#0ea5e9"),
-                new("ООП / SOLID", "OO", "#8b5cf6"),
-                new("Unit Testing", "UT", "#22c55e"),
-            ]),
-            new("Данные и инструменты", "red",
-            [
-                new("PostgreSQL", "PG", "#336791"),
-                new("MS SQL Server", "MS", "#cc2927"),
-                new("NoSQL", "NS", "#4db33d"),
-                new("Apache Kafka", "KF", "#6b7280"),
-                new("Docker", "DK", "#2496ed"),
-                new("Git", "GT", "#f05032"),
-                new("CI/CD", "CI", "#f59e0b"),
-                new("Swagger", "SW", "#85ea2d"),
-                new("Jira", "JR", "#0052cc"),
-                new("StimulSoft", "SS", "#e11d48"),
-                new("Linux", "LX", "#fcc624"),
-                new("Visual Studio", "VS", "#5c2d91"),
-            ]),
-        ],
+        SkillGroups: SkillGroups("Языки", "Платформа и подходы", "Данные и инструменты", "ООП / SOLID"),
         Expertise:
         [
             new("api", "Архитектура и API", "Backend",
@@ -124,4 +135,89 @@ public static class ProfileData
         ],
         WorkPreferences: "Рассматриваю разработку высоконагруженных сервисов и сложных продуктов. " +
                          "Открыт к офису, гибриду или удалёнке; готов к переезду и командировкам.");
+
+    private static readonly Profile English = new(
+        FullName: "Yeldos Sozakbay",
+        ShortName: "Yeldos",
+        Role: "Middle .NET Developer",
+        Tagline: "Backend developer, C# / .NET",
+        Summary: "Almost 5 years in commercial backend development. I design high-load distributed systems, " +
+                 "microservices and APIs — and make sure they run fast, from the SQL query to the async pipeline.",
+        Location: "Astana, Kazakhstan",
+        Citizenship: "Kazakhstan",
+        Contacts: Contacts,
+        Stats:
+        [
+            new("4+", "Years of experience"),
+            new("25+", "Technologies"),
+            new("2", "Cisco certificates"),
+            new("3", "Languages"),
+        ],
+        SkillGroups: SkillGroups("Languages", "Platform & practices", "Data & tools", "OOP / SOLID"),
+        Expertise:
+        [
+            new("api", "Architecture & APIs", "Backend",
+                "Designing REST/SOAP APIs, integrating external systems and microservices, " +
+                "debugging complex defects in production.",
+                ["REST", "SOAP", "Microservices"]),
+            new("db", "Databases & performance", "Data",
+                "Removing bottlenecks in queries and database design, working with large volumes of data " +
+                "in PostgreSQL, MS SQL Server and NoSQL.",
+                ["PostgreSQL", "MS SQL", "NoSQL"]),
+            new("bolt", "Async & high load", "Highload",
+                "Asynchronous processing with async/await, multithreading and Apache Kafka to keep " +
+                "high-load services responsive.",
+                ["async/await", "Kafka", "Docker"]),
+        ],
+        Experience:
+        [
+            new("Middle .NET Developer", "PBSOFT", "https://pbsoft.kz/",
+                "Jun 2021 — Mar 2026", "4 years 10 months", "Astana",
+                "Building high-load services and applications with C# and .NET — from database design " +
+                "and business logic to production support.",
+                [
+                    "Implemented business logic and client-server modules to technical specifications",
+                    "Designed and optimized database schemas (PostgreSQL / MS SQL Server)",
+                    "Architected and integrated external APIs, microservices and third-party systems",
+                    "Used async/await and multithreading to improve system responsiveness",
+                    "Ran code reviews and enforced clean code standards across the team",
+                    "Mentored and onboarded interns",
+                    "Estimated task effort and complexity, forecast development resources",
+                    "Worked directly with clients: gathering requirements and presenting solutions",
+                ],
+                ["C#", ".NET", "PostgreSQL", "MS SQL", "Kafka", "Agile/Scrum"]),
+        ],
+        Education:
+        [
+            new("2024", "Bachelor's · Applied Informatics",
+                "Siberian Institute of Business and Information Technologies",
+                "Omsk · Applied Informatics in Economics"),
+            new("2020", "Software Development",
+                "IT STEP Academy", "Professional development course"),
+        ],
+        Certificates:
+        [
+            new("2019", "CCNA: Networking", "Cisco"),
+            new("2019", "CCST: Cybersecurity", "Cisco"),
+        ],
+        Principles:
+        [
+            new("Code quality",
+                "I run code reviews and keep the team aligned with OOP, SOLID and Clean Code — code should be " +
+                "as easy to read as it is to write.", "CR", "#6366f1"),
+            new("Mentoring",
+                "I onboard interns and help them grow their technical skills — a strong team matters more " +
+                "than one strong developer.", "MT", "#8b5cf6"),
+            new("Working with clients",
+                "I gather requirements, present solutions and stay focused on results even under tight " +
+                "deadlines.", "PM", "#ec4899"),
+        ],
+        Languages:
+        [
+            new("Kazakh", "Native", "KZ", 100),
+            new("Russian", "C1 — Advanced", "RU", 90),
+            new("English", "B2 — Upper-intermediate", "EN", 70),
+        ],
+        WorkPreferences: "Open to building high-load services and complex products. " +
+                         "Office, hybrid or remote; ready to relocate and travel.");
 }

@@ -1,9 +1,11 @@
-@page
+@page "/{lang:regex(^(en|ru)$)?}"
 @model IndexModel
 @{
     var p = Model.Profile;
+    var ui = Model.Ui;
     ViewData["Title"] = $"{p.ShortName} — {p.Role}";
     ViewData["Description"] = p.Summary;
+    ViewData["Lang"] = ui.Lang;
     var sectionNo = 0;
     string Num() => (++sectionNo).ToString("00") + ".";
 }
@@ -27,12 +29,16 @@
 <header class="nav">
     <div class="container nav-inner">
         <a class="logo" href="#home"><span class="accent">&gt;_</span> @p.ShortName.ToLowerInvariant()</a>
-        <nav class="nav-links" aria-label="Навигация">
+        <nav class="nav-links" aria-label="@ui.NavAria">
             <a href="#home" class="active">~/home</a>
             <a href="#stack">~/stack</a>
             <a href="#experience">~/experience</a>
             <a href="#contact">~/contact</a>
         </nav>
+        <div class="lang-switch" role="group" aria-label="Language">
+            <a href="/" lang="ru" class="@(ui.Lang == "ru" ? "active" : null)" aria-current="@(ui.Lang == "ru" ? "page" : null)">RU</a>
+            <a href="/en" lang="en" class="@(ui.Lang == "en" ? "active" : null)" aria-current="@(ui.Lang == "en" ? "page" : null)">EN</a>
+        </div>
         <div class="nav-icons">
             <a href="@p.Contacts.TelegramUrl" target="_blank" rel="noopener" aria-label="Telegram">@Icon("telegram")</a>
             <a href="mailto:@p.Contacts.Email" aria-label="Email">@Icon("mail")</a>
@@ -58,14 +64,14 @@
                 <div class="socials">
                     <a href="@p.Contacts.TelegramUrl" target="_blank" rel="noopener" aria-label="Telegram">@Icon("telegram")</a>
                     <a href="mailto:@p.Contacts.Email" aria-label="Email">@Icon("mail")</a>
-                    <a href="@p.Contacts.PhoneUrl" aria-label="Телефон">@Icon("phone")</a>
+                    <a href="@p.Contacts.PhoneUrl" aria-label="@ui.Phone">@Icon("phone")</a>
                 </div>
             </div>
 
             <div class="terminal reveal">
                 <div class="term-bar">
                     <span class="lights"><i></i><i></i><i></i></span>
-                    <span class="term-title">eldos@@astana: ~</span>
+                    <span class="term-title">yeldos@@astana: ~</span>
                 </div>
                 <pre class="term-body" id="about-json"><span class="prompt">$</span> cat about.json
 {
@@ -82,7 +88,7 @@
 <span class="prompt">$</span> <span class="cursor">_</span></pre>
             </div>
         </div>
-        <a class="scroll-hint" href="#stats" aria-label="Прокрутить вниз">@Icon("arrow")</a>
+        <a class="scroll-hint" href="#stats" aria-label="@ui.ScrollDown">@Icon("arrow")</a>
     </section>
 
     <section class="stats" id="stats">
@@ -99,7 +105,7 @@
 
     <section class="section" id="stack">
         <div class="container">
-            <h2 class="section-title"><span class="num">@Num()</span> Стек технологий</h2>
+            <h2 class="section-title"><span class="num">@Num()</span> @ui.SectionStack</h2>
             <div class="grid-3">
                 @foreach (var g in p.SkillGroups)
                 {
@@ -119,7 +125,7 @@
 
     <section class="section" id="expertise">
         <div class="container">
-            <h2 class="section-title"><span class="num">@Num()</span> Экспертиза</h2>
+            <h2 class="section-title"><span class="num">@Num()</span> @ui.SectionExpertise</h2>
             <div class="grid-3">
                 @foreach (var e in p.Expertise)
                 {
@@ -144,7 +150,7 @@
 
     <section class="section" id="experience">
         <div class="container">
-            <h2 class="section-title"><span class="num">@Num()</span> Опыт работы</h2>
+            <h2 class="section-title"><span class="num">@Num()</span> @ui.SectionExperience</h2>
             <ol class="timeline">
                 @foreach (var j in p.Experience)
                 {
@@ -177,7 +183,7 @@
 
     <section class="section" id="education">
         <div class="container">
-            <h2 class="section-title"><span class="num">@Num()</span> Образование</h2>
+            <h2 class="section-title"><span class="num">@Num()</span> @ui.SectionEducation</h2>
             <div class="edu-grid">
                 <div class="card reveal">
                     <div class="card-cmd">$ git log --education</div>
@@ -204,15 +210,15 @@
                                 <span class="activity-icon">@Icon("cert")</span>
                                 <div>
                                     <div class="activity-title">@c.Issuer @c.Title</div>
-                                    <div class="activity-text">Электронный сертификат · @c.Year</div>
+                                    <div class="activity-text">@ui.DigitalCertificate · @c.Year</div>
                                 </div>
                             </li>
                         }
                         <li>
                             <span class="activity-icon ok">@Icon("check")</span>
                             <div>
-                                <div class="activity-title">Прикладная информатика</div>
-                                <div class="activity-text">Высшее профильное образование + международные сертификации Cisco</div>
+                                <div class="activity-title">@ui.DegreeTitle</div>
+                                <div class="activity-text">@ui.DegreeText</div>
                             </div>
                         </li>
                     </ul>
@@ -223,7 +229,7 @@
 
     <section class="section" id="principles">
         <div class="container">
-            <h2 class="section-title"><span class="num">@Num()</span> Как я работаю</h2>
+            <h2 class="section-title"><span class="num">@Num()</span> @ui.SectionPrinciples</h2>
             <div class="grid-3">
                 @foreach (var pr in p.Principles)
                 {
@@ -234,7 +240,7 @@
                             <span class="avatar" style="--c:@pr.Color">@pr.Initials</span>
                             <span>
                                 <span class="quote-name">@pr.Title</span>
-                                <span class="quote-role">ООП · SOLID · Agile/Scrum</span>
+                                <span class="quote-role">Clean Code · SOLID · Agile/Scrum</span>
                             </span>
                         </figcaption>
                     </figure>
@@ -245,7 +251,7 @@
 
     <section class="section" id="languages">
         <div class="container">
-            <h2 class="section-title"><span class="num">@Num()</span> Языки</h2>
+            <h2 class="section-title"><span class="num">@Num()</span> @ui.SectionLanguages</h2>
             <div class="grid-3">
                 @foreach (var l in p.Languages)
                 {
@@ -270,10 +276,10 @@
                     <span class="term-title">contact</span>
                 </div>
                 <div class="contact-body">
-                    <h2><span class="accent">&gt;</span> Давайте работать вместе</h2>
+                    <h2><span class="accent">&gt;</span> @ui.ContactTitle</h2>
                     <p class="card-text">@p.WorkPreferences</p>
                     <ul class="contact-list">
-                        <li><span class="k">telegram</span> <a href="@p.Contacts.TelegramUrl" target="_blank" rel="noopener">@p.Contacts.Telegram</a> <span class="muted">— предпочитаемый способ связи</span></li>
+                        <li><span class="k">telegram</span> <a href="@p.Contacts.TelegramUrl" target="_blank" rel="noopener">@p.Contacts.Telegram</a> <span class="muted">@ui.PreferredContact</span></li>
                         <li><span class="k">email</span> <a href="mailto:@p.Contacts.Email">@p.Contacts.Email</a></li>
                         <li><span class="k">phone</span> <a href="@p.Contacts.PhoneUrl">@p.Contacts.Phone</a></li>
                     </ul>
