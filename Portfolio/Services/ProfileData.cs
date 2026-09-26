@@ -11,7 +11,7 @@ public static class ProfileData
 
     public static Profile Get(string? lang) => Normalize(lang) == "en" ? English : Russian;
 
-    private static readonly Contacts Contacts = new("@usermanean", "eldos.sozakbay@gmail.com", "+7 (777) 190-54-80");
+    private static readonly Contacts Contacts = new("@sozakbay", "eldos.sozakbay@gmail.com", "+7 (777) 190-54-80");
 
     private static IReadOnlyList<SkillGroup> SkillGroups(string languages, string platform, string data, string oop) =>
     [
@@ -63,7 +63,7 @@ public static class ProfileData
         Contacts: Contacts,
         Stats:
         [
-            new("4+", "Лет опыта"),
+            new("4", "Года опыта"),
             new("25+", "Технологий"),
             new("2", "Сертификата Cisco"),
             new("3", "Языка"),
@@ -148,7 +148,7 @@ public static class ProfileData
         Contacts: Contacts,
         Stats:
         [
-            new("4+", "Years of experience"),
+            new("4", "Years of experience"),
             new("25+", "Technologies"),
             new("2", "Cisco certificates"),
             new("3", "Languages"),

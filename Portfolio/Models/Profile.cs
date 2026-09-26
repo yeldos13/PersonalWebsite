@@ -23,6 +23,7 @@ public record Contacts(string Telegram, string Email, string Phone)
 {
     public string TelegramUrl => $"https://t.me/{Telegram.TrimStart('@')}";
     public string PhoneUrl => "tel:" + new string(Phone.Where(c => char.IsDigit(c) || c == '+').ToArray());
+    public string WhatsAppUrl => "https://wa.me/" + new string(Phone.Where(char.IsDigit).ToArray());
 }
 
 public record Stat(string Value, string Label);
