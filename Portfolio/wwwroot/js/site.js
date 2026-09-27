@@ -1,4 +1,15 @@
 (() => {
+    const root = document.documentElement;
+    const toggle = document.getElementById("theme-toggle");
+    const systemLight = window.matchMedia("(prefers-color-scheme: light)");
+    const currentTheme = () => root.getAttribute("data-theme") || (systemLight.matches ? "light" : "dark");
+
+    toggle?.addEventListener("click", () => {
+        const next = currentTheme() === "light" ? "dark" : "light";
+        root.setAttribute("data-theme", next);
+        try { localStorage.setItem("theme", next); } catch { }
+    });
+
     const items = document.querySelectorAll(".reveal");
     if (!("IntersectionObserver" in window)) {
         items.forEach(el => el.classList.add("visible"));

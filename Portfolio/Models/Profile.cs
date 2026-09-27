@@ -19,8 +19,10 @@ public record Profile(
     IReadOnlyList<SpokenLanguage> Languages,
     string WorkPreferences);
 
-public record Contacts(string Telegram, string Email, string Phone)
+public record Contacts(string Telegram, string Email, string Phone, string GitHubUrl, string LinkedInUrl)
 {
+    public static string Display(string url) => url.Replace("https://", "").Replace("www.", "").TrimEnd('/');
+
     public string TelegramUrl => $"https://t.me/{Telegram.TrimStart('@')}";
     public string PhoneUrl => "tel:" + new string(Phone.Where(c => char.IsDigit(c) || c == '+').ToArray());
     public string WhatsAppUrl => "https://wa.me/" + new string(Phone.Where(char.IsDigit).ToArray());

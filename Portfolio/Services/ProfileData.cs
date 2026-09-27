@@ -11,7 +11,14 @@ public static class ProfileData
 
     public static Profile Get(string? lang) => Normalize(lang) == "en" ? English : Russian;
 
-    private static readonly Contacts Contacts = new("@sozakbay", "eldos.sozakbay@gmail.com", "+7 (777) 190-54-80");
+    private static readonly Contacts Contacts = new(
+        Telegram: "@sozakbay",
+        Email: "eldos.sozakbay@gmail.com",
+        Phone: "+7 (777) 190-54-80",
+        GitHubUrl: "https://github.com/yeldossozakbay",
+        LinkedInUrl: "https://www.linkedin.com/in/yeldos-sozakbay-4b38a8209/");
+
+    public const string CvPath = "/files/Yeldos-Sozakbay-CV.pdf";
 
     private static IReadOnlyList<SkillGroup> SkillGroups(string languages, string platform, string data, string oop) =>
     [

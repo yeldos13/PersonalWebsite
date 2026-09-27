@@ -15,7 +15,9 @@ public record UiText(
     string DegreeTitle,
     string DegreeText,
     string ContactTitle,
-    string PreferredContact)
+    string PreferredContact,
+    string DownloadCv,
+    string ThemeToggle)
 {
     public static readonly UiText Ru = new(
         Lang: "ru",
@@ -32,7 +34,9 @@ public record UiText(
         DegreeTitle: "Прикладная информатика",
         DegreeText: "Высшее профильное образование + международные сертификации Cisco",
         ContactTitle: "Давайте работать вместе",
-        PreferredContact: "— предпочитаемый способ связи");
+        PreferredContact: "— предпочитаемый способ связи",
+        DownloadCv: "Скачать резюме",
+        ThemeToggle: "Переключить светлую/тёмную тему");
 
     public static readonly UiText En = new(
         Lang: "en",
@@ -49,7 +53,9 @@ public record UiText(
         DegreeTitle: "Applied Informatics",
         DegreeText: "Relevant university degree + international Cisco certifications",
         ContactTitle: "Let's Work Together",
-        PreferredContact: "— preferred contact method");
+        PreferredContact: "— preferred contact method",
+        DownloadCv: "Download CV",
+        ThemeToggle: "Toggle light/dark theme");
 
     public static UiText For(string lang) => lang == "en" ? En : Ru;
 }
