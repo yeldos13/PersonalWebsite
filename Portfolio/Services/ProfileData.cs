@@ -54,10 +54,10 @@ public static class ProfileData
     private static readonly Profile Russian = new(
         FullName: "Созакбай Ельдос Куатович",
         ShortName: "Yeldos",
-        Role: "Middle .NET Developer",
-        Tagline: "Backend-разработчик на C# / .NET",
-        Summary: "Почти 5 лет в коммерческой backend-разработке. Проектирую высоконагруженные распределённые " +
-                 "системы, микросервисы и API — и слежу, чтобы они работали быстро: от SQL-запроса до async-пайплайна.",
+        Role: "C#/.NET-разработчик",
+        Tagline: "Backend · высоконагруженные системы",
+        Summary: "Почти 5 лет в коммерческой backend-разработке (с 2021 года). Специализируюсь на высоконагруженных " +
+                 "распределённых системах, микросервисной архитектуре и оптимизации производительности на .NET (C#).",
         Location: "Астана, Казахстан",
         Citizenship: "Казахстан",
         Contacts: Contacts,
@@ -65,13 +65,13 @@ public static class ProfileData
         [
             new("4", "Года опыта"),
             new("25+", "Технологий"),
-            new("2", "Сертификата Cisco"),
+            new("4", "Сертификата"),
             new("3", "Языка"),
         ],
         SkillGroups: SkillGroups("Языки", "Платформа и подходы", "Данные и инструменты", "ООП / SOLID"),
         Expertise:
         [
-            new("api", "Архитектура и API", "Backend",
+            new("api", "Архитектура и профилирование", "Backend",
                 "Проектирование REST/SOAP API, интеграции с внешними системами и микросервисами, " +
                 "отладка сложных дефектов на продакшн-средах.",
                 ["REST", "SOAP", "Microservices"]),
@@ -107,11 +107,17 @@ public static class ProfileData
             new("2024", "Бакалавр · Прикладная информатика",
                 "Сибирский институт бизнеса и информационных технологий",
                 "Омск · Прикладная информатика в экономике"),
+            new("2025", "The Complete Xamarin Developer Course",
+                "Udemy", "Повышение квалификации, курсы"),
+            new("2025", "PostgreSQL Certification Course",
+                "W3Schools", "Повышение квалификации, курсы"),
             new("2020", "Разработка программного обеспечения",
                 "Академия ШАГ", "Повышение квалификации, курсы"),
         ],
         Certificates:
         [
+            new("2025", "Xamarin Developer: iOS & Android", "Udemy"),
+            new("2025", "PostgreSQL Certification Exam", "W3Schools"),
             new("2019", "CCNA: Networking", "Cisco"),
             new("2019", "CCST: Cybersecurity", "Cisco"),
         ],
@@ -133,16 +139,16 @@ public static class ProfileData
             new("Русский", "C1 — продвинутый", "RU", 90),
             new("Английский", "B2 — выше среднего", "EN", 70),
         ],
-        WorkPreferences: "Рассматриваю разработку высоконагруженных сервисов и сложных продуктов. " +
-                         "Открыт к офису, гибриду или удалёнке; готов к переезду и командировкам.");
+        WorkPreferences: "Рассматриваю разработку высоконагруженных сервисов и сложных продуктов: полная или частичная " +
+                         "занятость, проектная работа, стажировка. Офис, гибрид или удалёнка; готов к переезду и командировкам.");
 
     private static readonly Profile English = new(
         FullName: "Yeldos Sozakbay",
         ShortName: "Yeldos",
-        Role: "Middle .NET Developer",
-        Tagline: "Backend developer, C# / .NET",
-        Summary: "Almost 5 years in commercial backend development. I design high-load distributed systems, " +
-                 "microservices and APIs — and make sure they run fast, from the SQL query to the async pipeline.",
+        Role: "C#/.NET Developer",
+        Tagline: "Backend · high-load systems",
+        Summary: "Nearly 5 years of commercial backend development (since 2021), specializing in high-load " +
+                 "distributed systems, microservices architecture and performance optimization on .NET (C#).",
         Location: "Astana, Kazakhstan",
         Citizenship: "Kazakhstan",
         Contacts: Contacts,
@@ -150,21 +156,21 @@ public static class ProfileData
         [
             new("4", "Years of experience"),
             new("25+", "Technologies"),
-            new("2", "Cisco certificates"),
+            new("4", "Certificates"),
             new("3", "Languages"),
         ],
         SkillGroups: SkillGroups("Languages", "Platform & practices", "Data & tools", "OOP / SOLID"),
         Expertise:
         [
-            new("api", "Architecture & APIs", "Backend",
+            new("api", "Architecture & Profiling", "Backend",
                 "Designing REST/SOAP APIs, integrating external systems and microservices, " +
                 "debugging complex defects in production.",
                 ["REST", "SOAP", "Microservices"]),
-            new("db", "Databases & performance", "Data",
+            new("db", "Databases & Performance", "Data",
                 "Removing bottlenecks in queries and database design, working with large volumes of data " +
                 "in PostgreSQL, MS SQL Server and NoSQL.",
                 ["PostgreSQL", "MS SQL", "NoSQL"]),
-            new("bolt", "Async & high load", "Highload",
+            new("bolt", "Async & High Load", "Highload",
                 "Asynchronous processing with async/await, multithreading and Apache Kafka to keep " +
                 "high-load services responsive.",
                 ["async/await", "Kafka", "Docker"]),
@@ -192,11 +198,17 @@ public static class ProfileData
             new("2024", "Bachelor's · Applied Informatics",
                 "Siberian Institute of Business and Information Technologies",
                 "Omsk · Applied Informatics in Economics"),
+            new("2025", "The Complete Xamarin Developer Course",
+                "Udemy", "Professional development course"),
+            new("2025", "PostgreSQL Certification Course",
+                "W3Schools", "Professional development course"),
             new("2020", "Software Development",
                 "IT STEP Academy", "Professional development course"),
         ],
         Certificates:
         [
+            new("2025", "Xamarin Developer: iOS & Android", "Udemy"),
+            new("2025", "PostgreSQL Certification Exam", "W3Schools"),
             new("2019", "CCNA: Networking", "Cisco"),
             new("2019", "CCST: Cybersecurity", "Cisco"),
         ],
@@ -218,6 +230,6 @@ public static class ProfileData
             new("Russian", "C1 — Advanced", "RU", 90),
             new("English", "B2 — Upper-intermediate", "EN", 70),
         ],
-        WorkPreferences: "Open to building high-load services and complex products. " +
-                         "Office, hybrid or remote; ready to relocate and travel.");
+        WorkPreferences: "Open to opportunities building high-load services and complex software products: full-time, " +
+                         "part-time, project work or internship. On-site, hybrid or fully remote; ready to relocate and travel.");
 }
