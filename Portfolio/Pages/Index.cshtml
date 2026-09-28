@@ -289,9 +289,9 @@
                     <h2><span class="accent">&gt;</span> @ui.ContactTitle</h2>
                     <p class="card-text">@p.WorkPreferences</p>
                     <ul class="contact-list">
-                        <li><span class="k">telegram</span> <a href="@p.Contacts.TelegramUrl" target="_blank" rel="noopener">@p.Contacts.Telegram</a> <span class="muted">@ui.PreferredContact</span></li>
+                        <li><span class="k">phone</span> <a href="@p.Contacts.PhoneUrl">@p.Contacts.Phone</a> <span class="muted">@ui.PreferredContact</span></li>
+                        <li><span class="k">telegram</span> <a href="@p.Contacts.TelegramUrl" target="_blank" rel="noopener">@p.Contacts.Telegram</a></li>
                         <li><span class="k">email</span> <a href="mailto:@p.Contacts.Email">@p.Contacts.Email</a></li>
-                        <li><span class="k">phone</span> <a href="@p.Contacts.PhoneUrl">@p.Contacts.Phone</a></li>
                         <li><span class="k">github</span> <a href="@p.Contacts.GitHubUrl" target="_blank" rel="noopener">@Contacts.Display(p.Contacts.GitHubUrl)</a></li>
                         <li><span class="k">linkedin</span> <a href="@p.Contacts.LinkedInUrl" target="_blank" rel="noopener">@Contacts.Display(p.Contacts.LinkedInUrl)</a></li>
                     </ul>
