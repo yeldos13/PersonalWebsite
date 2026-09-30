@@ -12,6 +12,7 @@ public record Profile(
     IReadOnlyList<Stat> Stats,
     IReadOnlyList<SkillGroup> SkillGroups,
     IReadOnlyList<Expertise> Expertise,
+    IReadOnlyList<CaseStudy> Cases,
     IReadOnlyList<Job> Experience,
     IReadOnlyList<Education> Education,
     IReadOnlyList<Certificate> Certificates,
@@ -35,6 +36,8 @@ public record SkillGroup(string Title, string Dot, IReadOnlyList<Skill> Items);
 public record Skill(string Name, string Badge, string Color);
 
 public record Expertise(string Icon, string Title, string Tag, string Description, IReadOnlyList<string> Tags);
+
+public record CaseStudy(string Title, string Problem, IReadOnlyList<string> Solution, IReadOnlyList<string> Stack, string Result);
 
 public record Job(
     string Title,

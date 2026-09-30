@@ -91,6 +91,46 @@ public static class ProfileData
                 "отклика высоконагруженных сервисов.",
                 ["async/await", "Kafka", "Docker"]),
         ],
+        Cases:
+        [
+            new("Ускорение отчётов и запросов к базе данных",
+                "Ключевые отчёты и экраны системы открывались слишком долго, часть запросов падала по таймауту " +
+                "на больших объёмах данных. Пользователи жаловались, нагрузка на сервер БД росла.",
+                [
+                    "Проанализировал медленные запросы через планы выполнения (EXPLAIN ANALYZE в PostgreSQL)",
+                    "Переписал тяжёлые запросы: убрал лишние JOIN и выборку ненужных столбцов, заменил курсоры и циклы на set-based операции",
+                    "Добавил недостающие и составные индексы, убрал неиспользуемые",
+                    "Перевёл долгие операции на асинхронную обработку (async/await), чтобы интерфейс не блокировался",
+                ],
+                ["C#", ".NET", "PostgreSQL"],
+                "Время формирования ключевых отчётов сократилось с 15 до 2 секунд, таймауты исчезли, " +
+                "нагрузка на сервер БД снизилась на 40%."),
+            new("Асинхронная интеграция с внешними системами",
+                "Системе нужно было обмениваться данными с несколькими внешними сервисами и смежными системами. " +
+                "Синхронные вызовы тормозили основной процесс, а при недоступности внешней стороны данные терялись " +
+                "или приходилось переотправлять их вручную.",
+                [
+                    "Спроектировал интеграционный слой: SOAP для внешних API, Apache Kafka для асинхронного обмена между сервисами",
+                    "Реализовал повторные попытки, обработку ошибок и журналирование, чтобы сбой на одной стороне не приводил к потере данных",
+                    "Работал с контрактами SOAP-сервисов по WSDL, упаковал сервисы в Docker, сборку и выкладку настроил через CI/CD",
+                ],
+                ["C#", ".NET", "SOAP", "WSDL", "Apache Kafka", "Docker", "CI/CD"],
+                "Подключено 10+ внешних систем, обрабатываются тысячи сообщений в сутки, ручная переотправка данных " +
+                "больше не нужна. Основной процесс больше не ждёт ответа внешних систем и не зависит от их доступности."),
+            new("Клиент-серверный модуль с отчётностью для бизнеса",
+                "Бизнесу нужен был новый модуль для работы с данными и выпуска печатных форм и отчётов. " +
+                "Раньше отчёты собирали вручную в Excel.",
+                [
+                    "Вместе с командой собрал требования напрямую с заказчиком, оценил сроки и трудозатраты, презентовал решение",
+                    "Реализовал серверную бизнес-логику на .NET и клиентскую часть на Windows Forms",
+                    "Спроектировал структуру БД под модуль",
+                    "Сделал отчёты и печатные формы в StimulSoft Reports",
+                    "Покрыл ключевую логику unit-тестами, код прошёл code review. В разработке участвовали стажёры, которых я курировал",
+                ],
+                ["C#", ".NET", "Windows Forms", "StimulSoft Reports", "PostgreSQL", "Unit Testing"],
+                "Модуль запущен за пару месяцев, отчёты формируются автоматически вместо ручной сборки, что экономит " +
+                "десятки часов в неделю. Модулем пользуются тысячи сотрудников."),
+        ],
         Experience:
         [
             new("Middle .NET разработчик", "PBSOFT", "https://pbsoft.kz/",
@@ -181,6 +221,46 @@ public static class ProfileData
                 "Asynchronous processing with async/await, multithreading and Apache Kafka to keep " +
                 "high-load services responsive.",
                 ["async/await", "Kafka", "Docker"]),
+        ],
+        Cases:
+        [
+            new("Speeding up reports and database queries",
+                "Key reports and screens took too long to load, and some queries timed out on large data volumes. " +
+                "Users complained, and the database server load kept growing.",
+                [
+                    "Analyzed slow queries using execution plans (EXPLAIN ANALYZE in PostgreSQL)",
+                    "Rewrote heavy queries: removed redundant JOINs and unnecessary columns, replaced cursors and loops with set-based operations",
+                    "Added missing and composite indexes, dropped unused ones",
+                    "Moved long-running operations to asynchronous processing (async/await) so the UI stays responsive",
+                ],
+                ["C#", ".NET", "PostgreSQL"],
+                "Key report generation time dropped from 15 to 2 seconds, timeouts disappeared, " +
+                "and database server load decreased by 40%."),
+            new("Asynchronous integration with external systems",
+                "The system had to exchange data with several external services and adjacent systems. " +
+                "Synchronous calls slowed down the main workflow, and when the other side was unavailable, " +
+                "data was lost or had to be resent manually.",
+                [
+                    "Designed an integration layer: SOAP for external APIs, Apache Kafka for asynchronous messaging between services",
+                    "Implemented retries, error handling and logging, so a failure on one side no longer caused data loss",
+                    "Worked with SOAP service contracts via WSDL, containerized the services with Docker, and set up build and deployment via CI/CD",
+                ],
+                ["C#", ".NET", "SOAP", "WSDL", "Apache Kafka", "Docker", "CI/CD"],
+                "10+ external systems connected, thousands of messages processed daily, and manual resending is " +
+                "no longer needed. The main workflow no longer waits for external systems and doesn't depend on their availability."),
+            new("Client-server module with business reporting",
+                "The business needed a new module for working with data and generating printable forms and reports. " +
+                "Previously, reports were compiled manually in Excel.",
+                [
+                    "Gathered requirements directly from the client together with the team, estimated timelines and effort, and presented the solution",
+                    "Implemented the server-side business logic in .NET and the Windows Forms client",
+                    "Designed the database schema for the module",
+                    "Built reports and printable forms in StimulSoft Reports",
+                    "Covered the core logic with unit tests; all code went through code review. Interns I supervised took part in development",
+                ],
+                ["C#", ".NET", "Windows Forms", "StimulSoft Reports", "PostgreSQL", "Unit Testing"],
+                "The module was launched in a couple of months; reports are now generated automatically instead of " +
+                "being compiled by hand, saving dozens of hours per week. The module is used by thousands of employees."),
         ],
         Experience:
         [
