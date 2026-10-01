@@ -66,9 +66,9 @@ public static class ProfileData
         FullName: "Созакбай Ельдос Куатович",
         ShortName: "Yeldos",
         Role: "C#/.NET-разработчик",
-        Tagline: "Backend · высоконагруженные системы",
-        Summary: "Почти 5 лет в коммерческой backend-разработке (с 2021 года). Специализируюсь на высоконагруженных " +
-                 "распределённых системах, микросервисной архитектуре и оптимизации производительности на .NET (C#).",
+        Tagline: "Backend · базы данных и интеграции",
+        Summary: "Почти 5 лет в коммерческой backend-разработке на C# и .NET (с 2021 года). Разрабатываю серверную логику " +
+                 "и интеграции с внешними системами, оптимизирую запросы к PostgreSQL и MS SQL Server.",
         Location: "Астана, Казахстан",
         Citizenship: "Казахстан",
         Contacts: Contacts,
@@ -82,17 +82,17 @@ public static class ProfileData
         SkillGroups: SkillGroups("Языки", "Платформа и подходы", "Данные и инструменты", "ООП / SOLID"),
         Expertise:
         [
-            new("api", "Архитектура и профилирование", "Backend",
-                "Проектирование REST/SOAP API, интеграции с внешними системами и микросервисами, " +
-                "отладка сложных дефектов на продакшн-средах.",
-                ["REST", "SOAP", "Microservices"]),
+            new("api", "Серверная разработка и интеграции", "Backend",
+                "Бизнес-логика и API на .NET, интеграции с внешними системами по SOAP и через Apache Kafka, " +
+                "поиск и исправление ошибок на продакшене.",
+                ["REST", "SOAP", "Kafka"]),
             new("db", "Базы данных и производительность", "Data",
-                "Оптимизация узких мест в запросах и структуре БД, работа с большими объёмами данных " +
-                "в PostgreSQL, MS SQL Server и NoSQL.",
-                ["PostgreSQL", "MS SQL", "NoSQL"]),
-            new("bolt", "Асинхронность и нагрузка", "Highload",
-                "Асинхронная обработка на async/await, многопоточность и Apache Kafka для повышения " +
-                "отклика высоконагруженных сервисов.",
+                "Структура таблиц и индексы, поиск и оптимизация медленных запросов по планам выполнения " +
+                "в PostgreSQL и MS SQL Server.",
+                ["PostgreSQL", "MS SQL", "SQL"]),
+            new("bolt", "Асинхронность и надёжность", "Async",
+                "async/await и фоновая обработка, чтобы интерфейс и сервисы не блокировались; повторные попытки " +
+                "и журналирование при обмене данными.",
                 ["async/await", "Kafka", "Docker"]),
         ],
         Cases:
@@ -114,9 +114,9 @@ public static class ProfileData
                 "Синхронные вызовы тормозили основной процесс, а при недоступности внешней стороны данные терялись " +
                 "или приходилось переотправлять их вручную.",
                 [
-                    "Спроектировал интеграционный слой: SOAP для внешних API, Apache Kafka для асинхронного обмена между сервисами",
+                    "Участвовал в проектировании и разработал интеграционный слой: SOAP для внешних API, Apache Kafka для асинхронного обмена между сервисами",
                     "Реализовал повторные попытки, обработку ошибок и журналирование, чтобы сбой на одной стороне не приводил к потере данных",
-                    "Работал с контрактами SOAP-сервисов по WSDL, упаковал сервисы в Docker, сборку и выкладку настроил через CI/CD",
+                    "Работал с контрактами SOAP-сервисов по WSDL, упаковывал сервисы в Docker, участвовал в настройке сборки и выкладки через CI/CD",
                 ],
                 ["C#", ".NET", "SOAP", "WSDL", "Apache Kafka", "Docker", "CI/CD"],
                 "Подключено 10+ внешних систем, обрабатываются тысячи сообщений в сутки, ручная переотправка данных " +
@@ -127,7 +127,7 @@ public static class ProfileData
                 [
                     "Вместе с командой собрал требования напрямую с заказчиком, оценил сроки и трудозатраты, презентовал решение",
                     "Реализовал серверную бизнес-логику на .NET и клиентскую часть на Windows Forms",
-                    "Спроектировал структуру БД под модуль",
+                    "Разработал структуру БД под модуль",
                     "Сделал отчёты и печатные формы в StimulSoft Reports",
                     "Покрыл ключевую логику unit-тестами, код прошёл code review. В разработке участвовали стажёры, которых я курировал",
                 ],
@@ -139,14 +139,14 @@ public static class ProfileData
         [
             new("Middle .NET разработчик", "PBSOFT", "https://pbsoft.kz/",
                 "июн 2021 — мар 2026", "4 года 10 месяцев", "Астана",
-                "Разработка высоконагруженных сервисов и приложений на C# и .NET: от проектирования БД " +
-                "и бизнес-логики до сопровождения на продакшне.",
+                "Разработка и сопровождение серверных приложений и сервисов на C# и .NET: бизнес-логика, " +
+                "работа с БД, интеграции с внешними системами.",
                 [
                     "Реализация бизнес-логики и клиент-серверных модулей по техническим требованиям",
-                    "Проектирование и оптимизация структуры БД (PostgreSQL / MS SQL Server)",
-                    "Архитектура и интеграция внешних API, микросервисов и сторонних систем",
-                    "Асинхронность (async/await) и многопоточность для повышения отклика системы",
-                    "Code review и контроль стандартов чистого кода в команде",
+                    "Разработка и оптимизация структуры БД и SQL-запросов (PostgreSQL / MS SQL Server)",
+                    "Интеграция с внешними API и сторонними системами (SOAP, Apache Kafka)",
+                    "Асинхронная обработка (async/await), чтобы система не блокировалась на долгих операциях",
+                    "Участие в code review, следование стандартам чистого кода",
                     "Менторинг и адаптация стажёров",
                     "Оценка задач по времени и сложности, прогноз затрат ресурсов",
                     "Прямое взаимодействие с заказчиками: требования и презентация решений",
@@ -175,14 +175,14 @@ public static class ProfileData
         Principles:
         [
             new("Качество кода",
-                "Провожу code review и держу команду в рамках ООП, SOLID и Clean Code — код должен читаться " +
+                "Участвую в code review и придерживаюсь ООП, SOLID и Clean Code — код должен читаться " +
                 "так же легко, как пишется.", "CR", "#6366f1"),
             new("Менторинг",
                 "Адаптирую стажёров и помогаю им прокачивать технические навыки — сильная команда важнее " +
                 "одного сильного разработчика.", "MT", "#8b5cf6"),
             new("Работа с заказчиком",
-                "Сам собираю требования, презентую решения и держу фокус на результате даже при сжатых " +
-                "дедлайнах.", "PM", "#ec4899"),
+                "Общаюсь с заказчиком напрямую: уточняю требования, показываю решения и держу фокус " +
+                "на результате при сжатых сроках.", "PM", "#ec4899"),
         ],
         Languages:
         [
@@ -190,16 +190,16 @@ public static class ProfileData
             new("Русский", "C1 — продвинутый", "RU", 90),
             new("Английский", "B2 — выше среднего", "EN", 70),
         ],
-        WorkPreferences: "Рассматриваю разработку высоконагруженных сервисов и сложных продуктов: полная или частичная " +
-                         "занятость, проектная работа, стажировка. Офис, гибрид или удалёнка; готов к переезду и командировкам.");
+        WorkPreferences: "Ищу позицию .NET backend-разработчика (Middle): полная или частичная занятость, " +
+                         "проектная работа. Офис, гибрид или удалёнка; готов к переезду и командировкам.");
 
     private static readonly Profile English = new(
         FullName: "Yeldos Sozakbay",
         ShortName: "Yeldos",
         Role: "C#/.NET Developer",
-        Tagline: "Backend · high-load systems",
-        Summary: "Nearly 5 years of commercial backend development (since 2021), specializing in high-load " +
-                 "distributed systems, microservices architecture and performance optimization on .NET (C#).",
+        Tagline: "Backend · databases & integrations",
+        Summary: "Nearly 5 years of commercial backend development in C# and .NET (since 2021). I build server-side logic " +
+                 "and integrations with external systems, and optimize queries in PostgreSQL and MS SQL Server.",
         Location: "Astana, Kazakhstan",
         Citizenship: "Kazakhstan",
         Contacts: Contacts,
@@ -213,17 +213,17 @@ public static class ProfileData
         SkillGroups: SkillGroups("Languages", "Platform & practices", "Data & tools", "OOP / SOLID"),
         Expertise:
         [
-            new("api", "Architecture & Profiling", "Backend",
-                "Designing REST/SOAP APIs, integrating external systems and microservices, " +
-                "debugging complex defects in production.",
-                ["REST", "SOAP", "Microservices"]),
+            new("api", "Backend & Integrations", "Backend",
+                "Business logic and APIs in .NET, integrations with external systems via SOAP and Apache Kafka, " +
+                "finding and fixing production issues.",
+                ["REST", "SOAP", "Kafka"]),
             new("db", "Databases & Performance", "Data",
-                "Removing bottlenecks in queries and database design, working with large volumes of data " +
-                "in PostgreSQL, MS SQL Server and NoSQL.",
-                ["PostgreSQL", "MS SQL", "NoSQL"]),
-            new("bolt", "Async & High Load", "Highload",
-                "Asynchronous processing with async/await, multithreading and Apache Kafka to keep " +
-                "high-load services responsive.",
+                "Table design and indexes, finding and optimizing slow queries using execution plans " +
+                "in PostgreSQL and MS SQL Server.",
+                ["PostgreSQL", "MS SQL", "SQL"]),
+            new("bolt", "Async & Reliability", "Async",
+                "async/await and background processing so the UI and services never block; retries " +
+                "and logging for data exchange.",
                 ["async/await", "Kafka", "Docker"]),
         ],
         Cases:
@@ -245,9 +245,9 @@ public static class ProfileData
                 "Synchronous calls slowed down the main workflow, and when the other side was unavailable, " +
                 "data was lost or had to be resent manually.",
                 [
-                    "Designed an integration layer: SOAP for external APIs, Apache Kafka for asynchronous messaging between services",
+                    "Took part in designing and built the integration layer: SOAP for external APIs, Apache Kafka for asynchronous messaging between services",
                     "Implemented retries, error handling and logging, so a failure on one side no longer caused data loss",
-                    "Worked with SOAP service contracts via WSDL, containerized the services with Docker, and set up build and deployment via CI/CD",
+                    "Worked with SOAP service contracts via WSDL, containerized services with Docker, and helped set up build and deployment via CI/CD",
                 ],
                 ["C#", ".NET", "SOAP", "WSDL", "Apache Kafka", "Docker", "CI/CD"],
                 "10+ external systems connected, thousands of messages processed daily, and manual resending is " +
@@ -258,7 +258,7 @@ public static class ProfileData
                 [
                     "Gathered requirements directly from the client together with the team, estimated timelines and effort, and presented the solution",
                     "Implemented the server-side business logic in .NET and the Windows Forms client",
-                    "Designed the database schema for the module",
+                    "Built the database schema for the module",
                     "Built reports and printable forms in StimulSoft Reports",
                     "Covered the core logic with unit tests; all code went through code review. Interns I supervised took part in development",
                 ],
@@ -270,14 +270,14 @@ public static class ProfileData
         [
             new("Middle .NET Developer", "PBSOFT", "https://pbsoft.kz/",
                 "Jun 2021 — Mar 2026", "4 years 10 months", "Astana",
-                "Building high-load services and applications with C# and .NET — from database design " +
-                "and business logic to production support.",
+                "Developing and maintaining server-side applications and services in C# and .NET: business logic, " +
+                "database work and integrations with external systems.",
                 [
                     "Implemented business logic and client-server modules to technical specifications",
-                    "Designed and optimized database schemas (PostgreSQL / MS SQL Server)",
-                    "Architected and integrated external APIs, microservices and third-party systems",
-                    "Used async/await and multithreading to improve system responsiveness",
-                    "Ran code reviews and enforced clean code standards across the team",
+                    "Built and optimized database schemas and SQL queries (PostgreSQL / MS SQL Server)",
+                    "Integrated external APIs and third-party systems (SOAP, Apache Kafka)",
+                    "Used async/await so the system doesn't block on long-running operations",
+                    "Took part in code reviews and followed clean code standards",
                     "Mentored and onboarded interns",
                     "Estimated task effort and complexity, forecast development resources",
                     "Worked directly with clients: gathering requirements and presenting solutions",
@@ -306,14 +306,14 @@ public static class ProfileData
         Principles:
         [
             new("Code quality",
-                "I run code reviews and keep the team aligned with OOP, SOLID and Clean Code — code should be " +
+                "I take part in code reviews and stick to OOP, SOLID and Clean Code — code should be " +
                 "as easy to read as it is to write.", "CR", "#6366f1"),
             new("Mentoring",
                 "I onboard interns and help them grow their technical skills — a strong team matters more " +
                 "than one strong developer.", "MT", "#8b5cf6"),
             new("Working with clients",
-                "I gather requirements, present solutions and stay focused on results even under tight " +
-                "deadlines.", "PM", "#ec4899"),
+                "I talk to clients directly: clarify requirements, show solutions and stay focused on results " +
+                "under tight deadlines.", "PM", "#ec4899"),
         ],
         Languages:
         [
@@ -321,6 +321,6 @@ public static class ProfileData
             new("Russian", "C1 — Advanced", "RU", 90),
             new("English", "B2 — Upper-intermediate", "EN", 70),
         ],
-        WorkPreferences: "Open to opportunities building high-load services and complex software products: full-time, " +
-                         "part-time, project work or internship. On-site, hybrid or fully remote; ready to relocate and travel.");
+        WorkPreferences: "Looking for a .NET backend developer role (Middle): full-time, part-time or project work. " +
+                         "On-site, hybrid or fully remote; ready to relocate and travel.");
 }
