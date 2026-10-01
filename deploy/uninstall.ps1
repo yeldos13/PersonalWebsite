@@ -13,6 +13,11 @@ foreach ($name in "Caddy", "Portfolio") {
     }
 }
 
+if (Get-ScheduledTask -TaskName "Portfolio Auto-Update" -ErrorAction SilentlyContinue) {
+    Unregister-ScheduledTask -TaskName "Portfolio Auto-Update" -Confirm:$false
+    Write-Host "Задача автообновления удалена."
+}
+
 Get-NetFirewallRule -DisplayName "Portfolio HTTP *" -ErrorAction SilentlyContinue | Remove-NetFirewallRule
 Write-Host "Правила брандмауэра удалены."
 Write-Host "Папки C:\Sites\Portfolio и C:\Caddy можно удалить вручную."

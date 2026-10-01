@@ -203,7 +203,7 @@ svg { width: 18px; height: 18px; flex-shrink: 0; }
 .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 10px var(--green); animation: pulse 2s infinite; }
 @keyframes pulse { 50% { opacity: .4; } }
 
-.hero h1 { font-size: clamp(32px, 4.6vw, 50px); line-height: 1.22; font-weight: 600; margin: 22px 0 18px; letter-spacing: -.5px; color: var(--heading); }
+.hero h1 { font-size: clamp(30px, 4.1vw, 46px); line-height: 1.22; font-weight: 600; margin: 22px 0 18px; letter-spacing: -.5px; color: var(--heading); }
 .kw { color: var(--muted); font-weight: 400; }
 .muted-strong {
     background: linear-gradient(90deg, var(--grad-a), var(--grad-b));

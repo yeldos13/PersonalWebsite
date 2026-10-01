@@ -20,6 +20,10 @@ public static class ProfileData
 
     public const string CvPath = "/files/Yeldos-Sozakbay-CV.pdf";
 
+    public const string DisplayName = "Yeldos Sozakbay";
+
+    public const string SiteUrl = "https://sozakbay.asia";
+
     private static IReadOnlyList<SkillGroup> SkillGroups(string languages, string platform, string data, string oop) =>
     [
         new(languages, "purple",

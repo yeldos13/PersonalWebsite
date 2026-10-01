@@ -6,6 +6,8 @@
     ViewData["Title"] = "sozakbay.asia";
     ViewData["Description"] = p.Summary;
     ViewData["Lang"] = ui.Lang;
+    ViewData["Path"] = ui.Lang == "en" ? "/en" : "/";
+    ViewData["OgTitle"] = $"{ProfileData.DisplayName} — {p.Role}";
     var sectionNo = 0;
     string Num() => (++sectionNo).ToString("00") + ".";
 }
@@ -61,7 +63,7 @@
                 <span class="status"><span class="dot"></span> open to work</span>
                 <h1>
                     <span class="kw">var</span> <span class="muted-strong">developer</span> <span class="kw">=</span><br />
-                    <span class="str">"@p.ShortName"</span><span class="kw">;</span>
+                    <span class="str">"@ProfileData.DisplayName"</span><span class="kw">;</span>
                 </h1>
                 <p class="role"><span class="comment">//</span> @p.Role · @p.Tagline</p>
                 <p class="lead">@p.Summary</p>
