@@ -126,7 +126,7 @@ public static class ProfileData
                 "Раньше отчёты собирали вручную в Excel.",
                 [
                     "Вместе с командой собрал требования напрямую с заказчиком, оценил сроки и трудозатраты, презентовал решение",
-                    "Реализовал серверную бизнес-логику на .NET и клиентскую часть на Windows Forms",
+                    "Реализовал серверную бизнес-логику на .NET",
                     "Разработал структуру БД под модуль",
                     "Сделал отчёты и печатные формы в StimulSoft Reports",
                     "Покрыл ключевую логику unit-тестами, код прошёл code review. В разработке участвовали стажёры, которых я курировал",
@@ -257,7 +257,7 @@ public static class ProfileData
                 "Previously, reports were compiled manually in Excel.",
                 [
                     "Gathered requirements directly from the client together with the team, estimated timelines and effort, and presented the solution",
-                    "Implemented the server-side business logic in .NET and the Windows Forms client",
+                    "Implemented the server-side business logic in .NET",
                     "Built the database schema for the module",
                     "Built reports and printable forms in StimulSoft Reports",
                     "Covered the core logic with unit tests; all code went through code review. Interns I supervised took part in development",
