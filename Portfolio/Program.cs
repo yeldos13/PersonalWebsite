@@ -21,6 +21,8 @@ builder.Services.ConfigureHttpJsonOptions(options =>
     options.SerializerOptions.Encoder = JavaScriptEncoder.Create(UnicodeRanges.All));
 
 builder.Services.AddRazorPages();
+builder.Services.AddMemoryCache();
+builder.Services.AddHttpClient<GitHubActivityService>(GitHubActivityService.Configure);
 
 var app = builder.Build();
 
