@@ -67,14 +67,14 @@ public static class ProfileData
         ShortName: "Yeldos",
         Role: "C#/.NET-разработчик",
         Tagline: "Backend · базы данных и интеграции",
-        Summary: "Почти 5 лет в коммерческой backend-разработке на C# и .NET (с 2021 года). Разрабатываю серверную логику " +
+        Summary: "5 лет в коммерческой backend-разработке на C# и .NET (с 2021 года). Разрабатываю серверную логику " +
                  "и интеграции с внешними системами, оптимизирую запросы к PostgreSQL и MS SQL Server.",
         Location: "Астана, Казахстан",
         Citizenship: "Казахстан",
         Contacts: Contacts,
         Stats:
         [
-            new("4", "Года опыта"),
+            new("5", "Лет опыта"),
             new("25+", "Технологий"),
             new("4", "Сертификата"),
             new("3", "Языка"),
@@ -198,14 +198,14 @@ public static class ProfileData
         ShortName: "Yeldos",
         Role: "C#/.NET Developer",
         Tagline: "Backend · databases & integrations",
-        Summary: "Nearly 5 years of commercial backend development in C# and .NET (since 2021). I build server-side logic " +
+        Summary: "5 years of commercial backend development in C# and .NET (since 2021). I build server-side logic " +
                  "and integrations with external systems, and optimize queries in PostgreSQL and MS SQL Server.",
         Location: "Astana, Kazakhstan",
         Citizenship: "Kazakhstan",
         Contacts: Contacts,
         Stats:
         [
-            new("4", "Years of experience"),
+            new("5", "Years of experience"),
             new("25+", "Technologies"),
             new("4", "Certificates"),
             new("3", "Languages"),
