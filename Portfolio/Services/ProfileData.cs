@@ -22,7 +22,7 @@ public static class ProfileData
 
     public const string DisplayName = "Yeldos Sozakbay";
 
-    public const string SiteUrl = "https://sozakbay.asia";
+    public const string SiteUrl = "https://sozakbay.dev";
 
     private static IReadOnlyList<SkillGroup> SkillGroups(string languages, string platform, string data, string oop) =>
     [

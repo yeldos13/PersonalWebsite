@@ -1,6 +1,7 @@
 ﻿param(
     [string]$Domain = "",
     [string]$Email = "",
+    [string[]]$RedirectFrom = @(),
     [string]$InstallDir = "C:\Sites\Portfolio",
     [string]$CaddyDir = "C:\Caddy",
     [int]$AppPort = 5000
@@ -56,7 +57,9 @@ if (-not (Test-Path $caddyExe)) {
 $caddyfile = Join-Path $CaddyDir "Caddyfile"
 if ($Domain) {
     $global = if ($Email) { "{`n    email $Email`n}`n`n" } else { "" }
-    $config = "$global$Domain, www.$Domain {`n    encode gzip zstd`n    reverse_proxy 127.0.0.1:$AppPort`n}`n"
+    $aliases = @("www.$Domain") + ($RedirectFrom | ForEach-Object { $_; "www.$_" })
+    $config = "$global$Domain {`n    encode gzip zstd`n    reverse_proxy 127.0.0.1:$AppPort`n}`n`n" +
+              "$($aliases -join ', ') {`n    redir https://$Domain{uri} permanent`n}`n"
 } else {
     $config = ":80 {`n    encode gzip zstd`n    reverse_proxy 127.0.0.1:$AppPort`n}`n"
 }
