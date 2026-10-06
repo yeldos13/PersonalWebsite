@@ -33,6 +33,13 @@
     --pill-bg: rgba(248, 113, 113, .1);
     --pill-border: rgba(248, 113, 113, .25);
     --sun-display: block;
+    --ps-bg: #0c0c0c;
+    --ps-tab: #ffffff;
+    --ps-border: #2e2e2e;
+    --ps-text: #eeedf0;
+    --ps-key: #61d6d6;
+    --ps-str: #f9f1a5;
+    --ps-dim: #a8a8a8;
     --moon-display: none;
 
     --radius: 12px;
@@ -47,27 +54,27 @@
         --bg-2: #f1f1f7;
         --card: #ffffff;
         --card-2: #f4f4f9;
-        --border: #e2e2ec;
+        --border: #dcdce8;
         --border-2: #cfcfdc;
         --text: #1d1e2c;
         --heading: #0d0e1a;
-        --muted: #4a4c60;
-        --dim: #62647a;
+        --muted: #34364a;
+        --dim: #4f5166;
         --accent: #6d5dfc;
         --accent-2: #5443e6;
-        --accent-text: #5040d8;
+        --accent-text: #4433c4;
         --accent-soft: rgba(109, 93, 252, .1);
         --accent-line: rgba(109, 93, 252, .3);
-        --string: #b4236b;
+        --string: #9d1a5a;
         --key: #4338ca;
         --green: #047857;
         --grad-a: #5443e6;
         --grad-b: #8b5cf6;
         --nav-bg: rgba(247, 247, 251, .85);
         --term-bg: #ffffff;
-    --win-bar: #e6e6ee;
-    --win-tab-text: #1d1e2c;
-    --win-ctrl: #4a4c60;
+        --win-bar: #e6e6ee;
+        --win-tab-text: #1d1e2c;
+        --win-ctrl: #34364a;
         --term-shadow: 0 20px 50px rgba(30, 30, 60, .12);
         --card-shadow: 0 12px 32px rgba(60, 50, 160, .1);
         --btn-shadow: 0 6px 20px rgba(84, 67, 230, .28);
@@ -76,6 +83,13 @@
         --pill-text: #b42318;
         --pill-bg: rgba(220, 38, 38, .07);
         --pill-border: rgba(220, 38, 38, .2);
+        --ps-bg: #ffffff;
+        --ps-tab: #1d1e2c;
+        --ps-border: #cfcfdc;
+        --ps-text: #1d1e2c;
+        --ps-key: #4338ca;
+        --ps-str: #9d1a5a;
+        --ps-dim: #4f5166;
         --sun-display: none;
         --moon-display: block;
         color-scheme: light;
@@ -86,18 +100,18 @@
     --bg-2: #f1f1f7;
     --card: #ffffff;
     --card-2: #f4f4f9;
-    --border: #e2e2ec;
+    --border: #dcdce8;
     --border-2: #cfcfdc;
     --text: #1d1e2c;
     --heading: #0d0e1a;
-    --muted: #4a4c60;
-    --dim: #62647a;
+    --muted: #34364a;
+    --dim: #4f5166;
     --accent: #6d5dfc;
     --accent-2: #5443e6;
-    --accent-text: #5040d8;
+    --accent-text: #4433c4;
     --accent-soft: rgba(109, 93, 252, .1);
     --accent-line: rgba(109, 93, 252, .3);
-    --string: #b4236b;
+    --string: #9d1a5a;
     --key: #4338ca;
     --green: #047857;
     --grad-a: #5443e6;
@@ -106,7 +120,7 @@
     --term-bg: #ffffff;
     --win-bar: #e6e6ee;
     --win-tab-text: #1d1e2c;
-    --win-ctrl: #4a4c60;
+    --win-ctrl: #34364a;
     --term-shadow: 0 20px 50px rgba(30, 30, 60, .12);
     --card-shadow: 0 12px 32px rgba(60, 50, 160, .1);
     --btn-shadow: 0 6px 20px rgba(84, 67, 230, .28);
@@ -115,6 +129,13 @@
     --pill-text: #b42318;
     --pill-bg: rgba(220, 38, 38, .07);
     --pill-border: rgba(220, 38, 38, .2);
+    --ps-bg: #ffffff;
+    --ps-tab: #1d1e2c;
+    --ps-border: #cfcfdc;
+    --ps-text: #1d1e2c;
+    --ps-key: #4338ca;
+    --ps-str: #9d1a5a;
+    --ps-dim: #4f5166;
     --sun-display: none;
     --moon-display: block;
     color-scheme: light;
@@ -268,16 +289,16 @@ svg { width: 18px; height: 18px; flex-shrink: 0; }
 .cursor { color: var(--accent-text); animation: blink 1s steps(1) infinite; }
 @keyframes blink { 50% { opacity: 0; } }
 
-.terminal.ps { --window-bg: #0c0c0c; --win-tab-text: #ffffff; border-color: #2e2e2e; }
+.terminal.ps { --window-bg: var(--ps-bg); --win-tab-text: var(--ps-tab); border-color: var(--ps-border); }
 .terminal.ps .term-body {
     font-family: "Cascadia Mono", "Cascadia Code", var(--mono);
-    color: #eeedf0;
+    color: var(--ps-text);
 }
-.terminal.ps .term-body .k { color: #61d6d6; }
-.terminal.ps .term-body .s { color: #f9f1a5; }
-.terminal.ps .term-body .d { color: #a8a8a8; }
-.terminal.ps .prompt { color: #eeedf0; }
-.terminal.ps .cursor { color: #eeedf0; }
+.terminal.ps .term-body .k { color: var(--ps-key); }
+.terminal.ps .term-body .s { color: var(--ps-str); }
+.terminal.ps .term-body .d { color: var(--ps-dim); }
+.terminal.ps .prompt { color: var(--ps-text); }
+.terminal.ps .cursor { color: var(--ps-text); }
 
 .stats { border-bottom: 1px solid var(--border); }
 .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
