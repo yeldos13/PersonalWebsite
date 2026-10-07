@@ -508,9 +508,36 @@ a.activity-title:hover { color: var(--accent-text); }
     .stats-grid { grid-template-columns: 1fr 1fr; }
     .stat:nth-child(3) { border-left: 0; }
     .stat:nth-child(n+3) { border-top: 1px solid var(--border); }
-    .term-body { font-size: 12px; padding: 16px; min-height: 0; white-space: pre; overflow-x: auto; }
-    .section { padding-top: 68px; }
-    .section-title { font-size: 21px; }
-    .card { padding: 20px; }
-    .contact-body { padding: 22px; }
+    .hero h1 { margin: 18px 0 14px; }
+    .hero-actions { display: grid; grid-template-columns: 1fr; gap: 10px; margin: 24px 0 22px; }
+    .hero-actions .btn { justify-content: center; }
+    .socials { gap: 22px; }
+    .hero-grid { gap: 36px; }
+    .scroll-hint { display: none; }
+    .term-tab { font-size: 12px; padding: 0 12px 0 10px; }
+    .win-controls > span { width: 36px; }
+    .term-body { font-size: 11px; line-height: 1.75; padding: 14px; min-height: 0; white-space: pre; overflow-x: auto; }
+    .stat { padding: 22px 8px; }
+    .stat-value { font-size: 28px; }
+    .stat-label { font-size: 13px; }
+    .section { padding: 56px 0 8px; }
+    .section-title { font-size: 20px; margin-bottom: 24px; }
+    .grid-3, .gh-grid, .edu-grid, .cases { gap: 14px; }
+    .card { padding: 18px; }
+    .case { padding: 20px 18px; }
+    .case-title { font-size: 17px; gap: 10px; margin-bottom: 16px; }
+    .case-grid { gap: 16px; }
+    .card-text, .highlights li, .case-result p { font-size: 15px; }
+    .timeline { padding-left: 22px; }
+    .timeline-item::before { left: -22px; }
+    .timeline-head h3 { font-size: 17px; }
+    .contact { padding-bottom: 64px; }
+    .contact-card { margin-top: 8px; }
+    .contact-body { padding: 20px; }
+    .contact-body h2 { font-size: 19px; }
+    .contact-list { gap: 14px; }
+    .contact-list li { display: grid; gap: 2px; }
+    .contact-list .k { min-width: 0; font-size: 12.5px; }
+    .contact-list a { justify-self: start; }
+    .contact-actions { margin-bottom: 0; }
 }
