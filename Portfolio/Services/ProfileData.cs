@@ -137,7 +137,7 @@ public static class ProfileData
         ],
         Experience:
         [
-            new("Middle .NET разработчик", "PBSOFT", "https://pbsoft.kz/",
+            new(".NET разработчик", "PBSOFT", "https://pbsoft.kz/",
                 "июн 2021 — мар 2026", "4 года 10 месяцев", "Астана",
                 "Разработка и сопровождение серверных приложений и сервисов на C# и .NET: бизнес-логика, " +
                 "работа с БД, интеграции с внешними системами.",
@@ -268,7 +268,7 @@ public static class ProfileData
         ],
         Experience:
         [
-            new("Middle .NET Developer", "PBSOFT", "https://pbsoft.kz/",
+            new(".NET Developer", "PBSOFT", "https://pbsoft.kz/",
                 "Jun 2021 — Mar 2026", "4 years 10 months", "Astana",
                 "Developing and maintaining server-side applications and services in C# and .NET: business logic, " +
                 "database work and integrations with external systems.",
