@@ -13,7 +13,7 @@ public record GitHubActivity(IReadOnlyList<ContributionDay> Days, int TotalLastY
 
 public partial class GitHubActivityService(HttpClient http, IMemoryCache cache, ILogger<GitHubActivityService> logger)
 {
-    public const string User = "yeldossozakbay";
+    public const string User = "yeldos13";
     private const string CacheKey = "github-activity";
 
     public async Task<GitHubActivity?> GetAsync()
@@ -69,8 +69,10 @@ public partial class GitHubActivityService(HttpClient http, IMemoryCache cache, 
 
         var perRepo = await Task.WhenAll(repos.Select(async repo =>
         {
-            using var doc = JsonDocument.Parse(
-                await http.GetStringAsync($"https://api.github.com/repos/{User}/{repo}/commits?per_page=5"));
+            using var response = await http.GetAsync($"https://api.github.com/repos/{User}/{repo}/commits?per_page=5");
+            if (!response.IsSuccessStatusCode) return new List<RecentCommit>();
+
+            using var doc = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
             return doc.RootElement.EnumerateArray().Select(c =>
             {
                 var commit = c.GetProperty("commit");
@@ -88,7 +90,7 @@ public partial class GitHubActivityService(HttpClient http, IMemoryCache cache, 
     public static void Configure(HttpClient client)
     {
         client.Timeout = TimeSpan.FromSeconds(8);
-        client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("sozakbay-asia", "1.0"));
+        client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("sozakbay-dev", "1.0"));
     }
 
     [GeneratedRegex(@"data-date=""(?<date>\d{4}-\d{2}-\d{2})""\s+id=""(?<id>contribution-day-component-\d+-\d+)""\s+data-level=""(?<level>\d)""")]

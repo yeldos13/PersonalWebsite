@@ -15,7 +15,7 @@ public static class ProfileData
         Telegram: "@sozakbay",
         Email: "eldos.sozakbay@gmail.com",
         Phone: "+7 (777) 190-54-80",
-        GitHubUrl: "https://github.com/yeldossozakbay",
+        GitHubUrl: "https://github.com/yeldos13",
         LinkedInUrl: "https://www.linkedin.com/in/yeldos-sozakbay-4b38a8209/");
 
     public const string CvPath = "/files/Yeldos-Sozakbay-CV.pdf";
