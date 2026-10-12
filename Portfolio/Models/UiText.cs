@@ -27,7 +27,15 @@ public record UiText(
     string ContactTitle,
     string PreferredContact,
     string DownloadCv,
-    string ThemeToggle)
+    string ThemeToggle,
+    string NavContact,
+    string OpenToWork,
+    string ViewExperience,
+    string SendMessage,
+    string GitHubMonth,
+    string GitHubCommits,
+    string Courses,
+    string Certificates)
 {
     public static readonly UiText Ru = new(
         Lang: "ru",
@@ -54,9 +62,17 @@ public record UiText(
         DegreeTitle: "Прикладная информатика",
         DegreeText: "Высшее профильное образование + международные сертификации Cisco",
         ContactTitle: "Давайте работать вместе",
-        PreferredContact: "— предпочитаемый способ связи",
+        PreferredContact: "предпочитаемый способ связи",
         DownloadCv: "Скачать резюме",
-        ThemeToggle: "Переключить светлую/тёмную тему");
+        ThemeToggle: "Переключить светлую/тёмную тему",
+        NavContact: "Контакты",
+        OpenToWork: "Открыт к предложениям",
+        ViewExperience: "Смотреть опыт",
+        SendMessage: "Написать в Telegram",
+        GitHubMonth: "Активность за месяц",
+        GitHubCommits: "Последние коммиты",
+        Courses: "Образование и курсы",
+        Certificates: "Сертификаты");
 
     public static readonly UiText En = new(
         Lang: "en",
@@ -83,9 +99,17 @@ public record UiText(
         DegreeTitle: "Applied Informatics",
         DegreeText: "Relevant university degree + international Cisco certifications",
         ContactTitle: "Let's Work Together",
-        PreferredContact: "— preferred contact method",
+        PreferredContact: "preferred contact method",
         DownloadCv: "Download CV",
-        ThemeToggle: "Toggle light/dark theme");
+        ThemeToggle: "Toggle light/dark theme",
+        NavContact: "Contact",
+        OpenToWork: "Open to work",
+        ViewExperience: "View experience",
+        SendMessage: "Message on Telegram",
+        GitHubMonth: "Last 30 days",
+        GitHubCommits: "Recent commits",
+        Courses: "Education and courses",
+        Certificates: "Certificates");
 
     public static UiText For(string lang) => lang == "en" ? En : Ru;
 }

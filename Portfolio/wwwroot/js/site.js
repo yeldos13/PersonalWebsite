@@ -30,11 +30,14 @@
         .map(a => document.querySelector(a.getAttribute("href")))
         .filter(Boolean);
 
+    const nav = document.getElementById("nav");
+
     const onScroll = () => {
+        nav?.classList.toggle("scrolled", window.scrollY > 4);
         const y = window.scrollY + 120;
-        let current = sections[0];
+        let current = null;
         for (const s of sections) if (s.offsetTop <= y) current = s;
-        links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + current.id));
+        links.forEach(a => a.classList.toggle("active", current !== null && a.getAttribute("href") === "#" + current.id));
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
