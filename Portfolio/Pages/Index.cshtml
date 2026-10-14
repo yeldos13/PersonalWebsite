@@ -1,4 +1,4 @@
-@page "/{lang:regex(^(en|ru)$)?}"
+@page "/{lang:regex(^(en|ru|kk)$)?}"
 @model IndexModel
 @{
     var p = Model.Profile;
@@ -6,7 +6,7 @@
     ViewData["Title"] = "sozakbay.dev";
     ViewData["Description"] = p.Summary;
     ViewData["Lang"] = ui.Lang;
-    ViewData["Path"] = ui.Lang == "ru" ? "/ru" : "/";
+    ViewData["Path"] = ui.Lang == "en" ? "/" : "/" + ui.Lang;
     ViewData["OgTitle"] = $"{ProfileData.DisplayName} — {p.Role}";
 }
 
@@ -44,6 +44,7 @@
             <div class="segmented" role="group" aria-label="Language">
                 <a href="/ru" lang="ru" class="@(ui.Lang == "ru" ? "active" : null)" aria-current="@(ui.Lang == "ru" ? "page" : null)">RU</a>
                 <a href="/" lang="en" class="@(ui.Lang == "en" ? "active" : null)" aria-current="@(ui.Lang == "en" ? "page" : null)">EN</a>
+                <a href="/kk" lang="kk" class="@(ui.Lang == "kk" ? "active" : null)" aria-current="@(ui.Lang == "kk" ? "page" : null)">KZ</a>
             </div>
             <button type="button" class="icon-btn" id="theme-toggle" aria-label="@ui.ThemeToggle" title="@ui.ThemeToggle">@Icon("sun")@Icon("moon")</button>
         </div>
@@ -223,16 +224,19 @@
 
     @if (Model.GitHub is { } gh && gh.Days.Count > 0)
     {
-        var culture = System.Globalization.CultureInfo.GetCultureInfo(ui.Lang == "en" ? "en-US" : "ru-RU");
+        var culture = System.Globalization.CultureInfo.GetCultureInfo(ui.Culture);
         var byDate = gh.Days.ToDictionary(d => d.Date);
         var today = gh.Days[^1].Date;
         var from = today.AddDays(-29);
         var start = from.AddDays(-(((int)from.DayOfWeek + 6) % 7));
         var end = today.AddDays(6 - (((int)today.DayOfWeek + 6) % 7));
         var monthTotal = gh.Days.Where(d => d.Date >= from && d.Date <= today).Sum(d => d.Count);
-        string[] weekdays = ui.Lang == "en"
-            ? ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-            : ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
+        string[] weekdays = ui.Lang switch
+        {
+            "ru" => ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
+            "kk" => ["Дс", "Сс", "Ср", "Бс", "Жм", "Сб", "Жс"],
+            _ => ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+        };
         <section class="section" id="github">
             <div class="container">
                 <h2 class="section-title reveal">@ui.SectionGitHub</h2>

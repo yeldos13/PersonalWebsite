@@ -9,11 +9,13 @@
     @{
         var site = Portfolio.Services.ProfileData.SiteUrl;
         var url = site + (ViewData["Path"] as string ?? "/");
-        var isEn = (ViewData["Lang"] as string) != "ru";
+        var lang = ViewData["Lang"] as string ?? "en";
+        var locales = new Dictionary<string, string> { ["en"] = "en_US", ["ru"] = "ru_RU", ["kk"] = "kk_KZ" };
     }
     <link rel="canonical" href="@url" />
-    <link rel="alternate" hreflang="ru" href="@site/ru" />
     <link rel="alternate" hreflang="en" href="@site/" />
+    <link rel="alternate" hreflang="ru" href="@site/ru" />
+    <link rel="alternate" hreflang="kk" href="@site/kk" />
     <link rel="alternate" hreflang="x-default" href="@site/" />
 
     <meta property="og:type" content="profile" />
@@ -25,8 +27,11 @@
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="@ViewData["OgTitle"]" />
-    <meta property="og:locale" content="@(isEn ? "en_US" : "ru_RU")" />
-    <meta property="og:locale:alternate" content="@(isEn ? "ru_RU" : "en_US")" />
+    <meta property="og:locale" content="@locales[lang]" />
+    @foreach (var alt in locales.Where(l => l.Key != lang))
+    {
+        <meta property="og:locale:alternate" content="@alt.Value" />
+    }
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

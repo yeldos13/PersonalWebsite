@@ -111,5 +111,47 @@ public record UiText(
         Courses: "Education and courses",
         Certificates: "Certificates");
 
-    public static UiText For(string lang) => lang == "en" ? En : Ru;
+    public static readonly UiText Kk = new(
+        Lang: "kk",
+        NavAria: "Навигация",
+        ScrollDown: "Төмен айналдыру",
+        Phone: "Телефон",
+        SectionStack: "Технологиялар",
+        SectionExpertise: "Құзыреттер",
+        SectionCases: "Кейстер",
+        CaseProblem: "Міндет",
+        CaseSolution: "Шешім",
+        CaseResult: "Нәтиже",
+        SectionExperience: "Жұмыс тәжірибесі",
+        SectionGitHub: "GitHub",
+        GitHubTotal: "Соңғы айдағы үлес: {0}",
+        GitHubLess: "аз",
+        GitHubMore: "көп",
+        GitHubOpen: "GitHub профилін ашу",
+        Culture: "kk-KZ",
+        SectionEducation: "Білім",
+        SectionPrinciples: "Қалай жұмыс істеймін",
+        SectionLanguages: "Тілдер",
+        DigitalCertificate: "Электрондық сертификат",
+        DegreeTitle: "Қолданбалы информатика",
+        DegreeText: "Бейінді жоғары білім + Cisco халықаралық сертификаттары",
+        ContactTitle: "Бірге жұмыс істейік",
+        PreferredContact: "байланысудың қолайлы тәсілі",
+        DownloadCv: "Түйіндемені жүктеу",
+        ThemeToggle: "Жарық/қараңғы тақырыпты ауыстыру",
+        NavContact: "Байланыс",
+        OpenToWork: "Ұсыныстарға ашықпын",
+        ViewExperience: "Тәжірибені көру",
+        SendMessage: "Telegram-ға жазу",
+        GitHubMonth: "Соңғы 30 күн",
+        GitHubCommits: "Соңғы коммиттер",
+        Courses: "Білім және курстар",
+        Certificates: "Сертификаттар");
+
+    public static UiText For(string lang) => lang switch
+    {
+        "ru" => Ru,
+        "kk" => Kk,
+        _ => En
+    };
 }
