@@ -199,7 +199,7 @@ public static class ProfileData
             new("Русский", "C1 — продвинутый", "RU", 90),
             new("Английский", "B2 — выше среднего", "EN", 70),
         ],
-        WorkPreferences: "Ищу позицию .NET backend-разработчика (Middle): полная или частичная занятость, " +
+        WorkPreferences: "Ищу позицию .NET backend-разработчика: полная или частичная занятость, " +
                          "проектная работа. Офис, гибрид или удалёнка; готов к переезду и командировкам.");
 
     private static readonly Profile English = new(
@@ -330,7 +330,7 @@ public static class ProfileData
             new("Russian", "C1 — Advanced", "RU", 90),
             new("English", "B2 — Upper-intermediate", "EN", 70),
         ],
-        WorkPreferences: "Looking for a .NET backend developer role (Middle): full-time, part-time or project work. " +
+        WorkPreferences: "Looking for a .NET backend developer role: full-time, part-time or project work. " +
                          "On-site, hybrid or fully remote; ready to relocate and travel.");
 
     private static readonly Profile Kazakh = new(
@@ -462,6 +462,6 @@ public static class ProfileData
             new("Орыс тілі", "C1 — жоғары деңгей", "RU", 90),
             new("Ағылшын тілі", "B2 — орташадан жоғары", "EN", 70),
         ],
-        WorkPreferences: ".NET backend-әзірлеуші (Middle) лауазымын іздеймін: толық немесе жартылай жұмыс күні, " +
+        WorkPreferences: ".NET backend-әзірлеуші лауазымын іздеймін: толық немесе жартылай жұмыс күні, " +
                          "жобалық жұмыс. Кеңсе, гибрид немесе қашықтан; басқа қалаға көшуге және іссапарларға дайынмын.");
 }
