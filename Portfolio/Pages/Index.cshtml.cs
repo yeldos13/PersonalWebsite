@@ -16,7 +16,7 @@ public class IndexModel(GitHubActivityService github) : PageModel
 
     public async Task<IActionResult> OnGetAsync()
     {
-        if (string.Equals(Lang, "ru", StringComparison.OrdinalIgnoreCase))
+        if (string.Equals(Lang, "en", StringComparison.OrdinalIgnoreCase))
             return RedirectPermanent("/");
 
         var lang = ProfileData.Normalize(Lang);

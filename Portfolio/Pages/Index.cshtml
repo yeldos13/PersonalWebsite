@@ -6,7 +6,7 @@
     ViewData["Title"] = "sozakbay.dev";
     ViewData["Description"] = p.Summary;
     ViewData["Lang"] = ui.Lang;
-    ViewData["Path"] = ui.Lang == "en" ? "/en" : "/";
+    ViewData["Path"] = ui.Lang == "ru" ? "/ru" : "/";
     ViewData["OgTitle"] = $"{ProfileData.DisplayName} — {p.Role}";
 }
 
@@ -42,8 +42,8 @@
         </nav>
         <div class="nav-tools">
             <div class="segmented" role="group" aria-label="Language">
-                <a href="/" lang="ru" class="@(ui.Lang == "ru" ? "active" : null)" aria-current="@(ui.Lang == "ru" ? "page" : null)">RU</a>
-                <a href="/en" lang="en" class="@(ui.Lang == "en" ? "active" : null)" aria-current="@(ui.Lang == "en" ? "page" : null)">EN</a>
+                <a href="/ru" lang="ru" class="@(ui.Lang == "ru" ? "active" : null)" aria-current="@(ui.Lang == "ru" ? "page" : null)">RU</a>
+                <a href="/" lang="en" class="@(ui.Lang == "en" ? "active" : null)" aria-current="@(ui.Lang == "en" ? "page" : null)">EN</a>
             </div>
             <button type="button" class="icon-btn" id="theme-toggle" aria-label="@ui.ThemeToggle" title="@ui.ThemeToggle">@Icon("sun")@Icon("moon")</button>
         </div>

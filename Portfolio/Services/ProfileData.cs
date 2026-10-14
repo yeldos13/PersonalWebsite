@@ -4,10 +4,10 @@ namespace Portfolio.Services;
 
 public static class ProfileData
 {
-    public static readonly string[] Languages = ["ru", "en"];
+    public static readonly string[] Languages = ["en", "ru"];
 
     public static string Normalize(string? lang) =>
-        string.Equals(lang, "en", StringComparison.OrdinalIgnoreCase) ? "en" : "ru";
+        string.Equals(lang, "ru", StringComparison.OrdinalIgnoreCase) ? "ru" : "en";
 
     public static Profile Get(string? lang) => Normalize(lang) == "en" ? English : Russian;
 

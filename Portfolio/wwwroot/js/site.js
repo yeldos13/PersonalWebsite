@@ -1,8 +1,7 @@
 (() => {
     const root = document.documentElement;
     const toggle = document.getElementById("theme-toggle");
-    const systemLight = window.matchMedia("(prefers-color-scheme: light)");
-    const currentTheme = () => root.getAttribute("data-theme") || (systemLight.matches ? "light" : "dark");
+    const currentTheme = () => root.getAttribute("data-theme") || "light";
 
     toggle?.addEventListener("click", () => {
         const next = currentTheme() === "light" ? "dark" : "light";

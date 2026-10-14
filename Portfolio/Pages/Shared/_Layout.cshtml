@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="@(ViewData["Lang"] ?? "ru")">
+<html lang="@(ViewData["Lang"] ?? "en")">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,11 +9,11 @@
     @{
         var site = Portfolio.Services.ProfileData.SiteUrl;
         var url = site + (ViewData["Path"] as string ?? "/");
-        var isEn = (ViewData["Lang"] as string) == "en";
+        var isEn = (ViewData["Lang"] as string) != "ru";
     }
     <link rel="canonical" href="@url" />
-    <link rel="alternate" hreflang="ru" href="@site/" />
-    <link rel="alternate" hreflang="en" href="@site/en" />
+    <link rel="alternate" hreflang="ru" href="@site/ru" />
+    <link rel="alternate" hreflang="en" href="@site/" />
     <link rel="alternate" hreflang="x-default" href="@site/" />
 
     <meta property="og:type" content="profile" />
@@ -31,7 +31,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <meta name="color-scheme" content="dark light" />
+    <meta name="color-scheme" content="light dark" />
     <script>
         try {
             var t = localStorage.getItem("theme");
