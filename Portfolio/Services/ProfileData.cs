@@ -156,6 +156,10 @@ public static class ProfileData
                 "работа с БД, интеграции с внешними системами.",
                 [
                     "Реализация бизнес-логики и клиент-серверных модулей по техническим требованиям",
+                    "Разработка REST API на ASP.NET Core (Web API) с документацией в Swagger",
+                    "Работа с данными через Entity Framework Core и LINQ, прямые SQL-запросы там, где важна производительность",
+                    "Кэширование часто запрашиваемых данных в Redis",
+                    "Unit-тесты бизнес-логики на xUnit",
                     "Разработка и оптимизация структуры БД и SQL-запросов (PostgreSQL / MS SQL Server)",
                     "Интеграция с внешними API и сторонними системами (SOAP, Apache Kafka)",
                     "Асинхронная обработка (async/await), чтобы система не блокировалась на долгих операциях",
@@ -164,7 +168,7 @@ public static class ProfileData
                     "Оценка задач по времени и сложности, прогноз затрат ресурсов",
                     "Прямое взаимодействие с заказчиками: требования и презентация решений",
                 ],
-                ["C#", ".NET", "PostgreSQL", "MS SQL", "Kafka", "Agile/Scrum"]),
+                ["C#", ".NET", "ASP.NET Core", "EF Core", "PostgreSQL", "MS SQL", "Redis", "Kafka", "xUnit", "Agile/Scrum"]),
         ],
         Education:
         [
@@ -287,6 +291,10 @@ public static class ProfileData
                 "database work and integrations with external systems.",
                 [
                     "Implemented business logic and client-server modules to technical specifications",
+                    "Built REST APIs with ASP.NET Core (Web API), documented with Swagger",
+                    "Worked with data via Entity Framework Core and LINQ, using raw SQL where performance mattered",
+                    "Cached frequently requested data in Redis",
+                    "Wrote unit tests for business logic with xUnit",
                     "Built and optimized database schemas and SQL queries (PostgreSQL / MS SQL Server)",
                     "Integrated external APIs and third-party systems (SOAP, Apache Kafka)",
                     "Used async/await so the system doesn't block on long-running operations",
@@ -295,7 +303,7 @@ public static class ProfileData
                     "Estimated task effort and complexity, forecast development resources",
                     "Worked directly with clients: gathering requirements and presenting solutions",
                 ],
-                ["C#", ".NET", "PostgreSQL", "MS SQL", "Kafka", "Agile/Scrum"]),
+                ["C#", ".NET", "ASP.NET Core", "EF Core", "PostgreSQL", "MS SQL", "Redis", "Kafka", "xUnit", "Agile/Scrum"]),
         ],
         Education:
         [
@@ -419,6 +427,10 @@ public static class ProfileData
                 "дерекқормен жұмыс, сыртқы жүйелермен интеграция.",
                 [
                     "Техникалық талаптар бойынша бизнес-логика мен клиент-серверлік модульдерді іске асыру",
+                    "ASP.NET Core (Web API) негізінде REST API әзірлеу, Swagger арқылы құжаттау",
+                    "Entity Framework Core және LINQ арқылы деректермен жұмыс, өнімділік маңызды жерлерде тікелей SQL-сұраныстар",
+                    "Жиі сұралатын деректерді Redis-те кэштеу",
+                    "Бизнес-логиканы xUnit-тегі unit-тесттермен қамту",
                     "Дерекқор құрылымы мен SQL-сұраныстарды әзірлеу және оңтайландыру (PostgreSQL / MS SQL Server)",
                     "Сыртқы API және үшінші тарап жүйелерімен интеграция (SOAP, Apache Kafka)",
                     "Жүйе ұзақ операцияларда бұғатталмауы үшін асинхронды өңдеу (async/await)",
@@ -427,7 +439,7 @@ public static class ProfileData
                     "Тапсырмаларды уақыты мен күрделілігі бойынша бағалау, ресурс шығынын болжау",
                     "Тапсырыс берушілермен тікелей жұмыс: талаптарды нақтылау және шешімдерді таныстыру",
                 ],
-                ["C#", ".NET", "PostgreSQL", "MS SQL", "Kafka", "Agile/Scrum"]),
+                ["C#", ".NET", "ASP.NET Core", "EF Core", "PostgreSQL", "MS SQL", "Redis", "Kafka", "xUnit", "Agile/Scrum"]),
         ],
         Education:
         [
