@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Yeldos Sozakbay — C#/.NET Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+    @page { size: A4; margin: 12mm 14mm 15mm; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+        --text: #1d1d1f;
+        --text-2: #424245;
+        --text-3: #6e6e73;
+        --accent: #0071e3;
+        --accent-fill: rgba(0, 113, 227, .08);
+        --fill: #f5f5f7;
+        --separator: #d2d2d7;
+        --green: #1a8f3c;
+    }
+    html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body {
+        font: 400 9.4pt/1.45 -apple-system, "SF Pro Text", "Inter", "Segoe UI", sans-serif;
+        color: var(--text);
+        letter-spacing: -.005em;
+        -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    header { display: grid; grid-template-columns: 1fr auto; gap: 8mm; align-items: start; padding-bottom: 4.5mm; border-bottom: 1px solid var(--separator); }
+    .status { display: inline-flex; align-items: center; gap: 6px; font-size: 8.5pt; font-weight: 500; color: var(--green); }
+    .status i { width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 3px rgba(26, 143, 60, .15); }
+    h1 { margin-top: 2mm; font: 700 23pt/1.05 -apple-system, "SF Pro Display", "Inter", sans-serif; letter-spacing: -.03em; }
+    .role { margin-top: 1.5mm; font-size: 12pt; font-weight: 600; color: var(--text-2); letter-spacing: -.01em; }
+    .meta { margin-top: 2mm; font-size: 8.6pt; color: var(--text-3); line-height: 1.55; }
+    .contacts { display: grid; gap: 1mm; font-size: 8.8pt; text-align: right; color: var(--text-2); padding-top: 1mm; }
+    .contacts b { font-weight: 600; color: var(--text); }
+    .contacts small { color: var(--text-3); }
+    .contacts .site { color: var(--accent); font-weight: 600; }
+
+    section { margin-top: 5mm; }
+    h2 { font: 700 12.5pt/1.2 -apple-system, "SF Pro Display", "Inter", sans-serif; letter-spacing: -.02em; margin-bottom: 2.5mm; break-after: avoid; }
+    h3 { font-size: 10pt; font-weight: 700; letter-spacing: -.01em; margin: 3mm 0 1.5mm; break-after: avoid; }
+    .lead { color: var(--text-2); line-height: 1.5; }
+
+    .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2mm 6mm; padding: 3mm 4mm; border-radius: 10px; background: var(--fill); }
+    .fact span { display: block; font-size: 7.4pt; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--text-3); }
+    .fact b { font-weight: 500; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 1.3mm; }
+    .chip { padding: .5mm 2.2mm; border-radius: 99px; background: var(--fill); font-size: 8.4pt; font-weight: 500; }
+
+    .job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; }
+    .job-title { font-size: 11pt; font-weight: 700; letter-spacing: -.015em; }
+    .job-title .company { color: var(--accent); }
+    .period { font-size: 8.6pt; color: var(--text-3); white-space: nowrap; }
+    .job-sub { margin-top: .5mm; font-size: 8.6pt; color: var(--text-3); }
+    .industry { margin: 1.5mm 0 2mm; color: var(--text-2); }
+
+    .list { display: grid; gap: .9mm; }
+    .list.two { display: block; columns: 2; column-gap: 6mm; }
+    .list.two li { margin-bottom: .9mm; }
+    .list li { position: relative; padding-left: 3.2mm; color: var(--text-2); break-inside: avoid; }
+    .list li::before { content: ""; position: absolute; left: 0; top: .62em; width: 3px; height: 3px; border-radius: 50%; background: var(--text-3); }
+    .list li b { color: var(--text); font-weight: 600; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 1.2mm; margin-top: 2mm; }
+    .tag { padding: .3mm 2mm; border-radius: 99px; font-size: 7.8pt; font-weight: 500; color: var(--accent); background: var(--accent-fill); }
+
+    .cases { display: grid; gap: 2.5mm; }
+    .case { padding: 3mm 3.5mm; border-radius: 10px; background: var(--fill); break-inside: avoid; font-size: 9pt; line-height: 1.4; }
+    .case-head { display: flex; gap: 2.5mm; align-items: baseline; }
+    .case-num { font-size: 8.4pt; font-weight: 700; color: var(--accent); }
+    .case-title { font-size: 10.2pt; font-weight: 700; letter-spacing: -.015em; }
+    .case-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 2mm 5mm; margin-top: 1.5mm; align-items: start; }
+    .case .list { gap: .6mm; }
+    .label { display: block; margin-bottom: .6mm; font-size: 7pt; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--text-3); }
+    .case p { color: var(--text-2); }
+    .result { margin-top: 1.8mm; padding: 1.5mm 2.5mm; border-radius: 7px; background: #fff; border-left: 2.5px solid var(--accent); font-weight: 600; }
+    .result .label { color: var(--accent); }
+
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 7mm; }
+    .rows li { display: grid; grid-template-columns: 11mm 1fr; gap: 2mm; padding: 1.2mm 0; border-bottom: 1px solid var(--fill); break-inside: avoid; }
+    .rows li:last-child { border-bottom: 0; }
+    .year { font-size: 8.4pt; font-weight: 600; color: var(--accent); }
+    .rows b { font-weight: 600; }
+    .rows small { display: block; font-size: 8.4pt; color: var(--text-3); }
+
+    .langs { display: grid; grid-template-columns: 1fr 1fr 1.25fr; gap: 6mm; margin-bottom: 3.5mm; }
+    .lang { display: grid; gap: 1mm; }
+    .lang-top { display: flex; justify-content: space-between; align-items: baseline; gap: 2mm; white-space: nowrap; }
+    .lang b { font-weight: 600; }
+    .lang small { font-size: 8.4pt; color: var(--text-3); }
+    .meter { height: 4px; border-radius: 99px; background: var(--fill); overflow: hidden; }
+    .meter span { display: block; height: 100%; background: var(--accent); border-radius: inherit; }
+
+    .project { padding: 3.5mm 4mm; border-radius: 10px; border: 1px solid var(--separator); break-inside: avoid; }
+    .project-head { display: flex; justify-content: space-between; align-items: baseline; }
+    .project-head b { font-size: 10.2pt; letter-spacing: -.015em; }
+    .project-head a { font-size: 8.6pt; color: var(--accent); font-weight: 500; }
+    .project p { margin: 1mm 0 1.5mm; color: var(--text-2); }
+
+    .note { color: var(--text-2); }
+    .note b { color: var(--text); font-weight: 600; }
+    .note a { color: var(--accent); font-weight: 500; }
+
+    @media screen {
+        body { background: #e8e8ed; padding: 24px 0; }
+        .doc { zoom: var(--zoom, 1); width: 210mm; margin: 0 auto; padding: 12mm 14mm 15mm; background: #fff; border-radius: 4px; box-shadow: 0 10px 40px rgba(0, 0, 0, .12); }
+    }
+</style>
+</head>
+<body>
+<div class="doc">
+    <header>
+        <div>
+            <span class="status"><i></i>Open to work</span>
+            <h1>Yeldos Sozakbay</h1>
+            <div class="role">C#/.NET Developer</div>
+            <div class="meta">Male, 23, born 14 September 2003<br />Based in Astana · Citizenship: Kazakhstan, work permit: Kazakhstan<br />Ready to relocate and travel for work</div>
+        </div>
+        <div class="contacts">
+            <div><b>+7 (777) 190-54-80</b></div>
+            <div><small>preferred contact method</small></div>
+            <div>Telegram: @sozakbay</div>
+            <div>eldos.sozakbay@gmail.com</div>
+            <div>GitHub: github.com/yeldos13</div>
+            <div class="site">sozakbay.dev</div>
+        </div>
+    </header>
+
+    <section>
+        <h2>Desired position</h2>
+        <div class="facts">
+            <div class="fact"><span>Position</span><b>C#/.NET Developer</b></div>
+            <div class="fact"><span>Specialization</span><b>Programmer, developer</b></div>
+            <div class="fact"><span>Employment type</span><b>Full-time</b></div>
+            <div class="fact"><span>Work format</span><b>On-site, remote, hybrid</b></div>
+            <div class="fact"><span>Commute time</span><b>Doesn't matter</b></div>
+            <div class="fact"><span>Self-employed · health record book</span><b>No · yes</b></div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Work experience — 4 years 10 months</h2>
+        <div class="job-head">
+            <div class="job-title">.NET Developer · <span class="company">PBSOFT</span></div>
+            <div class="period">Jun 2021 — Mar 2026 · 4 years 10 months</div>
+        </div>
+        <div class="job-sub">Astana · pbsoft.kz</div>
+        <div class="industry">Information technology, system integration, internet: internet company (search engines, payment systems, social networks, information and entertainment resources, website promotion, etc.); system integration, automation of technological and business processes, IT consulting.</div>
+        <ul class="list two">
+            <li>Developing and maintaining server-side applications and services in C# and .NET</li>
+            <li>Implementing business logic and client-server modules to technical specifications</li>
+            <li>Building REST APIs with ASP.NET Core (Web API), documented with Swagger</li>
+            <li>Working with data via Entity Framework Core and LINQ, using raw SQL where performance matters</li>
+            <li>Caching frequently requested data in Redis</li>
+            <li>Unit testing business logic with xUnit</li>
+            <li>Designing and optimizing database schemas and SQL queries (PostgreSQL / MS SQL Server)</li>
+            <li>Integrating external APIs and third-party systems (SOAP, Apache Kafka)</li>
+            <li>Finding and fixing production issues, maintaining live services</li>
+            <li>Asynchronous processing (async/await) so the system doesn't block on long-running operations</li>
+            <li>Taking part in code reviews, following OOP, SOLID and Clean Code principles</li>
+            <li>Estimating task effort and complexity</li>
+            <li>Mentoring and onboarding interns</li>
+            <li>Working in an Agile/Scrum team, communicating directly with clients to clarify requirements and present solutions</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Skills</h2>
+        <div class="langs">
+            <div class="lang"><div class="lang-top"><b>Kazakh</b><small>Native</small></div><div class="meter"><span style="width:100%"></span></div></div>
+            <div class="lang"><div class="lang-top"><b>Russian</b><small>C1 — Advanced</small></div><div class="meter"><span style="width:90%"></span></div></div>
+            <div class="lang"><div class="lang-top"><b>English</b><small>B2 — Upper-intermediate</small></div><div class="meter"><span style="width:70%"></span></div></div>
+        </div>
+        <div class="chips">
+            <span class="chip">C#</span><span class="chip">ASP.NET Core</span><span class="chip">Web API</span><span class="chip">Entity Framework Core</span><span class="chip">LINQ</span><span class="chip">PostgreSQL</span><span class="chip">SQL</span><span class="chip">NoSQL</span><span class="chip">Redis</span><span class="chip">REST</span><span class="chip">SOAP</span><span class="chip">Apache Kafka</span><span class="chip">Docker</span><span class="chip">CI/CD</span><span class="chip">Git</span><span class="chip">Swagger</span><span class="chip">Unit Testing</span><span class="chip">xUnit</span><span class="chip">OOP</span><span class="chip">SOLID</span><span class="chip">MVC</span><span class="chip">Agile</span><span class="chip">Atlassian Jira</span><span class="chip">Windows Forms</span><span class="chip">.NET MAUI</span><span class="chip">StimulSoft Reports</span><span class="chip">Microsoft Visual Studio</span><span class="chip">HTML</span><span class="chip">JavaScript</span><span class="chip">UML</span>
+        </div>
+    </section>
+
+    <section>
+        <h2>About me</h2>
+        <p class="lead">I have 5 years of commercial backend development experience in C# and .NET (since 2021). At PBSOFT I built and maintained server-side logic, client-server modules and integrations with external systems. I work a lot with databases: optimizing SQL queries and schemas (PostgreSQL, MS SQL Server), using asynchronous processing (async/await, Apache Kafka), and following SOLID and Clean Code principles.</p>
+        <h3>How I can help</h3>
+        <ul class="list">
+            <li><b>Backend &amp; integrations:</b> business logic and APIs in .NET, integrations with external systems via SOAP and Apache Kafka, finding and fixing production issues.</li>
+            <li><b>Databases:</b> table design and indexes, finding and optimizing slow queries using execution plans.</li>
+            <li><b>Team &amp; clients:</b> code reviews, onboarding interns, estimating tasks, working directly with clients.</li>
+            <li><b>Education:</b> Bachelor's in Applied Informatics + Cisco certifications (Networking &amp; Cybersecurity).</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Key achievements</h2>
+        <div class="cases">
+            <div class="case">
+                <div class="case-head"><span class="case-num">01</span><span class="case-title">Speeding up reports and database queries</span></div>
+                <div class="case-grid">
+                    <div><span class="label">Problem</span><p>Key reports and screens took too long to load, and some queries timed out on large data volumes. Users complained, and the database server load kept growing.</p>
+                        <div class="result"><span class="label">Result</span>Key report generation time dropped from 15 to 2 seconds, timeouts disappeared, and database server load decreased by 40%.</div></div>
+                    <div><span class="label">Solution</span><ul class="list">
+                        <li>Analyzed slow queries using execution plans (EXPLAIN ANALYZE in PostgreSQL)</li>
+                        <li>Rewrote heavy queries: removed redundant JOINs and unnecessary columns, replaced cursors and loops with set-based operations</li>
+                        <li>Added missing and composite indexes, dropped unused ones</li>
+                        <li>Moved long-running operations to asynchronous processing (async/await) so the UI stays responsive</li>
+                    </ul></div>
+                </div>
+                <div class="tags"><span class="tag">C#</span><span class="tag">.NET</span><span class="tag">PostgreSQL</span></div>
+            </div>
+            <div class="case">
+                <div class="case-head"><span class="case-num">02</span><span class="case-title">Asynchronous integration with external systems</span></div>
+                <div class="case-grid">
+                    <div><span class="label">Problem</span><p>The system had to exchange data with several external services and adjacent systems. Synchronous calls slowed down the main workflow, and when the other side was unavailable, data was lost or had to be resent manually.</p>
+                        <div class="result"><span class="label">Result</span>10+ external systems connected, thousands of messages processed daily, and manual resending is no longer needed. The main workflow no longer waits for external systems and doesn't depend on their availability.</div></div>
+                    <div><span class="label">Solution</span><ul class="list">
+                        <li>Took part in designing and built the integration layer: SOAP for external APIs, Apache Kafka for asynchronous messaging between services</li>
+                        <li>Implemented retries, error handling and logging, so a failure on one side no longer caused data loss</li>
+                        <li>Worked with SOAP service contracts via WSDL, containerized services with Docker, and helped set up build and deployment via CI/CD</li>
+                    </ul></div>
+                </div>
+                <div class="tags"><span class="tag">C#</span><span class="tag">.NET</span><span class="tag">SOAP</span><span class="tag">WSDL</span><span class="tag">Apache Kafka</span><span class="tag">Docker</span><span class="tag">CI/CD</span></div>
+            </div>
+            <div class="case">
+                <div class="case-head"><span class="case-num">03</span><span class="case-title">Client-server module with business reporting</span></div>
+                <div class="case-grid">
+                    <div><span class="label">Problem</span><p>The business needed a new module for working with data and generating printable forms and reports. Previously, reports were compiled manually in Excel.</p>
+                        <div class="result"><span class="label">Result</span>The module was launched in a couple of months; reports are now generated automatically instead of being compiled by hand, saving dozens of hours per week. The module is used by thousands of employees.</div></div>
+                    <div><span class="label">Solution</span><ul class="list">
+                        <li>Gathered requirements directly from the client together with the team, estimated timelines and effort, and presented the solution</li>
+                        <li>Implemented the server-side business logic in .NET</li>
+                        <li>Built the database schema for the module</li>
+                        <li>Built reports and printable forms in StimulSoft Reports</li>
+                        <li>Covered the core logic with unit tests; all code went through code review. Interns I supervised took part in development</li>
+                    </ul></div>
+                </div>
+                <div class="tags"><span class="tag">C#</span><span class="tag">.NET</span><span class="tag">Windows Forms</span><span class="tag">StimulSoft Reports</span><span class="tag">PostgreSQL</span><span class="tag">Unit Testing</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Projects</h2>
+        <div class="project">
+            <div class="project-head"><b>OrderFlow — order service with reliable event delivery</b><a href="https://github.com/yeldos13/OrderFlow">github.com/yeldos13/OrderFlow</a></div>
+            <p>An order service that delivers events to an external system via Kafka and survives its failures.</p>
+            <ul class="list two">
+                <li>REST API on ASP.NET Core: ProblemDetails, OpenAPI, health checks</li>
+                <li>Transactional Outbox: order and event saved in one transaction</li>
+                <li>Idempotent order creation via request key</li>
+                <li>Kafka consumer with deduplication of redelivered events</li>
+                <li>Polly: retries and circuit breaker, dead letter topic</li>
+                <li>Unit tests and integration tests with Testcontainers</li>
+            </ul>
+            <div class="tags"><span class="tag">ASP.NET Core</span><span class="tag">EF Core</span><span class="tag">PostgreSQL</span><span class="tag">Kafka</span><span class="tag">Outbox</span><span class="tag">Polly</span><span class="tag">xUnit</span><span class="tag">Testcontainers</span><span class="tag">Serilog</span><span class="tag">Docker</span></div>
+        </div>
+    </section>
+
+    <section class="two">
+        <div>
+            <h2>Education</h2>
+            <ul class="rows">
+                <li><span class="year">2024</span><div><b>Bachelor's · Siberian Institute of Business and Information Technologies, Omsk</b><small>Applied Informatics, Applied Informatics in Economics</small></div></li>
+            </ul>
+            <h2 style="margin-top:4mm">Professional development, courses</h2>
+            <ul class="rows">
+                <li><span class="year">2025</span><div><b>The Complete Xamarin Developer Course</b><small>Udemy</small></div></li>
+                <li><span class="year">2025</span><div><b>PostgreSQL Certification Course</b><small>W3Schools</small></div></li>
+                <li><span class="year">2020</span><div><b>Software Development</b><small>IT STEP Academy</small></div></li>
+                <li><span class="year">2019</span><div><b>CCNA: Networking</b><small>Cisco</small></div></li>
+                <li><span class="year">2019</span><div><b>CCST: Cybersecurity</b><small>Cisco</small></div></li>
+            </ul>
+        </div>
+        <div>
+            <h2>Digital certificates</h2>
+            <ul class="rows">
+                <li><span class="year">2025</span><div><b>Udemy The Complete Xamarin Developer Course: iOS And Android</b></div></li>
+                <li><span class="year">2025</span><div><b>W3Schools PostgreSQL certification exam</b></div></li>
+                <li><span class="year">2019</span><div><b>Cisco CCNA: Networking</b></div></li>
+                <li><span class="year">2019</span><div><b>Cisco CCST: Cybersecurity</b></div></li>
+            </ul>
+            <h2 style="margin-top:4mm">Tech stack</h2>
+            <p class="note">C#, .NET, PostgreSQL, MS SQL Server, NoSQL, Apache Kafka, Docker, CI/CD, REST API, SOAP, Unit Testing, Git, JavaScript.</p>
+        </div>
+    </section>
+
+    <section>
+        <p class="note"><b>Preferred work format:</b> open to on-site, hybrid or fully remote work.</p>
+        <p class="note" style="margin-top:1.5mm"><b>Learn more</b> about me, my case studies and experience on my website <a href="https://sozakbay.dev">sozakbay.dev</a> and my GitHub <a href="https://github.com/yeldos13">github.com/yeldos13</a>.</p>
+    </section>
+</div>
+
+<script>
+    const fit = () => document.documentElement.style.setProperty("--zoom", Math.min(1, (innerWidth - 32) / (210 * 96 / 25.4)));
+    fit();
+    addEventListener("resize", fit);
+</script>
+</body>
+</html>

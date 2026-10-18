@@ -60,7 +60,7 @@
                 <h1 class="display">@ProfileData.DisplayName</h1>
                 <p class="lead">@p.Summary</p>
                 <div class="actions">
-                    <a class="btn btn-primary" href="@ProfileData.CvPath" download>@Icon("download") @ui.DownloadCv</a>
+                    <a class="btn btn-primary" href="@ProfileData.CvPath(ui.Lang)" download>@Icon("download") @ui.DownloadCv</a>
                     <a class="btn btn-secondary" href="#experience">@ui.ViewExperience</a>
                 </div>
                 <div class="socials">
@@ -380,7 +380,7 @@
                 </ul>
                 <div class="actions">
                     <a class="btn btn-primary" href="@p.Contacts.TelegramUrl" target="_blank" rel="noopener">@Icon("telegram") @ui.SendMessage</a>
-                    <a class="btn btn-secondary" href="@ProfileData.CvPath" download>@Icon("download") @ui.DownloadCv</a>
+                    <a class="btn btn-secondary" href="@ProfileData.CvPath(ui.Lang)" download>@Icon("download") @ui.DownloadCv</a>
                 </div>
             </div>
         </div>

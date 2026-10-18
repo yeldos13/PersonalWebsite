@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<title>Созакбай Ельдос Куатович — C#/.NET-разработчик</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+    @page { size: A4; margin: 12mm 14mm 15mm; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+        --text: #1d1d1f;
+        --text-2: #424245;
+        --text-3: #6e6e73;
+        --accent: #0071e3;
+        --accent-fill: rgba(0, 113, 227, .08);
+        --fill: #f5f5f7;
+        --separator: #d2d2d7;
+        --green: #1a8f3c;
+    }
+    html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body {
+        font: 400 9.4pt/1.45 -apple-system, "SF Pro Text", "Inter", "Segoe UI", sans-serif;
+        color: var(--text);
+        letter-spacing: -.005em;
+        -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    header { display: grid; grid-template-columns: 1fr auto; gap: 8mm; align-items: start; padding-bottom: 4.5mm; border-bottom: 1px solid var(--separator); }
+    .status { display: inline-flex; align-items: center; gap: 6px; font-size: 8.5pt; font-weight: 500; color: var(--green); }
+    .status i { width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 3px rgba(26, 143, 60, .15); }
+    h1 { margin-top: 2mm; font: 700 23pt/1.05 -apple-system, "SF Pro Display", "Inter", sans-serif; letter-spacing: -.03em; }
+    .role { margin-top: 1.5mm; font-size: 12pt; font-weight: 600; color: var(--text-2); letter-spacing: -.01em; }
+    .meta { margin-top: 2mm; font-size: 8.6pt; color: var(--text-3); line-height: 1.55; }
+    .contacts { display: grid; gap: 1mm; font-size: 8.8pt; text-align: right; color: var(--text-2); padding-top: 1mm; }
+    .contacts b { font-weight: 600; color: var(--text); }
+    .contacts small { color: var(--text-3); }
+    .contacts .site { color: var(--accent); font-weight: 600; }
+
+    section { margin-top: 5mm; }
+    h2 { font: 700 12.5pt/1.2 -apple-system, "SF Pro Display", "Inter", sans-serif; letter-spacing: -.02em; margin-bottom: 2.5mm; break-after: avoid; }
+    h3 { font-size: 10pt; font-weight: 700; letter-spacing: -.01em; margin: 3mm 0 1.5mm; break-after: avoid; }
+    .lead { color: var(--text-2); line-height: 1.5; }
+
+    .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2mm 6mm; padding: 3mm 4mm; border-radius: 10px; background: var(--fill); }
+    .fact span { display: block; font-size: 7.4pt; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--text-3); }
+    .fact b { font-weight: 500; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 1.3mm; }
+    .chip { padding: .5mm 2.2mm; border-radius: 99px; background: var(--fill); font-size: 8.4pt; font-weight: 500; }
+
+    .job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; }
+    .job-title { font-size: 11pt; font-weight: 700; letter-spacing: -.015em; }
+    .job-title .company { color: var(--accent); }
+    .period { font-size: 8.6pt; color: var(--text-3); white-space: nowrap; }
+    .job-sub { margin-top: .5mm; font-size: 8.6pt; color: var(--text-3); }
+    .industry { margin: 1.5mm 0 2mm; color: var(--text-2); }
+
+    .list { display: grid; gap: .9mm; }
+    .list.two { display: block; columns: 2; column-gap: 6mm; }
+    .list.two li { margin-bottom: .9mm; }
+    .list li { position: relative; padding-left: 3.2mm; color: var(--text-2); break-inside: avoid; }
+    .list li::before { content: ""; position: absolute; left: 0; top: .62em; width: 3px; height: 3px; border-radius: 50%; background: var(--text-3); }
+    .list li b { color: var(--text); font-weight: 600; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 1.2mm; margin-top: 2mm; }
+    .tag { padding: .3mm 2mm; border-radius: 99px; font-size: 7.8pt; font-weight: 500; color: var(--accent); background: var(--accent-fill); }
+
+    .cases { display: grid; gap: 2.5mm; }
+    .case { padding: 3mm 3.5mm; border-radius: 10px; background: var(--fill); break-inside: avoid; font-size: 9pt; line-height: 1.4; }
+    .case-head { display: flex; gap: 2.5mm; align-items: baseline; }
+    .case-num { font-size: 8.4pt; font-weight: 700; color: var(--accent); }
+    .case-title { font-size: 10.2pt; font-weight: 700; letter-spacing: -.015em; }
+    .case-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 2mm 5mm; margin-top: 1.5mm; align-items: start; }
+    .case .list { gap: .6mm; }
+    .label { display: block; margin-bottom: .6mm; font-size: 7pt; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--text-3); }
+    .case p { color: var(--text-2); }
+    .result { margin-top: 1.8mm; padding: 1.5mm 2.5mm; border-radius: 7px; background: #fff; border-left: 2.5px solid var(--accent); font-weight: 600; }
+    .result .label { color: var(--accent); }
+
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 7mm; }
+    .rows li { display: grid; grid-template-columns: 11mm 1fr; gap: 2mm; padding: 1.2mm 0; border-bottom: 1px solid var(--fill); break-inside: avoid; }
+    .rows li:last-child { border-bottom: 0; }
+    .year { font-size: 8.4pt; font-weight: 600; color: var(--accent); }
+    .rows b { font-weight: 600; }
+    .rows small { display: block; font-size: 8.4pt; color: var(--text-3); }
+
+    .langs { display: grid; grid-template-columns: 1fr 1fr 1.25fr; gap: 6mm; margin-bottom: 3.5mm; }
+    .lang { display: grid; gap: 1mm; }
+    .lang-top { display: flex; justify-content: space-between; align-items: baseline; gap: 2mm; white-space: nowrap; }
+    .lang b { font-weight: 600; }
+    .lang small { font-size: 8.4pt; color: var(--text-3); }
+    .meter { height: 4px; border-radius: 99px; background: var(--fill); overflow: hidden; }
+    .meter span { display: block; height: 100%; background: var(--accent); border-radius: inherit; }
+
+    .project { padding: 3.5mm 4mm; border-radius: 10px; border: 1px solid var(--separator); break-inside: avoid; }
+    .project-head { display: flex; justify-content: space-between; align-items: baseline; }
+    .project-head b { font-size: 10.2pt; letter-spacing: -.015em; }
+    .project-head a { font-size: 8.6pt; color: var(--accent); font-weight: 500; }
+    .project p { margin: 1mm 0 1.5mm; color: var(--text-2); }
+
+    .note { color: var(--text-2); }
+    .note b { color: var(--text); font-weight: 600; }
+    .note a { color: var(--accent); font-weight: 500; }
+
+    @media screen {
+        body { background: #e8e8ed; padding: 24px 0; }
+        .doc { zoom: var(--zoom, 1); width: 210mm; margin: 0 auto; padding: 12mm 14mm 15mm; background: #fff; border-radius: 4px; box-shadow: 0 10px 40px rgba(0, 0, 0, .12); }
+    }
+</style>
+</head>
+<body>
+<div class="doc">
+    <header>
+        <div>
+            <span class="status"><i></i>Открыт к предложениям</span>
+            <h1>Созакбай Ельдос Куатович</h1>
+            <div class="role">C#/.NET-разработчик</div>
+            <div class="meta">Мужчина, 23 года, родился 14 сентября 2003<br />Проживает: Астана · Гражданство: Казахстан, есть разрешение на работу: Казахстан<br />Готов к переезду, готов к командировкам</div>
+        </div>
+        <div class="contacts">
+            <div><b>+7 (777) 190-54-80</b></div>
+            <div><small>предпочитаемый способ связи</small></div>
+            <div>Telegram: @sozakbay</div>
+            <div>eldos.sozakbay@gmail.com</div>
+            <div>GitHub: github.com/yeldos13</div>
+            <div class="site">sozakbay.dev/ru</div>
+        </div>
+    </header>
+
+    <section>
+        <h2>Желаемая должность</h2>
+        <div class="facts">
+            <div class="fact"><span>Должность</span><b>C#/.NET-разработчик</b></div>
+            <div class="fact"><span>Специализация</span><b>Программист, разработчик</b></div>
+            <div class="fact"><span>Тип занятости</span><b>Полная занятость</b></div>
+            <div class="fact"><span>Формат работы</span><b>На месте работодателя, удалённо, гибрид</b></div>
+            <div class="fact"><span>Время в пути до работы</span><b>Не имеет значения</b></div>
+            <div class="fact"><span>Самозанятость · медкнижка</span><b>Нет · есть</b></div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Опыт работы — 4 года 10 месяцев</h2>
+        <div class="job-head">
+            <div class="job-title">.NET разработчик · <span class="company">PBSOFT</span></div>
+            <div class="period">июнь 2021 — март 2026 · 4 года 10 месяцев</div>
+        </div>
+        <div class="job-sub">Астана · pbsoft.kz</div>
+        <div class="industry">Информационные технологии, системная интеграция, интернет: интернет-компания (поисковики, платёжные системы, соцсети, информационно-познавательные и развлекательные ресурсы, продвижение сайтов и прочее); системная интеграция, автоматизация технологических и бизнес-процессов предприятия, ИТ-консалтинг.</div>
+        <ul class="list two">
+            <li>Разработка и сопровождение серверных приложений и сервисов на C# и .NET</li>
+            <li>Реализация бизнес-логики и клиент-серверных модулей по техническим требованиям</li>
+            <li>Разработка REST API на ASP.NET Core (Web API) с документацией в Swagger</li>
+            <li>Работа с данными через Entity Framework Core и LINQ, прямые SQL-запросы там, где важна производительность</li>
+            <li>Кэширование часто запрашиваемых данных в Redis</li>
+            <li>Unit-тесты бизнес-логики на xUnit</li>
+            <li>Разработка и оптимизация структуры БД и SQL-запросов (PostgreSQL / MS SQL Server)</li>
+            <li>Интеграция с внешними API и сторонними системами (SOAP, Apache Kafka)</li>
+            <li>Поиск и исправление ошибок на продакшене, сопровождение действующих сервисов</li>
+            <li>Асинхронная обработка (async/await), чтобы система не блокировалась на долгих операциях</li>
+            <li>Участие в code review, следование принципам ООП, SOLID и Clean Code</li>
+            <li>Оценка задач по времени и сложности</li>
+            <li>Менторинг и адаптация стажёров</li>
+            <li>Работа в команде по Agile/Scrum, прямое общение с заказчиками для уточнения требований и презентации решений</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Навыки</h2>
+        <div class="langs">
+            <div class="lang"><div class="lang-top"><b>Казахский</b><small>Родной</small></div><div class="meter"><span style="width:100%"></span></div></div>
+            <div class="lang"><div class="lang-top"><b>Русский</b><small>C1 — Продвинутый</small></div><div class="meter"><span style="width:90%"></span></div></div>
+            <div class="lang"><div class="lang-top"><b>Английский</b><small>B2 — Средне-продвинутый</small></div><div class="meter"><span style="width:70%"></span></div></div>
+        </div>
+        <div class="chips">
+            <span class="chip">C#</span><span class="chip">ASP.NET Core</span><span class="chip">Web API</span><span class="chip">Entity Framework Core</span><span class="chip">LINQ</span><span class="chip">PostgreSQL</span><span class="chip">SQL</span><span class="chip">NoSQL</span><span class="chip">Redis</span><span class="chip">REST</span><span class="chip">SOAP</span><span class="chip">Apache Kafka</span><span class="chip">Docker</span><span class="chip">CI/CD</span><span class="chip">Git</span><span class="chip">Swagger</span><span class="chip">Unit Testing</span><span class="chip">xUnit</span><span class="chip">ООП</span><span class="chip">SOLID</span><span class="chip">MVC</span><span class="chip">Agile</span><span class="chip">Atlassian Jira</span><span class="chip">Windows Forms</span><span class="chip">.NET MAUI</span><span class="chip">StimulSoft Reports</span><span class="chip">Microsoft Visual Studio</span><span class="chip">HTML</span><span class="chip">JavaScript</span><span class="chip">UML</span>
+        </div>
+    </section>
+
+    <section>
+        <h2>Обо мне</h2>
+        <p class="lead">Я в коммерческой backend-разработке на C# и .NET 5 лет (с 2021 года). В PBSOFT разрабатывал и сопровождал серверную логику, клиент-серверные модули и интеграции с внешними системами. Много работаю с базами данных: оптимизирую SQL-запросы и структуру БД (PostgreSQL, MS SQL Server), использую асинхронную обработку (async/await, Apache Kafka), придерживаюсь принципов SOLID и Clean Code.</p>
+        <h3>Чем могу быть полезен</h3>
+        <ul class="list">
+            <li><b>Серверная разработка и интеграции:</b> бизнес-логика и API на .NET, интеграции с внешними системами по SOAP и через Apache Kafka, поиск и исправление ошибок на продакшене.</li>
+            <li><b>Базы данных:</b> структура таблиц и индексы, поиск и оптимизация медленных запросов по планам выполнения.</li>
+            <li><b>Команда и заказчик:</b> участвую в code review, помогаю адаптироваться стажёрам, оцениваю сроки задач, общаюсь с заказчиком напрямую.</li>
+            <li><b>Образование:</b> высшее профильное (Прикладная информатика) + сертификаты Cisco (Networking &amp; Cybersecurity).</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Ключевые достижения</h2>
+        <div class="cases">
+            <div class="case">
+                <div class="case-head"><span class="case-num">01</span><span class="case-title">Ускорение отчётов и запросов к базе данных</span></div>
+                <div class="case-grid">
+                    <div><span class="label">Задача</span><p>Ключевые отчёты и экраны системы открывались слишком долго, часть запросов падала по таймауту на больших объёмах данных. Пользователи жаловались, нагрузка на сервер БД росла.</p>
+                        <div class="result"><span class="label">Результат</span>Время формирования ключевых отчётов сократилось с 15 до 2 секунд, таймауты исчезли, нагрузка на сервер БД снизилась на 40%.</div></div>
+                    <div><span class="label">Решение</span><ul class="list">
+                        <li>Проанализировал медленные запросы через планы выполнения (EXPLAIN ANALYZE в PostgreSQL)</li>
+                        <li>Переписал тяжёлые запросы: убрал лишние JOIN и выборку ненужных столбцов, заменил курсоры и циклы на set-based операции</li>
+                        <li>Добавил недостающие и составные индексы, убрал неиспользуемые</li>
+                        <li>Перевёл долгие операции на асинхронную обработку (async/await), чтобы интерфейс не блокировался</li>
+                    </ul></div>
+                </div>
+                <div class="tags"><span class="tag">C#</span><span class="tag">.NET</span><span class="tag">PostgreSQL</span></div>
+            </div>
+            <div class="case">
+                <div class="case-head"><span class="case-num">02</span><span class="case-title">Асинхронная интеграция с внешними системами</span></div>
+                <div class="case-grid">
+                    <div><span class="label">Задача</span><p>Системе нужно было обмениваться данными с несколькими внешними сервисами и смежными системами. Синхронные вызовы тормозили основной процесс, а при недоступности внешней стороны данные терялись или приходилось переотправлять их вручную.</p>
+                        <div class="result"><span class="label">Результат</span>Подключено 10+ внешних систем, обрабатываются тысячи сообщений в сутки, ручная переотправка данных больше не нужна. Основной процесс больше не ждёт ответа внешних систем и не зависит от их доступности.</div></div>
+                    <div><span class="label">Решение</span><ul class="list">
+                        <li>Участвовал в проектировании и разработал интеграционный слой: SOAP для внешних API, Apache Kafka для асинхронного обмена между сервисами</li>
+                        <li>Реализовал повторные попытки, обработку ошибок и журналирование, чтобы сбой на одной стороне не приводил к потере данных</li>
+                        <li>Работал с контрактами SOAP-сервисов по WSDL, упаковывал сервисы в Docker, участвовал в настройке сборки и выкладки через CI/CD</li>
+                    </ul></div>
+                </div>
+                <div class="tags"><span class="tag">C#</span><span class="tag">.NET</span><span class="tag">SOAP</span><span class="tag">WSDL</span><span class="tag">Apache Kafka</span><span class="tag">Docker</span><span class="tag">CI/CD</span></div>
+            </div>
+            <div class="case">
+                <div class="case-head"><span class="case-num">03</span><span class="case-title">Клиент-серверный модуль с отчётностью для бизнеса</span></div>
+                <div class="case-grid">
+                    <div><span class="label">Задача</span><p>Бизнесу нужен был новый модуль для работы с данными и выпуска печатных форм и отчётов. Раньше отчёты собирали вручную в Excel.</p>
+                        <div class="result"><span class="label">Результат</span>Модуль запущен за пару месяцев, отчёты формируются автоматически вместо ручной сборки, что экономит десятки часов в неделю. Модулем пользуются тысячи сотрудников.</div></div>
+                    <div><span class="label">Решение</span><ul class="list">
+                        <li>Вместе с командой собрал требования напрямую с заказчиком, оценил сроки и трудозатраты, презентовал решение</li>
+                        <li>Реализовал серверную бизнес-логику на .NET</li>
+                        <li>Разработал структуру БД под модуль</li>
+                        <li>Сделал отчёты и печатные формы в StimulSoft Reports</li>
+                        <li>Покрыл ключевую логику unit-тестами, код прошёл code review. В разработке участвовали стажёры, которых я курировал</li>
+                    </ul></div>
+                </div>
+                <div class="tags"><span class="tag">C#</span><span class="tag">.NET</span><span class="tag">Windows Forms</span><span class="tag">StimulSoft Reports</span><span class="tag">PostgreSQL</span><span class="tag">Unit Testing</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Проекты</h2>
+        <div class="project">
+            <div class="project-head"><b>OrderFlow — сервис заказов с надёжной доставкой событий</b><a href="https://github.com/yeldos13/OrderFlow">github.com/yeldos13/OrderFlow</a></div>
+            <p>Сервис заказов, который передаёт события во внешнюю систему через Kafka и переживает её сбои.</p>
+            <ul class="list two">
+                <li>REST API на ASP.NET Core: ProblemDetails, OpenAPI, health checks</li>
+                <li>Transactional Outbox: заказ и событие в одной транзакции</li>
+                <li>Идемпотентность создания заказа по ключу запроса</li>
+                <li>Kafka consumer с дедупликацией повторных событий</li>
+                <li>Polly: повторы и circuit breaker, dead letter topic</li>
+                <li>Unit-тесты и интеграционные тесты на Testcontainers</li>
+            </ul>
+            <div class="tags"><span class="tag">ASP.NET Core</span><span class="tag">EF Core</span><span class="tag">PostgreSQL</span><span class="tag">Kafka</span><span class="tag">Outbox</span><span class="tag">Polly</span><span class="tag">xUnit</span><span class="tag">Testcontainers</span><span class="tag">Serilog</span><span class="tag">Docker</span></div>
+        </div>
+    </section>
+
+    <section class="two">
+        <div>
+            <h2>Образование</h2>
+            <ul class="rows">
+                <li><span class="year">2024</span><div><b>Бакалавр · Сибирский институт бизнеса и информационных технологий, Омск</b><small>Прикладная информатика, Прикладная информатика в экономике</small></div></li>
+            </ul>
+            <h2 style="margin-top:4mm">Повышение квалификации, курсы</h2>
+            <ul class="rows">
+                <li><span class="year">2025</span><div><b>The Complete Xamarin Developer Course</b><small>Udemy</small></div></li>
+                <li><span class="year">2025</span><div><b>PostgreSQL Certification Course</b><small>W3Schools</small></div></li>
+                <li><span class="year">2020</span><div><b>Разработка программного обеспечения</b><small>Академия ШАГ</small></div></li>
+                <li><span class="year">2019</span><div><b>CCNA: Networking</b><small>Cisco</small></div></li>
+                <li><span class="year">2019</span><div><b>CCST: Cybersecurity</b><small>Cisco</small></div></li>
+            </ul>
+        </div>
+        <div>
+            <h2>Электронные сертификаты</h2>
+            <ul class="rows">
+                <li><span class="year">2025</span><div><b>Udemy The Complete Xamarin Developer Course: iOS And Android</b></div></li>
+                <li><span class="year">2025</span><div><b>W3Schools PostgreSQL certification exam</b></div></li>
+                <li><span class="year">2019</span><div><b>Cisco CCNA: Networking</b></div></li>
+                <li><span class="year">2019</span><div><b>Cisco CCST: Cybersecurity</b></div></li>
+            </ul>
+            <h2 style="margin-top:4mm">Стек</h2>
+            <p class="note">C#, .NET, PostgreSQL, MS SQL Server, NoSQL, Apache Kafka, Docker, CI/CD, REST API, SOAP, Unit Testing, Git, JavaScript.</p>
+        </div>
+    </section>
+
+    <section>
+        <p class="note"><b>Предпочитаемый формат работы:</b> открыт к офису, гибриду или удалённому формату работы.</p>
+        <p class="note" style="margin-top:1.5mm"><b>Подробнее</b> обо мне, кейсах и опыте на личном сайте <a href="https://sozakbay.dev/ru">sozakbay.dev/ru</a> и на моём GitHub <a href="https://github.com/yeldos13">github.com/yeldos13</a>.</p>
+    </section>
+</div>
+
+<script>
+    const fit = () => document.documentElement.style.setProperty("--zoom", Math.min(1, (innerWidth - 32) / (210 * 96 / 25.4)));
+    fit();
+    addEventListener("resize", fit);
+</script>
+</body>
+</html>

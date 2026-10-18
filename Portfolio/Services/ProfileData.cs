@@ -27,7 +27,7 @@ public static class ProfileData
         GitHubUrl: "https://github.com/yeldos13",
         LinkedInUrl: "https://www.linkedin.com/in/yeldos-sozakbay-4b38a8209/");
 
-    public const string CvPath = "/files/Yeldos-Sozakbay-CV.pdf";
+    public static string CvPath(string lang) => $"/files/Yeldos-Sozakbay-CV-{Normalize(lang)}.pdf";
 
     public const string DisplayName = "Yeldos Sozakbay";
 
