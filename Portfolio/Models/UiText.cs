@@ -3,7 +3,6 @@ namespace Portfolio.Models;
 public record UiText(
     string Lang,
     string NavAria,
-    string ScrollDown,
     string Phone,
     string SectionStack,
     string SectionExpertise,
@@ -40,7 +39,6 @@ public record UiText(
     public static readonly UiText Ru = new(
         Lang: "ru",
         NavAria: "Навигация",
-        ScrollDown: "Прокрутить вниз",
         Phone: "Телефон",
         SectionStack: "Стек технологий",
         SectionExpertise: "Экспертиза",
@@ -77,7 +75,6 @@ public record UiText(
     public static readonly UiText En = new(
         Lang: "en",
         NavAria: "Navigation",
-        ScrollDown: "Scroll down",
         Phone: "Phone",
         SectionStack: "Tech Stack",
         SectionExpertise: "Expertise",
@@ -114,7 +111,6 @@ public record UiText(
     public static readonly UiText Kk = new(
         Lang: "kk",
         NavAria: "Навигация",
-        ScrollDown: "Төмен айналдыру",
         Phone: "Телефон",
         SectionStack: "Технологиялар",
         SectionExpertise: "Құзыреттер",

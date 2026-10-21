@@ -9,7 +9,7 @@ public record ContributionDay(DateOnly Date, int Level, int Count);
 
 public record RecentCommit(string Repo, string Message, string Url, DateTimeOffset Date);
 
-public record GitHubActivity(IReadOnlyList<ContributionDay> Days, int TotalLastYear, IReadOnlyList<RecentCommit> Commits);
+public record GitHubActivity(IReadOnlyList<ContributionDay> Days, IReadOnlyList<RecentCommit> Commits);
 
 public partial class GitHubActivityService(HttpClient http, IMemoryCache cache, ILogger<GitHubActivityService> logger)
 {
@@ -23,10 +23,12 @@ public partial class GitHubActivityService(HttpClient http, IMemoryCache cache, 
         GitHubActivity? result = null;
         try
         {
-            var calendar = LoadCalendarAsync();
             var commits = LoadCommitsAsync();
-            var (days, total) = await calendar;
-            result = new GitHubActivity(days, total, await commits);
+            var days = await LoadCalendarAsync();
+            IReadOnlyList<RecentCommit> recent = [];
+            try { recent = await commits; }
+            catch (Exception ex) { logger.LogWarning(ex, "Не удалось получить коммиты GitHub"); }
+            result = new GitHubActivity(days, recent);
         }
         catch (Exception ex)
         {
@@ -37,7 +39,7 @@ public partial class GitHubActivityService(HttpClient http, IMemoryCache cache, 
         return result;
     }
 
-    private async Task<(IReadOnlyList<ContributionDay>, int)> LoadCalendarAsync()
+    private async Task<IReadOnlyList<ContributionDay>> LoadCalendarAsync()
     {
         var html = await http.GetStringAsync($"https://github.com/users/{User}/contributions");
 
@@ -45,17 +47,13 @@ public partial class GitHubActivityService(HttpClient http, IMemoryCache cache, 
             m => m.Groups["id"].Value,
             m => m.Groups["n"].Value == "No" ? 0 : int.Parse(m.Groups["n"].Value.Replace(",", "")));
 
-        var days = DayRegex().Matches(html)
+        return DayRegex().Matches(html)
             .Select(m => new ContributionDay(
                 DateOnly.Parse(m.Groups["date"].Value),
                 int.Parse(m.Groups["level"].Value),
                 counts.GetValueOrDefault(m.Groups["id"].Value)))
             .OrderBy(d => d.Date)
             .ToList();
-
-        var totalMatch = TotalRegex().Match(html);
-        var total = totalMatch.Success ? int.Parse(totalMatch.Groups[1].Value.Replace(",", "")) : days.Sum(d => d.Count);
-        return (days, total);
     }
 
     private async Task<IReadOnlyList<RecentCommit>> LoadCommitsAsync()
@@ -89,7 +87,7 @@ public partial class GitHubActivityService(HttpClient http, IMemoryCache cache, 
 
     public static void Configure(HttpClient client)
     {
-        client.Timeout = TimeSpan.FromSeconds(8);
+        client.Timeout = TimeSpan.FromSeconds(3);
         client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("sozakbay-dev", "1.0"));
     }
 
@@ -98,7 +96,4 @@ public partial class GitHubActivityService(HttpClient http, IMemoryCache cache, 
 
     [GeneratedRegex(@"for=""(?<id>contribution-day-component-\d+-\d+)""[^>]*>(?<n>No|[\d,]+) contributions?")]
     private static partial Regex TooltipRegex();
-
-    [GeneratedRegex(@"([\d,]+)\s+contributions?\s+in the last year")]
-    private static partial Regex TotalRegex();
 }

@@ -38,6 +38,4 @@ app.UseRouting();
 
 app.MapRazorPages();
 
-app.MapGet("/api/profile", (string? lang) => Results.Json(ProfileData.Get(lang)));
-
 app.Run();

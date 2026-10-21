@@ -2,12 +2,9 @@ namespace Portfolio.Models;
 
 public record Profile(
     string FullName,
-    string ShortName,
     string Role,
-    string Tagline,
     string Summary,
     string Location,
-    string Citizenship,
     Contacts Contacts,
     IReadOnlyList<Stat> Stats,
     IReadOnlyList<SkillGroup> SkillGroups,
@@ -26,16 +23,13 @@ public record Contacts(string Telegram, string Email, string Phone, string GitHu
 
     public string TelegramUrl => $"https://t.me/{Telegram.TrimStart('@')}";
     public string PhoneUrl => "tel:" + new string(Phone.Where(c => char.IsDigit(c) || c == '+').ToArray());
-    public string WhatsAppUrl => "https://wa.me/" + new string(Phone.Where(char.IsDigit).ToArray());
 }
 
 public record Stat(string Value, string Label);
 
-public record SkillGroup(string Title, string Dot, IReadOnlyList<Skill> Items);
+public record SkillGroup(string Title, IReadOnlyList<string> Items);
 
-public record Skill(string Name, string Badge, string Color);
-
-public record Expertise(string Icon, string Title, string Tag, string Description, IReadOnlyList<string> Tags);
+public record Expertise(string Icon, string Title, string Description, IReadOnlyList<string> Tags);
 
 public record CaseStudy(string Title, string Problem, IReadOnlyList<string> Solution, IReadOnlyList<string> Stack, string Result);
 
@@ -45,7 +39,6 @@ public record Job(
     string CompanyUrl,
     string Period,
     string Duration,
-    string Location,
     string Description,
     IReadOnlyList<string> Highlights,
     IReadOnlyList<string> Tags);

@@ -31,7 +31,10 @@ Step "Публикация сайта в $InstallDir"
 $svc = Get-Service $ServiceName -ErrorAction SilentlyContinue
 if ($svc -and $svc.Status -ne "Stopped") { Stop-Service $ServiceName; Start-Sleep 2 }
 dotnet publish $Project -c Release -r win-x64 --self-contained false -o $InstallDir
-if ($LASTEXITCODE -ne 0) { throw "Ошибка публикации." }
+if ($LASTEXITCODE -ne 0) {
+    if ($svc) { Start-Service $ServiceName }
+    throw "Ошибка публикации."
+}
 
 Step "Служба Windows '$ServiceName'"
 $exe = Join-Path $InstallDir "Portfolio.exe"

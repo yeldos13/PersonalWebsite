@@ -4,7 +4,6 @@ namespace Portfolio.Services;
 
 public static class ProfileData
 {
-    public static readonly string[] Languages = ["en", "ru", "kk"];
 
     public static string Normalize(string? lang) => lang?.ToLowerInvariant() switch
     {
@@ -35,55 +34,52 @@ public static class ProfileData
 
     private static IReadOnlyList<SkillGroup> SkillGroups(string languages, string platform, string data, string oop) =>
     [
-        new(languages, "purple",
+        new(languages,
         [
-            new("C#", "C#", "#9b4f96"),
-            new("SQL", "SQL", "#336791"),
-            new("JavaScript", "JS", "#c9a227"),
-            new("HTML", "HT", "#e34c26"),
-            new("UML", "UM", "#5a6b8c"),
+            "C#",
+            "SQL",
+            "JavaScript",
+            "HTML",
+            "UML",
         ]),
-        new(platform, "blue",
+        new(platform,
         [
-            new(".NET", "NT", "#512bd4"),
-            new("ASP.NET Core", "AC", "#512bd4"),
-            new("Web API", "WA", "#3b82f6"),
-            new("Entity Framework Core", "EF", "#6d28d9"),
-            new("LINQ", "LQ", "#7c3aed"),
-            new("MVC", "MV", "#3b82f6"),
-            new("REST", "RS", "#10b981"),
-            new("SOAP", "SP", "#0ea5e9"),
-            new(oop, "OO", "#8b5cf6"),
-            new("xUnit", "XU", "#22c55e"),
-            new("Windows Forms", "WF", "#0078d4"),
-            new(".NET MAUI", "MA", "#512bd4"),
+            ".NET",
+            "ASP.NET Core",
+            "Web API",
+            "Entity Framework Core",
+            "LINQ",
+            "MVC",
+            "REST",
+            "SOAP",
+            oop,
+            "xUnit",
+            "Windows Forms",
+            ".NET MAUI",
         ]),
-        new(data, "red",
+        new(data,
         [
-            new("PostgreSQL", "PG", "#336791"),
-            new("MS SQL Server", "MS", "#cc2927"),
-            new("Redis", "RD", "#dc382d"),
-            new("NoSQL", "NS", "#4db33d"),
-            new("Apache Kafka", "KF", "#6b7280"),
-            new("Docker", "DK", "#2496ed"),
-            new("Git", "GT", "#f05032"),
-            new("CI/CD", "CI", "#f59e0b"),
-            new("Swagger", "SW", "#85ea2d"),
-            new("Jira", "JR", "#0052cc"),
-            new("StimulSoft", "SS", "#e11d48"),
-            new("Visual Studio", "VS", "#5c2d91"),
+            "PostgreSQL",
+            "MS SQL Server",
+            "Redis",
+            "NoSQL",
+            "Apache Kafka",
+            "Docker",
+            "Git",
+            "CI/CD",
+            "Swagger",
+            "Jira",
+            "StimulSoft",
+            "Visual Studio",
         ]),
     ];
 
     private static readonly Profile Russian = new(
         FullName: "Созакбай Ельдос Куатович",
-        ShortName: "Yeldos",
         Role: "C#/.NET-разработчик",
-        Tagline: "Backend · базы данных и интеграции",
         Summary: "5 лет в коммерческой backend-разработке на C# и .NET (с 2021 года). Разрабатываю серверную логику " +
                  "и интеграции с внешними системами, оптимизирую запросы к PostgreSQL и MS SQL Server.",
         Location: "Астана, Казахстан",
-        Citizenship: "Казахстан",
         Contacts: Contacts,
         Stats:
         [
@@ -95,15 +91,15 @@ public static class ProfileData
         SkillGroups: SkillGroups("Языки", "Платформа и подходы", "Данные и инструменты", "ООП / SOLID"),
         Expertise:
         [
-            new("api", "Серверная разработка и интеграции", "Backend",
+            new("api", "Серверная разработка и интеграции",
                 "Бизнес-логика и API на .NET, интеграции с внешними системами по SOAP и через Apache Kafka, " +
                 "поиск и исправление ошибок на продакшене.",
                 ["REST", "SOAP", "Kafka"]),
-            new("db", "Базы данных и производительность", "Data",
+            new("db", "Базы данных и производительность",
                 "Структура таблиц и индексы, поиск и оптимизация медленных запросов по планам выполнения " +
                 "в PostgreSQL и MS SQL Server.",
                 ["PostgreSQL", "MS SQL", "SQL"]),
-            new("bolt", "Асинхронность и надёжность", "Async",
+            new("bolt", "Асинхронность и надёжность",
                 "async/await и фоновая обработка, чтобы интерфейс и сервисы не блокировались; повторные попытки " +
                 "и журналирование при обмене данными.",
                 ["async/await", "Kafka", "Docker"]),
@@ -151,7 +147,7 @@ public static class ProfileData
         Experience:
         [
             new(".NET разработчик", "PBSOFT", "https://pbsoft.kz/",
-                "июн 2021 — мар 2026", "4 года 10 месяцев", "Астана",
+                "июн 2021 — мар 2026", "4 года 10 месяцев",
                 "Разработка и сопровождение серверных приложений и сервисов на C# и .NET: бизнес-логика, " +
                 "работа с БД, интеграции с внешними системами.",
                 [
@@ -212,13 +208,10 @@ public static class ProfileData
 
     private static readonly Profile English = new(
         FullName: "Yeldos Sozakbay",
-        ShortName: "Yeldos",
         Role: "C#/.NET Developer",
-        Tagline: "Backend · databases & integrations",
         Summary: "5 years of commercial backend development in C# and .NET (since 2021). I build server-side logic " +
                  "and integrations with external systems, and optimize queries in PostgreSQL and MS SQL Server.",
         Location: "Astana, Kazakhstan",
-        Citizenship: "Kazakhstan",
         Contacts: Contacts,
         Stats:
         [
@@ -230,15 +223,15 @@ public static class ProfileData
         SkillGroups: SkillGroups("Languages", "Platform & practices", "Data & tools", "OOP / SOLID"),
         Expertise:
         [
-            new("api", "Backend & Integrations", "Backend",
+            new("api", "Backend & Integrations",
                 "Business logic and APIs in .NET, integrations with external systems via SOAP and Apache Kafka, " +
                 "finding and fixing production issues.",
                 ["REST", "SOAP", "Kafka"]),
-            new("db", "Databases & Performance", "Data",
+            new("db", "Databases & Performance",
                 "Table design and indexes, finding and optimizing slow queries using execution plans " +
                 "in PostgreSQL and MS SQL Server.",
                 ["PostgreSQL", "MS SQL", "SQL"]),
-            new("bolt", "Async & Reliability", "Async",
+            new("bolt", "Async & Reliability",
                 "async/await and background processing so the UI and services never block; retries " +
                 "and logging for data exchange.",
                 ["async/await", "Kafka", "Docker"]),
@@ -286,7 +279,7 @@ public static class ProfileData
         Experience:
         [
             new(".NET Developer", "PBSOFT", "https://pbsoft.kz/",
-                "Jun 2021 — Mar 2026", "4 years 10 months", "Astana",
+                "Jun 2021 — Mar 2026", "4 years 10 months",
                 "Developing and maintaining server-side applications and services in C# and .NET: business logic, " +
                 "database work and integrations with external systems.",
                 [
@@ -347,14 +340,11 @@ public static class ProfileData
 
     private static readonly Profile Kazakh = new(
         FullName: "Созакбай Ельдос Куатович",
-        ShortName: "Yeldos",
         Role: "C#/.NET әзірлеушісі",
-        Tagline: "Backend · дерекқорлар және интеграциялар",
         Summary: "C# және .NET платформасындағы коммерциялық backend-әзірлеуде 5 жылдық тәжірибем бар (2021 жылдан бері). " +
                  "Серверлік логиканы және сыртқы жүйелермен интеграцияларды әзірлеймін, PostgreSQL мен MS SQL Server-дегі " +
                  "сұраныстарды оңтайландырамын.",
         Location: "Астана, Қазақстан",
-        Citizenship: "Қазақстан",
         Contacts: Contacts,
         Stats:
         [
@@ -366,15 +356,15 @@ public static class ProfileData
         SkillGroups: SkillGroups("Тілдер", "Платформа және тәсілдер", "Деректер және құралдар", "OOP / SOLID"),
         Expertise:
         [
-            new("api", "Серверлік әзірлеу және интеграциялар", "Backend",
+            new("api", "Серверлік әзірлеу және интеграциялар",
                 ".NET-те бизнес-логика мен API, SOAP және Apache Kafka арқылы сыртқы жүйелермен интеграция, " +
                 "продакшендегі қателерді табу және түзету.",
                 ["REST", "SOAP", "Kafka"]),
-            new("db", "Дерекқорлар және өнімділік", "Data",
+            new("db", "Дерекқорлар және өнімділік",
                 "Кесте құрылымы мен индекстер, PostgreSQL және MS SQL Server-де орындалу жоспарлары бойынша " +
                 "баяу сұраныстарды табу және оңтайландыру.",
                 ["PostgreSQL", "MS SQL", "SQL"]),
-            new("bolt", "Асинхрондылық және сенімділік", "Async",
+            new("bolt", "Асинхрондылық және сенімділік",
                 "Интерфейс пен сервистер бұғатталмауы үшін async/await және фондық өңдеу; деректер алмасу кезінде " +
                 "қайта жіберу және журналдау.",
                 ["async/await", "Kafka", "Docker"]),
@@ -422,7 +412,7 @@ public static class ProfileData
         Experience:
         [
             new(".NET әзірлеушісі", "PBSOFT", "https://pbsoft.kz/",
-                "маус. 2021 — нау. 2026", "4 жыл 10 ай", "Астана",
+                "маус. 2021 — нау. 2026", "4 жыл 10 ай",
                 "C# және .NET-те серверлік қосымшалар мен сервистерді әзірлеу және сүйемелдеу: бизнес-логика, " +
                 "дерекқормен жұмыс, сыртқы жүйелермен интеграция.",
                 [
