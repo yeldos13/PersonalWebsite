@@ -35,10 +35,10 @@
     <div class="container nav-inner">
         <a class="logo" href="#home">@ProfileData.DisplayName</a>
         <nav class="nav-links" aria-label="@ui.NavAria">
+            <a href="#experience">@ui.SectionExperience</a>
             <a href="#stack">@ui.SectionStack</a>
             <a href="#cases">@ui.SectionCases</a>
             <a href="#projects">@ui.SectionProjects</a>
-            <a href="#experience">@ui.SectionExperience</a>
             <a href="#contact">@ui.NavContact</a>
         </nav>
         <div class="nav-tools">
@@ -105,6 +105,37 @@
                     <div class="stat-value">@s.Value</div>
                     <div class="stat-label">@s.Label</div>
                 </div>
+            }
+        </div>
+    </section>
+
+    <section class="section" id="experience">
+        <div class="container">
+            <h2 class="section-title reveal">@ui.SectionExperience</h2>
+            @foreach (var j in p.Experience)
+            {
+                <article class="card job reveal">
+                    <div class="job-head">
+                        <div>
+                            <h3 class="job-title">@j.Title</h3>
+                            <a href="@j.CompanyUrl" target="_blank" rel="noopener" class="company">@j.Company ↗</a>
+                        </div>
+                        <span class="period">@j.Period · @j.Duration</span>
+                    </div>
+                    <p class="card-text">@j.Description</p>
+                    <ul class="list two-col">
+                        @foreach (var h in j.Highlights)
+                        {
+                            <li>@h</li>
+                        }
+                    </ul>
+                    <div class="tags">
+                        @foreach (var t in j.Tags)
+                        {
+                            <span class="tag">@t</span>
+                        }
+                    </div>
+                </article>
             }
         </div>
     </section>
@@ -222,37 +253,6 @@
         </div>
     </section>
 
-    <section class="section" id="experience">
-        <div class="container">
-            <h2 class="section-title reveal">@ui.SectionExperience</h2>
-            @foreach (var j in p.Experience)
-            {
-                <article class="card job reveal">
-                    <div class="job-head">
-                        <div>
-                            <h3 class="job-title">@j.Title</h3>
-                            <a href="@j.CompanyUrl" target="_blank" rel="noopener" class="company">@j.Company ↗</a>
-                        </div>
-                        <span class="period">@j.Period · @j.Duration</span>
-                    </div>
-                    <p class="card-text">@j.Description</p>
-                    <ul class="list two-col">
-                        @foreach (var h in j.Highlights)
-                        {
-                            <li>@h</li>
-                        }
-                    </ul>
-                    <div class="tags">
-                        @foreach (var t in j.Tags)
-                        {
-                            <span class="tag">@t</span>
-                        }
-                    </div>
-                </article>
-            }
-        </div>
-    </section>
-
     @if (Model.GitHub is { } gh && gh.Days.Count > 0)
     {
         var culture = System.Globalization.CultureInfo.GetCultureInfo(ui.Culture);
@@ -360,22 +360,6 @@
         </div>
     </section>
 
-    <section class="section" id="principles">
-        <div class="container">
-            <h2 class="section-title reveal">@ui.SectionPrinciples</h2>
-            <div class="grid-3">
-                @foreach (var pr in p.Principles)
-                {
-                    <figure class="card principle reveal">
-                        <span class="principle-badge" style="--c:@pr.Color">@pr.Initials</span>
-                        <h3 class="card-title">@pr.Title</h3>
-                        <blockquote class="card-text">@pr.Text</blockquote>
-                    </figure>
-                }
-            </div>
-        </div>
-    </section>
-
     <section class="section" id="languages">
         <div class="container">
             <h2 class="section-title reveal">@ui.SectionLanguages</h2>
@@ -392,6 +376,22 @@
                             <span style="width:@(l.Percent)%"></span>
                         </div>
                     </article>
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="principles">
+        <div class="container">
+            <h2 class="section-title reveal">@ui.SectionPrinciples</h2>
+            <div class="grid-3">
+                @foreach (var pr in p.Principles)
+                {
+                    <figure class="card principle reveal">
+                        <span class="principle-badge" style="--c:@pr.Color">@pr.Initials</span>
+                        <h3 class="card-title">@pr.Title</h3>
+                        <blockquote class="card-text">@pr.Text</blockquote>
+                    </figure>
                 }
             </div>
         </div>
