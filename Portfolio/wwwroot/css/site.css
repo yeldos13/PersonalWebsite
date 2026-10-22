@@ -262,6 +262,11 @@ button { font: inherit; }
 .case-result .case-label { color: var(--accent); }
 .case-result p { font-size: 1rem; line-height: 1.5; font-weight: 600; letter-spacing: -.012em; }
 
+.project-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; }
+.project-head .case-title { margin: 0; }
+.project-head + .card-text { margin-top: 1rem; }
+.project-head + .card-text + .two-col { margin: 1.25rem 0 1.75rem; }
+
 .list { display: grid; gap: .625rem; }
 .list li { position: relative; padding-left: 1.125rem; color: var(--text-2); font-size: 1rem; line-height: 1.5; }
 .list li::before {

@@ -10,6 +10,7 @@ public record Profile(
     IReadOnlyList<SkillGroup> SkillGroups,
     IReadOnlyList<Expertise> Expertise,
     IReadOnlyList<CaseStudy> Cases,
+    IReadOnlyList<Project> Projects,
     IReadOnlyList<Job> Experience,
     IReadOnlyList<Education> Education,
     IReadOnlyList<Certificate> Certificates,
@@ -32,6 +33,8 @@ public record SkillGroup(string Title, IReadOnlyList<string> Items);
 public record Expertise(string Icon, string Title, string Description, IReadOnlyList<string> Tags);
 
 public record CaseStudy(string Title, string Problem, IReadOnlyList<string> Solution, IReadOnlyList<string> Stack, string Result);
+
+public record Project(string Title, string Description, IReadOnlyList<string> Highlights, IReadOnlyList<string> Tags, string Url);
 
 public record Job(
     string Title,

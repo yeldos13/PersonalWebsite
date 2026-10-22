@@ -32,6 +32,9 @@ public static class ProfileData
 
     public const string SiteUrl = "https://sozakbay.dev";
 
+    private static readonly string[] OrderFlowTags =
+        ["ASP.NET Core", "EF Core", "PostgreSQL", "Kafka", "Outbox", "Polly", "xUnit", "Testcontainers", "Serilog", "Docker"];
+
     private static IReadOnlyList<SkillGroup> SkillGroups(string languages, string platform, string data, string oop) =>
     [
         new(languages,
@@ -143,6 +146,21 @@ public static class ProfileData
                 ["C#", ".NET", "Windows Forms", "StimulSoft Reports", "PostgreSQL", "Unit Testing"],
                 "Модуль запущен за пару месяцев, отчёты формируются автоматически вместо ручной сборки, что экономит " +
                 "десятки часов в неделю. Модулем пользуются тысячи сотрудников."),
+        ],
+        Projects:
+        [
+            new("OrderFlow — сервис заказов с надёжной доставкой событий",
+                "Сервис заказов, который передаёт события во внешнюю систему через Kafka и переживает её сбои.",
+                [
+                    "REST API на ASP.NET Core: ProblemDetails, OpenAPI, health checks",
+                    "Transactional Outbox: заказ и событие в одной транзакции",
+                    "Идемпотентность создания заказа по ключу запроса",
+                    "Kafka consumer с дедупликацией повторных событий",
+                    "Polly: повторы и circuit breaker, dead letter topic",
+                    "Unit-тесты и интеграционные тесты на Testcontainers",
+                ],
+                OrderFlowTags,
+                "https://github.com/yeldos13/OrderFlow"),
         ],
         Experience:
         [
@@ -276,6 +294,21 @@ public static class ProfileData
                 "The module was launched in a couple of months; reports are now generated automatically instead of " +
                 "being compiled by hand, saving dozens of hours per week. The module is used by thousands of employees."),
         ],
+        Projects:
+        [
+            new("OrderFlow — order service with reliable event delivery",
+                "An order service that delivers events to an external system via Kafka and survives its failures.",
+                [
+                    "REST API on ASP.NET Core: ProblemDetails, OpenAPI, health checks",
+                    "Transactional Outbox: order and event saved in one transaction",
+                    "Idempotent order creation via request key",
+                    "Kafka consumer with deduplication of redelivered events",
+                    "Polly: retries and circuit breaker, dead letter topic",
+                    "Unit tests and integration tests with Testcontainers",
+                ],
+                OrderFlowTags,
+                "https://github.com/yeldos13/OrderFlow"),
+        ],
         Experience:
         [
             new(".NET Developer", "PBSOFT", "https://pbsoft.kz/",
@@ -408,6 +441,21 @@ public static class ProfileData
                 ["C#", ".NET", "Windows Forms", "StimulSoft Reports", "PostgreSQL", "Unit Testing"],
                 "Модуль бірнеше айда іске қосылды, есептер қолмен жиналудың орнына автоматты түрде қалыптасады — " +
                 "бұл аптасына ондаған сағат үнемдейді. Модульді мыңдаған қызметкер пайдаланады."),
+        ],
+        Projects:
+        [
+            new("OrderFlow — оқиғаларды сенімді жеткізетін тапсырыстар сервисі",
+                "Оқиғаларды Kafka арқылы сыртқы жүйеге жіберетін және оның ақауларына төзімді тапсырыстар сервисі.",
+                [
+                    "ASP.NET Core-дағы REST API: ProblemDetails, OpenAPI, health checks",
+                    "Transactional Outbox: тапсырыс пен оқиға бір транзакцияда",
+                    "Сұраныс кілті бойынша тапсырыс құрудың идемпотенттілігі",
+                    "Қайталанған оқиғаларды дедупликациялайтын Kafka consumer",
+                    "Polly: қайталау және circuit breaker, dead letter topic",
+                    "Unit-тесттер және Testcontainers-тегі интеграциялық тесттер",
+                ],
+                OrderFlowTags,
+                "https://github.com/yeldos13/OrderFlow"),
         ],
         Experience:
         [
