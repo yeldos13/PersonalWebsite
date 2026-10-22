@@ -67,7 +67,10 @@ if ($Domain) {
     $config = ":80 {`n    encode gzip zstd`n    reverse_proxy 127.0.0.1:$AppPort`n}`n"
 }
 [IO.File]::WriteAllText($caddyfile, $config)
+# caddy пишет логи в stderr; при Stop и перенаправлении вывода PowerShell 5.1 считает это ошибкой
+$ErrorActionPreference = "Continue"
 & $caddyExe validate --config $caddyfile --adapter caddyfile
+$ErrorActionPreference = "Stop"
 if ($LASTEXITCODE -ne 0) { throw "Ошибка в Caddyfile." }
 
 $caddySvc = Get-Service $CaddyService -ErrorAction SilentlyContinue
