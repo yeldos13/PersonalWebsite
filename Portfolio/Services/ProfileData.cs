@@ -455,7 +455,7 @@ public static class ProfileData
         ],
         Projects:
         [
-            new("PayLedger — қос жазбалы төлем сервисі (әзірленуде)",
+            new("PayLedger — қос жазбалы төлем сервисі",
                 "Финтех-жоба: шоттар, аударымдар және қос жазба қағидасы бойынша проводкалар.",
                 [
                     "Spring Boot 4-тегі REST API: Problem Details, OpenAPI, health checks",
