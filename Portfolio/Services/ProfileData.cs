@@ -220,9 +220,6 @@ public static class ProfileData
                 "Разработка и сопровождение серверных приложений и сервисов на C# и .NET: бизнес-логика, " +
                 "работа с БД, интеграции с внешними системами.",
                 [
-                    "Ускорил формирование ключевых отчётов с 15 до 2 секунд и снизил нагрузку на сервер БД на 40%: планы выполнения (EXPLAIN ANALYZE), переписывание тяжёлых запросов, составные индексы, асинхронная обработка",
-                    "Разработал интеграционный слой с 10+ внешними системами (SOAP/WSDL, Apache Kafka): тысячи сообщений в сутки, повторные попытки и журналирование — данные не теряются, ручная переотправка больше не нужна",
-                    "За пару месяцев запустил клиент-серверный модуль отчётности (.NET, PostgreSQL, StimulSoft Reports): отчёты формируются автоматически вместо ручной сборки в Excel, модулем пользуются тысячи сотрудников",
                     "Курировал стажёров, участвовал в code review",
                     "REST API на ASP.NET Core (Web API) с документацией в Swagger",
                     "Работа с данными через Entity Framework Core и LINQ, прямые SQL-запросы там, где важна производительность",
@@ -389,9 +386,6 @@ public static class ProfileData
                 "Developing and maintaining server-side applications and services in C# and .NET: business logic, " +
                 "database work and integrations with external systems.",
                 [
-                    "Cut key report generation from 15 to 2 seconds and reduced database server load by 40%: execution plans (EXPLAIN ANALYZE), rewritten heavy queries, composite indexes, async processing",
-                    "Built an integration layer with 10+ external systems (SOAP/WSDL, Apache Kafka): thousands of messages a day, retries and logging — no data loss, no more manual resending",
-                    "Launched a client-server reporting module in a couple of months (.NET, PostgreSQL, StimulSoft Reports): reports are generated automatically instead of by hand in Excel, used by thousands of employees",
                     "Supervised interns and took part in code reviews",
                     "REST API on ASP.NET Core (Web API) documented with Swagger",
                     "Data access with Entity Framework Core and LINQ, raw SQL where performance matters",
@@ -558,9 +552,6 @@ public static class ProfileData
                 "C# және .NET-те серверлік қосымшалар мен сервистерді әзірлеу және сүйемелдеу: бизнес-логика, " +
                 "дерекқормен жұмыс, сыртқы жүйелермен интеграция.",
                 [
-                    "Негізгі есептерді қалыптастыруды 15-тен 2 секундқа дейін жеделдетіп, ДҚ серверіне жүктемені 40%-ға азайттым: орындау жоспарлары (EXPLAIN ANALYZE), ауыр сұраныстарды қайта жазу, құрама индекстер, асинхронды өңдеу",
-                    "10+ сыртқы жүйемен интеграциялық қабатты әзірледім (SOAP/WSDL, Apache Kafka): тәулігіне мыңдаған хабарлама, қайталау және журналдау — деректер жоғалмайды, қолмен қайта жіберу енді қажет емес",
-                    "Бірнеше айда клиент-серверлік есептілік модулін іске қостым (.NET, PostgreSQL, StimulSoft Reports): есептер Excel-де қолмен жиналудың орнына автоматты қалыптасады, модульді мыңдаған қызметкер пайдаланады",
                     "Тағылымдамашыларға жетекшілік еттім, code review-ға қатыстым",
                     "ASP.NET Core (Web API)-да Swagger құжаттамасы бар REST API",
                     "Entity Framework Core және LINQ арқылы деректермен жұмыс, өнімділік маңызды жерде тікелей SQL-сұраныстар",

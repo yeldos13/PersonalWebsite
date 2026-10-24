@@ -37,7 +37,6 @@
         <nav class="nav-links" aria-label="@ui.NavAria">
             <a href="#experience">@ui.SectionExperience</a>
             <a href="#stack">@ui.SectionStack</a>
-            <a href="#cases">@ui.SectionCases</a>
             <a href="#projects">@ui.SectionProjects</a>
             <a href="#contact">@ui.NavContact</a>
         </nav>
@@ -137,6 +136,42 @@
                     </div>
                 </article>
             }
+            <h3 class="section-sub reveal" id="cases">@ui.SectionCases</h3>
+            <div class="cases">
+                @for (var i = 0; i < p.Cases.Count; i++)
+                {
+                    var c = p.Cases[i];
+                    <article class="card case reveal">
+                        <span class="case-num">@((i + 1).ToString("00"))</span>
+                        <h3 class="case-title">@c.Title</h3>
+                        <div class="case-grid">
+                            <div class="case-problem">
+                                <h4 class="case-label">@ui.CaseProblem</h4>
+                                <p class="card-text">@c.Problem</p>
+                            </div>
+                            <div class="case-result">
+                                <h4 class="case-label">@ui.CaseResult</h4>
+                                <p>@c.Result</p>
+                            </div>
+                            <div class="case-solution">
+                                <h4 class="case-label">@ui.CaseSolution</h4>
+                                <ul class="list">
+                                    @foreach (var s in c.Solution)
+                                    {
+                                        <li>@s</li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="tags">
+                            @foreach (var t in c.Stack)
+                            {
+                                <span class="tag">@t</span>
+                            }
+                        </div>
+                    </article>
+                }
+            </div>
         </div>
     </section>
 
@@ -172,47 +207,6 @@
                         <p class="card-text">@e.Description</p>
                         <div class="tags">
                             @foreach (var t in e.Tags)
-                            {
-                                <span class="tag">@t</span>
-                            }
-                        </div>
-                    </article>
-                }
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="cases">
-        <div class="container">
-            <h2 class="section-title reveal">@ui.SectionCases</h2>
-            <div class="cases">
-                @for (var i = 0; i < p.Cases.Count; i++)
-                {
-                    var c = p.Cases[i];
-                    <article class="card case reveal">
-                        <span class="case-num">@((i + 1).ToString("00"))</span>
-                        <h3 class="case-title">@c.Title</h3>
-                        <div class="case-grid">
-                            <div class="case-problem">
-                                <h4 class="case-label">@ui.CaseProblem</h4>
-                                <p class="card-text">@c.Problem</p>
-                            </div>
-                            <div class="case-result">
-                                <h4 class="case-label">@ui.CaseResult</h4>
-                                <p>@c.Result</p>
-                            </div>
-                            <div class="case-solution">
-                                <h4 class="case-label">@ui.CaseSolution</h4>
-                                <ul class="list">
-                                    @foreach (var s in c.Solution)
-                                    {
-                                        <li>@s</li>
-                                    }
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="tags">
-                            @foreach (var t in c.Stack)
                             {
                                 <span class="tag">@t</span>
                             }
