@@ -88,7 +88,6 @@ public static class ProfileData
             "ClickHouse",
             "RabbitMQ",
             "Kubernetes",
-            "Linux",
             "Grafana",
             "Maven",
             "Flyway",
@@ -155,9 +154,9 @@ public static class ProfileData
         Projects:
         [
             new("PayLedger — платёжный сервис с двойной записью (в разработке)",
-                "Финтех-проект на Java: счета, переводы и проводки по принципу двойной записи. Пишется по шагам, как OrderFlow.",
+                "Финтех-проект, счета, переводы и проводки по принципу двойной записи.",
                 [
-                    "REST API на Spring Boot 4: Problem Details, OpenAPI, health checks",
+                    "REST API на Spring Boot 4",
                     "Двойная запись: каждый перевод — сбалансированные проводки в одной транзакции",
                     "Защита от двойной траты: optimistic locking и повтор при конфликте",
                     "Идемпотентность переводов по заголовку Idempotency-Key",
