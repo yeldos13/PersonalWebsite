@@ -39,8 +39,6 @@ const t = [
     ["<li>Unit-тесты бизнес-логики на xUnit, асинхронная обработка (async/await)</li>","<li>Unit tests for business logic with xUnit, async processing (async/await)</li>","<li>xUnit-тегі бизнес-логиканың unit-тесттері, асинхронды өңдеу (async/await)</li>"],
     ["<li>Поиск и исправление ошибок на продакшене, сопровождение действующих сервисов</li>", "<li>Finding and fixing production issues, maintaining live services</li>", "<li>Продакшендегі қателерді табу және түзету, жұмыс істеп тұрған сервистерді сүйемелдеу</li>"],
     ["<li>Оценка задач, работа по Agile/Scrum, прямое общение с заказчиками для уточнения требований и презентации решений</li>","<li>Task estimation, Agile/Scrum, direct communication with clients to clarify requirements and present solutions</li>","<li>Тапсырмаларды бағалау, Agile/Scrum бойынша жұмыс, талаптарды нақтылау және шешімдерді таныстыру үшін тапсырыс берушілермен тікелей байланыс</li>"],
-    ["<b>Java (пет-проекты):</b>","<b>Java (side projects):</b>","<b>Java (жеке жобалар):</b>"],
-    ["Java 21, Spring Boot (пет-проекты).","Java 21, Spring Boot (side projects).","Java 21, Spring Boot (жеке жобалар)."],
     ["С апреля 2026 работаю на фрилансе: выполняю частные заказы и развиваю пет-проекты.","Since April 2026 I've been freelancing: client projects and side projects.","2026 жылдың сәуірінен бастап фрилансте жұмыс істеймін: жеке тапсырыстар орындаймын және жеке жобаларымды дамытамын."],
     ["<h2>Навыки</h2>", "<h2>Skills</h2>", "<h2>Дағдылар</h2>"],
     ["<b>Казахский</b><small>Родной</small>", "<b>Kazakh</b><small>Native</small>", "<b>Қазақ тілі</b><small>Ана тілі</small>"],

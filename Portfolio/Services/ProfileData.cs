@@ -40,7 +40,7 @@ public static class ProfileData
     private static readonly string[] OrderFlowTags =
         ["ASP.NET Core", "EF Core", "PostgreSQL", "Kafka", "Outbox", "Polly", "xUnit", "Testcontainers", "Serilog", "Docker"];
 
-    private static IReadOnlyList<SkillGroup> SkillGroups(string languages, string platform, string data, string oop, string java) =>
+    private static IReadOnlyList<SkillGroup> SkillGroups(string languages, string platform, string data, string oop) =>
     [
         new(languages,
         [
@@ -50,6 +50,7 @@ public static class ProfileData
             "HTML",
             "UML",
             "Python",
+            "Java",
         ]),
         new(platform,
         [
@@ -69,6 +70,10 @@ public static class ProfileData
             "WPF",
             "gRPC",
             "DDD",
+            "Spring Boot",
+            "Spring Data JPA",
+            "Hibernate",
+            "JUnit 5",
         ]),
         new(data,
         [
@@ -91,16 +96,8 @@ public static class ProfileData
             "Kubernetes",
             "Linux",
             "Grafana",
-        ]),
-        new(java,
-        [
-            "Java 21",
-            "Spring Boot",
-            "Spring Data JPA",
-            "Hibernate",
             "Maven",
             "Flyway",
-            "JUnit 5",
             "Testcontainers",
         ]),
     ];
@@ -120,7 +117,7 @@ public static class ProfileData
             new("4", "Сертификата"),
             new("3", "Языка"),
         ],
-        SkillGroups: SkillGroups("Языки", "Платформа и подходы", "Данные и инструменты", "ООП / SOLID", "Java (пет-проекты)"),
+        SkillGroups: SkillGroups("Языки", "Платформа и подходы", "Данные и инструменты", "ООП / SOLID"),
         Expertise:
         [
             new("api", "Серверная разработка и интеграции",
@@ -286,7 +283,7 @@ public static class ProfileData
             new("4", "Certificates"),
             new("3", "Languages"),
         ],
-        SkillGroups: SkillGroups("Languages", "Platform & practices", "Data & tools", "OOP / SOLID", "Java (side projects)"),
+        SkillGroups: SkillGroups("Languages", "Platform & practices", "Data & tools", "OOP / SOLID"),
         Expertise:
         [
             new("api", "Backend & Integrations",
@@ -452,7 +449,7 @@ public static class ProfileData
             new("4", "Сертификат"),
             new("3", "Тіл"),
         ],
-        SkillGroups: SkillGroups("Тілдер", "Платформа және тәсілдер", "Деректер және құралдар", "OOP / SOLID", "Java (жеке жобалар)"),
+        SkillGroups: SkillGroups("Тілдер", "Платформа және тәсілдер", "Деректер және құралдар", "OOP / SOLID"),
         Expertise:
         [
             new("api", "Серверлік әзірлеу және интеграциялар",
