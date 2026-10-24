@@ -47,8 +47,6 @@ public static class ProfileData
             "C#",
             "SQL",
             "JavaScript",
-            "HTML",
-            "UML",
             "Python",
             "Java",
         ]),
@@ -80,15 +78,11 @@ public static class ProfileData
             "PostgreSQL",
             "MS SQL Server",
             "Redis",
-            "NoSQL",
             "Apache Kafka",
             "Docker",
             "Git",
             "CI/CD",
-            "Swagger",
-            "Jira",
             "StimulSoft",
-            "Visual Studio",
             "MySQL",
             "MongoDB",
             "ClickHouse",
@@ -113,26 +107,11 @@ public static class ProfileData
         Stats:
         [
             new("5", "Лет опыта"),
-            new("45+", "Технологий"),
+            new("40+", "Технологий"),
             new("4", "Сертификата"),
             new("3", "Языка"),
         ],
         SkillGroups: SkillGroups("Языки", "Платформа и подходы", "Данные и инструменты", "ООП / SOLID"),
-        Expertise:
-        [
-            new("api", "Серверная разработка и интеграции",
-                "Бизнес-логика и API на .NET, интеграции с внешними системами по SOAP и через Apache Kafka, " +
-                "поиск и исправление ошибок на продакшене.",
-                ["REST", "SOAP", "Kafka"]),
-            new("db", "Базы данных и производительность",
-                "Структура таблиц и индексы, поиск и оптимизация медленных запросов по планам выполнения " +
-                "в PostgreSQL и MS SQL Server.",
-                ["PostgreSQL", "MS SQL", "SQL"]),
-            new("bolt", "Асинхронность и надёжность",
-                "async/await и фоновая обработка, чтобы интерфейс и сервисы не блокировались; повторные попытки " +
-                "и журналирование при обмене данными.",
-                ["async/await", "Kafka", "Docker"]),
-        ],
         Cases:
         [
             new("Ускорение отчётов и запросов к базе данных",
@@ -217,7 +196,6 @@ public static class ProfileData
                 "Разработка и сопровождение серверных приложений и сервисов на C# и .NET: бизнес-логика, " +
                 "работа с БД, интеграции с внешними системами.",
                 [
-                    "Курировал стажёров, участвовал в code review",
                     "REST API на ASP.NET Core (Web API) с документацией в Swagger",
                     "Работа с данными через Entity Framework Core и LINQ, прямые SQL-запросы там, где важна производительность",
                     "Проектирование и оптимизация структуры БД и SQL-запросов (PostgreSQL, MS SQL Server), кэширование в Redis",
@@ -225,6 +203,7 @@ public static class ProfileData
                     "Unit-тесты бизнес-логики на xUnit, асинхронная обработка (async/await)",
                     "Поиск и исправление ошибок на продакшене, сопровождение действующих сервисов",
                     "Оценка задач, работа по Agile/Scrum, прямое общение с заказчиками для уточнения требований и презентации решений",
+                    "Курировал стажёров, участвовал в code review",
                 ],
                 ["C#", ".NET", "ASP.NET Core", "EF Core", "PostgreSQL", "MS SQL", "Redis", "Kafka", "xUnit", "Agile/Scrum"]),
         ],
@@ -279,26 +258,11 @@ public static class ProfileData
         Stats:
         [
             new("5", "Years of experience"),
-            new("45+", "Technologies"),
+            new("40+", "Technologies"),
             new("4", "Certificates"),
             new("3", "Languages"),
         ],
         SkillGroups: SkillGroups("Languages", "Platform & practices", "Data & tools", "OOP / SOLID"),
-        Expertise:
-        [
-            new("api", "Backend & Integrations",
-                "Business logic and APIs in .NET, integrations with external systems via SOAP and Apache Kafka, " +
-                "finding and fixing production issues.",
-                ["REST", "SOAP", "Kafka"]),
-            new("db", "Databases & Performance",
-                "Table design and indexes, finding and optimizing slow queries using execution plans " +
-                "in PostgreSQL and MS SQL Server.",
-                ["PostgreSQL", "MS SQL", "SQL"]),
-            new("bolt", "Async & Reliability",
-                "async/await and background processing so the UI and services never block; retries " +
-                "and logging for data exchange.",
-                ["async/await", "Kafka", "Docker"]),
-        ],
         Cases:
         [
             new("Speeding up reports and database queries",
@@ -383,7 +347,6 @@ public static class ProfileData
                 "Developing and maintaining server-side applications and services in C# and .NET: business logic, " +
                 "database work and integrations with external systems.",
                 [
-                    "Supervised interns and took part in code reviews",
                     "REST API on ASP.NET Core (Web API) documented with Swagger",
                     "Data access with Entity Framework Core and LINQ, raw SQL where performance matters",
                     "Designed and optimized database schemas and SQL queries (PostgreSQL, MS SQL Server), caching in Redis",
@@ -391,6 +354,7 @@ public static class ProfileData
                     "Unit tests for business logic with xUnit, async processing (async/await)",
                     "Found and fixed production issues, maintained live services",
                     "Task estimation, Agile/Scrum, direct communication with clients to clarify requirements and present solutions",
+                    "Supervised interns and took part in code reviews",
                 ],
                 ["C#", ".NET", "ASP.NET Core", "EF Core", "PostgreSQL", "MS SQL", "Redis", "Kafka", "xUnit", "Agile/Scrum"]),
         ],
@@ -445,26 +409,11 @@ public static class ProfileData
         Stats:
         [
             new("5", "Жыл тәжірибе"),
-            new("45+", "Технология"),
+            new("40+", "Технология"),
             new("4", "Сертификат"),
             new("3", "Тіл"),
         ],
         SkillGroups: SkillGroups("Тілдер", "Платформа және тәсілдер", "Деректер және құралдар", "OOP / SOLID"),
-        Expertise:
-        [
-            new("api", "Серверлік әзірлеу және интеграциялар",
-                ".NET-те бизнес-логика мен API, SOAP және Apache Kafka арқылы сыртқы жүйелермен интеграция, " +
-                "продакшендегі қателерді табу және түзету.",
-                ["REST", "SOAP", "Kafka"]),
-            new("db", "Дерекқорлар және өнімділік",
-                "Кесте құрылымы мен индекстер, PostgreSQL және MS SQL Server-де орындалу жоспарлары бойынша " +
-                "баяу сұраныстарды табу және оңтайландыру.",
-                ["PostgreSQL", "MS SQL", "SQL"]),
-            new("bolt", "Асинхрондылық және сенімділік",
-                "Интерфейс пен сервистер бұғатталмауы үшін async/await және фондық өңдеу; деректер алмасу кезінде " +
-                "қайта жіберу және журналдау.",
-                ["async/await", "Kafka", "Docker"]),
-        ],
         Cases:
         [
             new("Есептер мен дерекқор сұраныстарын жылдамдату",
@@ -549,7 +498,6 @@ public static class ProfileData
                 "C# және .NET-те серверлік қосымшалар мен сервистерді әзірлеу және сүйемелдеу: бизнес-логика, " +
                 "дерекқормен жұмыс, сыртқы жүйелермен интеграция.",
                 [
-                    "Тағылымдамашыларға жетекшілік еттім, code review-ға қатыстым",
                     "ASP.NET Core (Web API)-да Swagger құжаттамасы бар REST API",
                     "Entity Framework Core және LINQ арқылы деректермен жұмыс, өнімділік маңызды жерде тікелей SQL-сұраныстар",
                     "Дерекқор құрылымы мен SQL-сұраныстарды жобалау және оңтайландыру (PostgreSQL, MS SQL Server), Redis-те кэштеу",
@@ -557,6 +505,7 @@ public static class ProfileData
                     "xUnit-тегі бизнес-логиканың unit-тесттері, асинхронды өңдеу (async/await)",
                     "Продакшендегі қателерді іздеу және түзету, жұмыс істеп тұрған сервистерді сүйемелдеу",
                     "Тапсырмаларды бағалау, Agile/Scrum бойынша жұмыс, талаптарды нақтылау және шешімдерді таныстыру үшін тапсырыс берушілермен тікелей байланыс",
+                    "Тағылымдамашыларға жетекшілік еттім, code review-ға қатыстым",
                 ],
                 ["C#", ".NET", "ASP.NET Core", "EF Core", "PostgreSQL", "MS SQL", "Redis", "Kafka", "xUnit", "Agile/Scrum"]),
         ],

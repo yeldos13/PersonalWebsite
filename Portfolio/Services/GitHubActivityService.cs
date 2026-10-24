@@ -67,7 +67,11 @@ public partial class GitHubActivityService(HttpClient http, IMemoryCache cache, 
 
         var perRepo = await Task.WhenAll(repos.Select(async repo =>
         {
-            using var response = await http.GetAsync($"https://api.github.com/repos/{User}/{repo}/commits?per_page=5");
+            HttpResponseMessage response;
+            // один медленный репозиторий не должен скрывать коммиты остальных
+            try { response = await http.GetAsync($"https://api.github.com/repos/{User}/{repo}/commits?per_page=5"); }
+            catch (Exception ex) when (ex is HttpRequestException or TaskCanceledException) { return new List<RecentCommit>(); }
+            using var _ = response;
             if (!response.IsSuccessStatusCode) return new List<RecentCommit>();
 
             using var doc = JsonDocument.Parse(await response.Content.ReadAsStringAsync());

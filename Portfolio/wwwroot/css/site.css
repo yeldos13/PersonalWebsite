@@ -236,13 +236,6 @@ button { font: inherit; }
     font-size: .8125rem; font-weight: 500; color: var(--accent); background: var(--accent-fill);
 }
 
-.feature { display: flex; flex-direction: column; }
-.feature-icon {
-    display: grid; place-items: center; width: 44px; height: 44px; margin-bottom: 1.25rem;
-    border-radius: 12px; color: var(--accent); background: var(--accent-fill);
-}
-.feature-icon svg { width: 22px; height: 22px; }
-.feature .card-title { margin-bottom: .5rem; }
 
 .cases { display: grid; gap: 1.25rem; }
 .section-sub { margin: 3rem 0 1.25rem; font: 700 1.375rem/1.2 var(--display); letter-spacing: -.02em; }

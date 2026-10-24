@@ -8,7 +8,6 @@ public record Profile(
     Contacts Contacts,
     IReadOnlyList<Stat> Stats,
     IReadOnlyList<SkillGroup> SkillGroups,
-    IReadOnlyList<Expertise> Expertise,
     IReadOnlyList<CaseStudy> Cases,
     IReadOnlyList<Project> Projects,
     IReadOnlyList<Job> Experience,
@@ -29,8 +28,6 @@ public record Contacts(string Telegram, string Email, string Phone, string GitHu
 public record Stat(string Value, string Label);
 
 public record SkillGroup(string Title, IReadOnlyList<string> Items);
-
-public record Expertise(string Icon, string Title, string Description, IReadOnlyList<string> Tags);
 
 public record CaseStudy(string Title, string Problem, IReadOnlyList<string> Solution, IReadOnlyList<string> Stack, string Result);
 
