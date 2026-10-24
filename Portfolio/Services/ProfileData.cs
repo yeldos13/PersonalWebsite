@@ -32,10 +32,15 @@ public static class ProfileData
 
     public const string SiteUrl = "https://sozakbay.dev";
 
+    private static readonly string[] PayLedgerTags =
+        ["Java 21", "Spring Boot 4", "Spring Data JPA", "PostgreSQL", "Flyway", "Maven", "Kafka", "Docker"];
+
+    private static readonly string[] AnikiTags = ["C#", ".NET 10", "Worker Service", "Telegram Bot API", "xUnit"];
+
     private static readonly string[] OrderFlowTags =
         ["ASP.NET Core", "EF Core", "PostgreSQL", "Kafka", "Outbox", "Polly", "xUnit", "Testcontainers", "Serilog", "Docker"];
 
-    private static IReadOnlyList<SkillGroup> SkillGroups(string languages, string platform, string data, string oop) =>
+    private static IReadOnlyList<SkillGroup> SkillGroups(string languages, string platform, string data, string oop, string java) =>
     [
         new(languages,
         [
@@ -44,6 +49,7 @@ public static class ProfileData
             "JavaScript",
             "HTML",
             "UML",
+            "Python",
         ]),
         new(platform,
         [
@@ -59,6 +65,10 @@ public static class ProfileData
             "xUnit",
             "Windows Forms",
             ".NET MAUI",
+            ".NET Framework",
+            "WPF",
+            "gRPC",
+            "DDD",
         ]),
         new(data,
         [
@@ -74,6 +84,24 @@ public static class ProfileData
             "Jira",
             "StimulSoft",
             "Visual Studio",
+            "MySQL",
+            "MongoDB",
+            "ClickHouse",
+            "RabbitMQ",
+            "Kubernetes",
+            "Linux",
+            "Grafana",
+        ]),
+        new(java,
+        [
+            "Java 21",
+            "Spring Boot",
+            "Spring Data JPA",
+            "Hibernate",
+            "Maven",
+            "Flyway",
+            "JUnit 5",
+            "Testcontainers",
         ]),
     ];
 
@@ -81,17 +109,18 @@ public static class ProfileData
         FullName: "Созакбай Ельдос Куатович",
         Role: "C#/.NET-разработчик",
         Summary: "5 лет в коммерческой backend-разработке на C# и .NET (с 2021 года). Разрабатываю серверную логику " +
-                 "и интеграции с внешними системами, оптимизирую запросы к PostgreSQL и MS SQL Server.",
+                 "и интеграции с внешними системами, оптимизирую запросы к PostgreSQL и MS SQL Server. " +
+                 "С апреля 2026 работаю на фрилансе: частные заказы и пет-проекты.",
         Location: "Астана, Казахстан",
         Contacts: Contacts,
         Stats:
         [
             new("5", "Лет опыта"),
-            new("25+", "Технологий"),
+            new("45+", "Технологий"),
             new("4", "Сертификата"),
             new("3", "Языка"),
         ],
-        SkillGroups: SkillGroups("Языки", "Платформа и подходы", "Данные и инструменты", "ООП / SOLID"),
+        SkillGroups: SkillGroups("Языки", "Платформа и подходы", "Данные и инструменты", "ООП / SOLID", "Java (пет-проекты)"),
         Expertise:
         [
             new("api", "Серверная разработка и интеграции",
@@ -149,6 +178,18 @@ public static class ProfileData
         ],
         Projects:
         [
+            new("PayLedger — платёжный сервис с двойной записью (в разработке)",
+                "Финтех-проект на Java: счета, переводы и проводки по принципу двойной записи. Пишется по шагам, как OrderFlow.",
+                [
+                    "REST API на Spring Boot 4: Problem Details, OpenAPI, health checks",
+                    "Двойная запись: каждый перевод — сбалансированные проводки в одной транзакции",
+                    "Защита от двойной траты: optimistic locking и повтор при конфликте",
+                    "Идемпотентность переводов по заголовку Idempotency-Key",
+                    "Структурированные JSON-логи, PostgreSQL и Flyway-миграции",
+                    "Дальше: Transactional Outbox → Kafka, тесты на Testcontainers, CI",
+                ],
+                PayLedgerTags,
+                "https://github.com/yeldos13/PayLedger"),
             new("OrderFlow — сервис заказов с надёжной доставкой событий",
                 "Сервис заказов, который передаёт события во внешнюю систему через Kafka и переживает её сбои.",
                 [
@@ -161,6 +202,16 @@ public static class ProfileData
                 ],
                 OrderFlowTags,
                 "https://github.com/yeldos13/OrderFlow"),
+            new("AnikiChatBot — Telegram-бот для групповых чатов",
+                "Telegram-бот на .NET 10 (Worker Service) с полезными командами для чатов.",
+                [
+                    "Курсы валют и погода по команде",
+                    "Антиспам для групп",
+                    "Статистика активности чата",
+                    "Unit-тесты на xUnit",
+                ],
+                AnikiTags,
+                "https://github.com/yeldos13/TelegramBot"),
         ],
         Experience:
         [
@@ -169,18 +220,17 @@ public static class ProfileData
                 "Разработка и сопровождение серверных приложений и сервисов на C# и .NET: бизнес-логика, " +
                 "работа с БД, интеграции с внешними системами.",
                 [
-                    "Реализация бизнес-логики и клиент-серверных модулей по техническим требованиям",
-                    "Разработка REST API на ASP.NET Core (Web API) с документацией в Swagger",
+                    "Ускорил формирование ключевых отчётов с 15 до 2 секунд и снизил нагрузку на сервер БД на 40%: планы выполнения (EXPLAIN ANALYZE), переписывание тяжёлых запросов, составные индексы, асинхронная обработка",
+                    "Разработал интеграционный слой с 10+ внешними системами (SOAP/WSDL, Apache Kafka): тысячи сообщений в сутки, повторные попытки и журналирование — данные не теряются, ручная переотправка больше не нужна",
+                    "За пару месяцев запустил клиент-серверный модуль отчётности (.NET, PostgreSQL, StimulSoft Reports): отчёты формируются автоматически вместо ручной сборки в Excel, модулем пользуются тысячи сотрудников",
+                    "Курировал стажёров, участвовал в code review",
+                    "REST API на ASP.NET Core (Web API) с документацией в Swagger",
                     "Работа с данными через Entity Framework Core и LINQ, прямые SQL-запросы там, где важна производительность",
-                    "Кэширование часто запрашиваемых данных в Redis",
-                    "Unit-тесты бизнес-логики на xUnit",
-                    "Разработка и оптимизация структуры БД и SQL-запросов (PostgreSQL / MS SQL Server)",
-                    "Интеграция с внешними API и сторонними системами (SOAP, Apache Kafka)",
-                    "Асинхронная обработка (async/await), чтобы система не блокировалась на долгих операциях",
-                    "Участие в code review, следование стандартам чистого кода",
-                    "Менторинг и адаптация стажёров",
-                    "Оценка задач по времени и сложности, прогноз затрат ресурсов",
-                    "Прямое взаимодействие с заказчиками: требования и презентация решений",
+                    "Проектирование и оптимизация структуры БД и SQL-запросов (PostgreSQL, MS SQL Server), кэширование в Redis",
+                    "Интеграция с внешними API и сторонними системами (SOAP, Apache Kafka), упаковка сервисов в Docker, сборка и выкладка через CI/CD",
+                    "Unit-тесты бизнес-логики на xUnit, асинхронная обработка (async/await)",
+                    "Поиск и исправление ошибок на продакшене, сопровождение действующих сервисов",
+                    "Оценка задач, работа по Agile/Scrum, прямое общение с заказчиками для уточнения требований и презентации решений",
                 ],
                 ["C#", ".NET", "ASP.NET Core", "EF Core", "PostgreSQL", "MS SQL", "Redis", "Kafka", "xUnit", "Agile/Scrum"]),
         ],
@@ -228,17 +278,18 @@ public static class ProfileData
         FullName: "Yeldos Sozakbay",
         Role: "C#/.NET Developer",
         Summary: "5 years of commercial backend development in C# and .NET (since 2021). I build server-side logic " +
-                 "and integrations with external systems, and optimize queries in PostgreSQL and MS SQL Server.",
+                 "and integrations with external systems, and optimize queries in PostgreSQL and MS SQL Server. " +
+                 "Since April 2026 I've been freelancing: client projects and side projects.",
         Location: "Astana, Kazakhstan",
         Contacts: Contacts,
         Stats:
         [
             new("5", "Years of experience"),
-            new("25+", "Technologies"),
+            new("45+", "Technologies"),
             new("4", "Certificates"),
             new("3", "Languages"),
         ],
-        SkillGroups: SkillGroups("Languages", "Platform & practices", "Data & tools", "OOP / SOLID"),
+        SkillGroups: SkillGroups("Languages", "Platform & practices", "Data & tools", "OOP / SOLID", "Java (side projects)"),
         Expertise:
         [
             new("api", "Backend & Integrations",
@@ -296,6 +347,18 @@ public static class ProfileData
         ],
         Projects:
         [
+            new("PayLedger — double-entry payment ledger (in progress)",
+                "A Java fintech project: accounts, transfers and double-entry postings. Built step by step, like OrderFlow.",
+                [
+                    "REST API on Spring Boot 4: Problem Details, OpenAPI, health checks",
+                    "Double-entry: every transfer is a set of balanced postings in one transaction",
+                    "No double spending: optimistic locking with retry on conflict",
+                    "Idempotent transfers via the Idempotency-Key header",
+                    "Structured JSON logs, PostgreSQL and Flyway migrations",
+                    "Next: Transactional Outbox → Kafka, Testcontainers tests, CI",
+                ],
+                PayLedgerTags,
+                "https://github.com/yeldos13/PayLedger"),
             new("OrderFlow — order service with reliable event delivery",
                 "An order service that delivers events to an external system via Kafka and survives its failures.",
                 [
@@ -308,6 +371,16 @@ public static class ProfileData
                 ],
                 OrderFlowTags,
                 "https://github.com/yeldos13/OrderFlow"),
+            new("AnikiChatBot — Telegram bot for group chats",
+                "A Telegram bot on .NET 10 (Worker Service) with handy commands for chats.",
+                [
+                    "Exchange rates and weather on command",
+                    "Anti-spam for groups",
+                    "Chat activity statistics",
+                    "Unit tests with xUnit",
+                ],
+                AnikiTags,
+                "https://github.com/yeldos13/TelegramBot"),
         ],
         Experience:
         [
@@ -316,18 +389,17 @@ public static class ProfileData
                 "Developing and maintaining server-side applications and services in C# and .NET: business logic, " +
                 "database work and integrations with external systems.",
                 [
-                    "Implemented business logic and client-server modules to technical specifications",
-                    "Built REST APIs with ASP.NET Core (Web API), documented with Swagger",
-                    "Worked with data via Entity Framework Core and LINQ, using raw SQL where performance mattered",
-                    "Cached frequently requested data in Redis",
-                    "Wrote unit tests for business logic with xUnit",
-                    "Built and optimized database schemas and SQL queries (PostgreSQL / MS SQL Server)",
-                    "Integrated external APIs and third-party systems (SOAP, Apache Kafka)",
-                    "Used async/await so the system doesn't block on long-running operations",
-                    "Took part in code reviews and followed clean code standards",
-                    "Mentored and onboarded interns",
-                    "Estimated task effort and complexity, forecast development resources",
-                    "Worked directly with clients: gathering requirements and presenting solutions",
+                    "Cut key report generation from 15 to 2 seconds and reduced database server load by 40%: execution plans (EXPLAIN ANALYZE), rewritten heavy queries, composite indexes, async processing",
+                    "Built an integration layer with 10+ external systems (SOAP/WSDL, Apache Kafka): thousands of messages a day, retries and logging — no data loss, no more manual resending",
+                    "Launched a client-server reporting module in a couple of months (.NET, PostgreSQL, StimulSoft Reports): reports are generated automatically instead of by hand in Excel, used by thousands of employees",
+                    "Supervised interns and took part in code reviews",
+                    "REST API on ASP.NET Core (Web API) documented with Swagger",
+                    "Data access with Entity Framework Core and LINQ, raw SQL where performance matters",
+                    "Designed and optimized database schemas and SQL queries (PostgreSQL, MS SQL Server), caching in Redis",
+                    "Integrated external APIs and third-party systems (SOAP, Apache Kafka), packaged services in Docker, build and deployment via CI/CD",
+                    "Unit tests for business logic with xUnit, async processing (async/await)",
+                    "Found and fixed production issues, maintained live services",
+                    "Task estimation, Agile/Scrum, direct communication with clients to clarify requirements and present solutions",
                 ],
                 ["C#", ".NET", "ASP.NET Core", "EF Core", "PostgreSQL", "MS SQL", "Redis", "Kafka", "xUnit", "Agile/Scrum"]),
         ],
@@ -376,17 +448,17 @@ public static class ProfileData
         Role: "C#/.NET әзірлеушісі",
         Summary: "C# және .NET платформасындағы коммерциялық backend-әзірлеуде 5 жылдық тәжірибем бар (2021 жылдан бері). " +
                  "Серверлік логиканы және сыртқы жүйелермен интеграцияларды әзірлеймін, PostgreSQL мен MS SQL Server-дегі " +
-                 "сұраныстарды оңтайландырамын.",
+                 "сұраныстарды оңтайландырамын. 2026 жылдың сәуірінен бастап фрилансте жұмыс істеймін: жеке тапсырыстар мен жеке жобалар.",
         Location: "Астана, Қазақстан",
         Contacts: Contacts,
         Stats:
         [
             new("5", "Жыл тәжірибе"),
-            new("25+", "Технология"),
+            new("45+", "Технология"),
             new("4", "Сертификат"),
             new("3", "Тіл"),
         ],
-        SkillGroups: SkillGroups("Тілдер", "Платформа және тәсілдер", "Деректер және құралдар", "OOP / SOLID"),
+        SkillGroups: SkillGroups("Тілдер", "Платформа және тәсілдер", "Деректер және құралдар", "OOP / SOLID", "Java (жеке жобалар)"),
         Expertise:
         [
             new("api", "Серверлік әзірлеу және интеграциялар",
@@ -444,6 +516,18 @@ public static class ProfileData
         ],
         Projects:
         [
+            new("PayLedger — қос жазбалы төлем сервисі (әзірленуде)",
+                "Java-дағы финтех-жоба: шоттар, аударымдар және қос жазба қағидасы бойынша проводкалар. OrderFlow сияқты кезең-кезеңімен жазылуда.",
+                [
+                    "Spring Boot 4-тегі REST API: Problem Details, OpenAPI, health checks",
+                    "Қос жазба: әр аударым — бір транзакциядағы теңгерілген проводкалар",
+                    "Екі рет жұмсаудан қорғау: optimistic locking және қақтығыс кезінде қайталау",
+                    "Idempotency-Key тақырыбы бойынша аударымдардың идемпотенттілігі",
+                    "Құрылымдалған JSON-логтар, PostgreSQL және Flyway-миграциялар",
+                    "Әрі қарай: Transactional Outbox → Kafka, Testcontainers тесттері, CI",
+                ],
+                PayLedgerTags,
+                "https://github.com/yeldos13/PayLedger"),
             new("OrderFlow — оқиғаларды сенімді жеткізетін тапсырыстар сервисі",
                 "Оқиғаларды Kafka арқылы сыртқы жүйеге жіберетін және оның ақауларына төзімді тапсырыстар сервисі.",
                 [
@@ -456,6 +540,16 @@ public static class ProfileData
                 ],
                 OrderFlowTags,
                 "https://github.com/yeldos13/OrderFlow"),
+            new("AnikiChatBot — топтық чаттарға арналған Telegram-бот",
+                "Чаттарға пайдалы командалары бар .NET 10 (Worker Service) Telegram-боты.",
+                [
+                    "Команда бойынша валюта бағамы және ауа райы",
+                    "Топтарға арналған антиспам",
+                    "Чат белсенділігінің статистикасы",
+                    "xUnit-тегі unit-тесттер",
+                ],
+                AnikiTags,
+                "https://github.com/yeldos13/TelegramBot"),
         ],
         Experience:
         [
@@ -464,18 +558,17 @@ public static class ProfileData
                 "C# және .NET-те серверлік қосымшалар мен сервистерді әзірлеу және сүйемелдеу: бизнес-логика, " +
                 "дерекқормен жұмыс, сыртқы жүйелермен интеграция.",
                 [
-                    "Техникалық талаптар бойынша бизнес-логика мен клиент-серверлік модульдерді іске асыру",
-                    "ASP.NET Core (Web API) негізінде REST API әзірлеу, Swagger арқылы құжаттау",
-                    "Entity Framework Core және LINQ арқылы деректермен жұмыс, өнімділік маңызды жерлерде тікелей SQL-сұраныстар",
-                    "Жиі сұралатын деректерді Redis-те кэштеу",
-                    "Бизнес-логиканы xUnit-тегі unit-тесттермен қамту",
-                    "Дерекқор құрылымы мен SQL-сұраныстарды әзірлеу және оңтайландыру (PostgreSQL / MS SQL Server)",
-                    "Сыртқы API және үшінші тарап жүйелерімен интеграция (SOAP, Apache Kafka)",
-                    "Жүйе ұзақ операцияларда бұғатталмауы үшін асинхронды өңдеу (async/await)",
-                    "Code review-ға қатысу, таза код стандарттарын ұстану",
-                    "Тағылымдамашыларға тәлімгерлік ету және оларды бейімдеу",
-                    "Тапсырмаларды уақыты мен күрделілігі бойынша бағалау, ресурс шығынын болжау",
-                    "Тапсырыс берушілермен тікелей жұмыс: талаптарды нақтылау және шешімдерді таныстыру",
+                    "Негізгі есептерді қалыптастыруды 15-тен 2 секундқа дейін жеделдетіп, ДҚ серверіне жүктемені 40%-ға азайттым: орындау жоспарлары (EXPLAIN ANALYZE), ауыр сұраныстарды қайта жазу, құрама индекстер, асинхронды өңдеу",
+                    "10+ сыртқы жүйемен интеграциялық қабатты әзірледім (SOAP/WSDL, Apache Kafka): тәулігіне мыңдаған хабарлама, қайталау және журналдау — деректер жоғалмайды, қолмен қайта жіберу енді қажет емес",
+                    "Бірнеше айда клиент-серверлік есептілік модулін іске қостым (.NET, PostgreSQL, StimulSoft Reports): есептер Excel-де қолмен жиналудың орнына автоматты қалыптасады, модульді мыңдаған қызметкер пайдаланады",
+                    "Тағылымдамашыларға жетекшілік еттім, code review-ға қатыстым",
+                    "ASP.NET Core (Web API)-да Swagger құжаттамасы бар REST API",
+                    "Entity Framework Core және LINQ арқылы деректермен жұмыс, өнімділік маңызды жерде тікелей SQL-сұраныстар",
+                    "Дерекқор құрылымы мен SQL-сұраныстарды жобалау және оңтайландыру (PostgreSQL, MS SQL Server), Redis-те кэштеу",
+                    "Сыртқы API және үшінші тарап жүйелерімен интеграция (SOAP, Apache Kafka), сервистерді Docker-ге орау, CI/CD арқылы құрастыру және жариялау",
+                    "xUnit-тегі бизнес-логиканың unit-тесттері, асинхронды өңдеу (async/await)",
+                    "Продакшендегі қателерді іздеу және түзету, жұмыс істеп тұрған сервистерді сүйемелдеу",
+                    "Тапсырмаларды бағалау, Agile/Scrum бойынша жұмыс, талаптарды нақтылау және шешімдерді таныстыру үшін тапсырыс берушілермен тікелей байланыс",
                 ],
                 ["C#", ".NET", "ASP.NET Core", "EF Core", "PostgreSQL", "MS SQL", "Redis", "Kafka", "xUnit", "Agile/Scrum"]),
         ],
