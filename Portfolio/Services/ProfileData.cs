@@ -153,7 +153,7 @@ public static class ProfileData
         ],
         Projects:
         [
-            new("PayLedger — платёжный сервис с двойной записью (в разработке)",
+            new("PayLedger — платёжный сервис с двойной записью",
                 "Финтех-проект, счета, переводы и проводки по принципу двойной записи.",
                 [
                     "REST API на Spring Boot 4",
@@ -304,8 +304,8 @@ public static class ProfileData
         ],
         Projects:
         [
-            new("PayLedger — double-entry payment ledger (in progress)",
-                "A Java fintech project: accounts, transfers and double-entry postings. Built step by step, like OrderFlow.",
+            new("PayLedger — double-entry payment ledger",
+                "A fintech project: accounts, transfers and double-entry postings.",
                 [
                     "REST API on Spring Boot 4: Problem Details, OpenAPI, health checks",
                     "Double-entry: every transfer is a set of balanced postings in one transaction",
@@ -456,7 +456,7 @@ public static class ProfileData
         Projects:
         [
             new("PayLedger — қос жазбалы төлем сервисі (әзірленуде)",
-                "Java-дағы финтех-жоба: шоттар, аударымдар және қос жазба қағидасы бойынша проводкалар. OrderFlow сияқты кезең-кезеңімен жазылуда.",
+                "Финтех-жоба: шоттар, аударымдар және қос жазба қағидасы бойынша проводкалар.",
                 [
                     "Spring Boot 4-тегі REST API: Problem Details, OpenAPI, health checks",
                     "Қос жазба: әр аударым — бір транзакциядағы теңгерілген проводкалар",
