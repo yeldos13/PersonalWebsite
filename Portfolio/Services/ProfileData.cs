@@ -37,6 +37,9 @@ public static class ProfileData
 
     private static readonly string[] AnikiTags = ["C#", ".NET 10", "Worker Service", "Telegram Bot API", "xUnit"];
 
+    private static readonly string[] PlatformTags =
+        ["Kubernetes", "k3d", "Helm", "OpenTelemetry", "Tempo", "Prometheus", "Grafana", "k6", "Kafka", "PostgreSQL"];
+
     private static readonly string[] OrderFlowTags =
         ["ASP.NET Core", "EF Core", "PostgreSQL", "Kafka", "Outbox", "Polly", "xUnit", "Testcontainers", "Serilog", "Docker"];
 
@@ -177,6 +180,17 @@ public static class ProfileData
                 ],
                 OrderFlowTags,
                 "https://github.com/yeldos13/OrderFlow"),
+            new("Platform — Kubernetes и observability для OrderFlow и PayLedger",
+                "Локальное окружение, близкое к продакшену: k3d-кластер на Helm поднимается одной командой.",
+                [
+                    "Helm-чарты: PostgreSQL, Kafka в KRaft, все сервисы с миграциями в init-контейнере",
+                    "OpenTelemetry: один трейс от HTTP-запроса через outbox и Kafka до консюмера, в Tempo",
+                    "Prometheus и Grafana: RPS, p95, 5xx, размер outbox, лаг консюмеров; дашборд как код",
+                    "Нагрузочный тест на k6 до 400 RPS, p95 API меньше 10 мс",
+                    "Нашёл узкое место в публикации outbox PayLedger: пик очереди упал с 19 000 до 236",
+                ],
+                PlatformTags,
+                "https://github.com/yeldos13/Platform"),
             new("AnikiChatBot — Telegram-бот для групповых чатов",
                 "Telegram-бот на .NET 10 (Worker Service) с полезными командами для чатов.",
                 [
@@ -328,6 +342,17 @@ public static class ProfileData
                 ],
                 OrderFlowTags,
                 "https://github.com/yeldos13/OrderFlow"),
+            new("Platform — Kubernetes and observability for OrderFlow and PayLedger",
+                "A local production-like environment: a k3d cluster deployed with Helm, brought up by one command.",
+                [
+                    "Helm charts: PostgreSQL, Kafka in KRaft mode, every service with migrations in an init container",
+                    "OpenTelemetry: one trace from the HTTP request through the outbox and Kafka to the consumer, in Tempo",
+                    "Prometheus and Grafana: RPS, p95, 5xx, outbox size, consumer lag; dashboard as code",
+                    "k6 load test up to 400 req/s, API p95 under 10 ms",
+                    "Found the bottleneck in PayLedger outbox publishing: peak backlog dropped from 19,000 to 236",
+                ],
+                PlatformTags,
+                "https://github.com/yeldos13/Platform"),
             new("AnikiChatBot — Telegram bot for group chats",
                 "A Telegram bot on .NET 10 (Worker Service) with handy commands for chats.",
                 [
@@ -479,6 +504,17 @@ public static class ProfileData
                 ],
                 OrderFlowTags,
                 "https://github.com/yeldos13/OrderFlow"),
+            new("Platform — OrderFlow және PayLedger үшін Kubernetes және observability",
+                "Продакшенге жақын жергілікті орта: Helm арқылы k3d-кластер бір командамен көтеріледі.",
+                [
+                    "Helm-чарттар: PostgreSQL, KRaft режиміндегі Kafka, init-контейнерде миграциялары бар барлық сервистер",
+                    "OpenTelemetry: HTTP-сұраныстан outbox пен Kafka арқылы консюмерге дейін бір трейс, Tempo-да",
+                    "Prometheus және Grafana: RPS, p95, 5xx, outbox көлемі, консюмер лагы; дашборд код ретінде",
+                    "k6 жүктеме тесті 400 RPS-ке дейін, API p95 10 мс-тен төмен",
+                    "PayLedger outbox жариялауындағы тар жерді таптым: кезек шыңы 19 000-нан 236-ға түсті",
+                ],
+                PlatformTags,
+                "https://github.com/yeldos13/Platform"),
             new("AnikiChatBot — топтық чаттарға арналған Telegram-бот",
                 "Чаттарға пайдалы командалары бар .NET 10 (Worker Service) Telegram-боты.",
                 [
