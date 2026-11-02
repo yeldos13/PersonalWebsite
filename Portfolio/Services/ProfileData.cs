@@ -49,8 +49,6 @@ public static class ProfileData
         [
             "C#",
             "SQL",
-            "JavaScript",
-            "Python",
             "Java",
         ]),
         new(platform,
@@ -66,9 +64,7 @@ public static class ProfileData
             oop,
             "xUnit",
             "Windows Forms",
-            ".NET MAUI",
             ".NET Framework",
-            "WPF",
             "gRPC",
             "DDD",
             "Spring Boot",
@@ -86,10 +82,6 @@ public static class ProfileData
             "Git",
             "CI/CD",
             "StimulSoft",
-            "MySQL",
-            "MongoDB",
-            "ClickHouse",
-            "RabbitMQ",
             "Kubernetes",
             "Grafana",
             "Maven",
@@ -109,7 +101,7 @@ public static class ProfileData
         Stats:
         [
             new("5", "Лет опыта"),
-            new("40+", "Технологий"),
+            new("30+", "Технологий"),
             new("4", "Сертификата"),
             new("3", "Языка"),
         ],
@@ -156,18 +148,6 @@ public static class ProfileData
         ],
         Projects:
         [
-            new("PayLedger — платёжный сервис с двойной записью",
-                "Финтех-проект, счета, переводы и проводки по принципу двойной записи.",
-                [
-                    "REST API на Spring Boot 4",
-                    "Двойная запись: каждый перевод — сбалансированные проводки в одной транзакции",
-                    "Защита от двойной траты: optimistic locking и повтор при конфликте",
-                    "Идемпотентность переводов по заголовку Idempotency-Key",
-                    "Структурированные JSON-логи, PostgreSQL и Flyway-миграции",
-                    "Дальше: Transactional Outbox → Kafka, тесты на Testcontainers, CI",
-                ],
-                PayLedgerTags,
-                "https://github.com/yeldos13/PayLedger"),
             new("OrderFlow — сервис заказов с надёжной доставкой событий",
                 "Сервис заказов, который передаёт события во внешнюю систему через Kafka и переживает её сбои.",
                 [
@@ -191,6 +171,18 @@ public static class ProfileData
                 ],
                 PlatformTags,
                 "https://github.com/yeldos13/Platform"),
+            new("PayLedger — платёжный сервис с двойной записью",
+                "Финтех-проект, счета, переводы и проводки по принципу двойной записи.",
+                [
+                    "REST API на Spring Boot 4",
+                    "Двойная запись: каждый перевод — сбалансированные проводки в одной транзакции",
+                    "Защита от двойной траты: optimistic locking и повтор при конфликте",
+                    "Идемпотентность переводов по заголовку Idempotency-Key",
+                    "Структурированные JSON-логи, PostgreSQL и Flyway-миграции",
+                    "Transactional Outbox → Kafka, тесты на Testcontainers, CI в GitHub Actions",
+                ],
+                PayLedgerTags,
+                "https://github.com/yeldos13/PayLedger"),
             new("AnikiChatBot — Telegram-бот для групповых чатов",
                 "Telegram-бот на .NET 10 (Worker Service) с полезными командами для чатов.",
                 [
@@ -205,7 +197,7 @@ public static class ProfileData
         Experience:
         [
             new(".NET разработчик", "PBSOFT", "https://pbsoft.kz/",
-                "июн 2021 — мар 2026", "4 года 10 месяцев",
+                "июн 2021 — мар 2026", "5 лет",
                 "Разработка и сопровождение серверных приложений и сервисов на C# и .NET: бизнес-логика, " +
                 "работа с БД, интеграции с внешними системами.",
                 [
@@ -239,18 +231,6 @@ public static class ProfileData
             new("2019", "CCNA: Networking", "Cisco"),
             new("2019", "CCST: Cybersecurity", "Cisco"),
         ],
-        Principles:
-        [
-            new("Качество кода",
-                "Участвую в code review и придерживаюсь ООП, SOLID и Clean Code — код должен читаться " +
-                "так же легко, как пишется.", "CR", "#6366f1"),
-            new("Менторинг",
-                "Адаптирую стажёров и помогаю им прокачивать технические навыки — сильная команда важнее " +
-                "одного сильного разработчика.", "MT", "#8b5cf6"),
-            new("Работа с заказчиком",
-                "Общаюсь с заказчиком напрямую: уточняю требования, показываю решения и держу фокус " +
-                "на результате при сжатых сроках.", "PM", "#ec4899"),
-        ],
         Languages:
         [
             new("Казахский", "Родной", "KZ", 100),
@@ -271,7 +251,7 @@ public static class ProfileData
         Stats:
         [
             new("5", "Years of experience"),
-            new("40+", "Technologies"),
+            new("30+", "Technologies"),
             new("4", "Certificates"),
             new("3", "Languages"),
         ],
@@ -318,18 +298,6 @@ public static class ProfileData
         ],
         Projects:
         [
-            new("PayLedger — double-entry payment ledger",
-                "A fintech project: accounts, transfers and double-entry postings.",
-                [
-                    "REST API on Spring Boot 4: Problem Details, OpenAPI, health checks",
-                    "Double-entry: every transfer is a set of balanced postings in one transaction",
-                    "No double spending: optimistic locking with retry on conflict",
-                    "Idempotent transfers via the Idempotency-Key header",
-                    "Structured JSON logs, PostgreSQL and Flyway migrations",
-                    "Next: Transactional Outbox → Kafka, Testcontainers tests, CI",
-                ],
-                PayLedgerTags,
-                "https://github.com/yeldos13/PayLedger"),
             new("OrderFlow — order service with reliable event delivery",
                 "An order service that delivers events to an external system via Kafka and survives its failures.",
                 [
@@ -353,6 +321,18 @@ public static class ProfileData
                 ],
                 PlatformTags,
                 "https://github.com/yeldos13/Platform"),
+            new("PayLedger — double-entry payment ledger",
+                "A fintech project: accounts, transfers and double-entry postings.",
+                [
+                    "REST API on Spring Boot 4: Problem Details, OpenAPI, health checks",
+                    "Double-entry: every transfer is a set of balanced postings in one transaction",
+                    "No double spending: optimistic locking with retry on conflict",
+                    "Idempotent transfers via the Idempotency-Key header",
+                    "Structured JSON logs, PostgreSQL and Flyway migrations",
+                    "Transactional Outbox → Kafka, Testcontainers tests, CI on GitHub Actions",
+                ],
+                PayLedgerTags,
+                "https://github.com/yeldos13/PayLedger"),
             new("AnikiChatBot — Telegram bot for group chats",
                 "A Telegram bot on .NET 10 (Worker Service) with handy commands for chats.",
                 [
@@ -367,7 +347,7 @@ public static class ProfileData
         Experience:
         [
             new(".NET Developer", "PBSOFT", "https://pbsoft.kz/",
-                "Jun 2021 — Mar 2026", "4 years 10 months",
+                "Jun 2021 — Mar 2026", "5 years",
                 "Developing and maintaining server-side applications and services in C# and .NET: business logic, " +
                 "database work and integrations with external systems.",
                 [
@@ -401,18 +381,6 @@ public static class ProfileData
             new("2019", "CCNA: Networking", "Cisco"),
             new("2019", "CCST: Cybersecurity", "Cisco"),
         ],
-        Principles:
-        [
-            new("Code quality",
-                "I take part in code reviews and stick to OOP, SOLID and Clean Code — code should be " +
-                "as easy to read as it is to write.", "CR", "#6366f1"),
-            new("Mentoring",
-                "I onboard interns and help them grow their technical skills — a strong team matters more " +
-                "than one strong developer.", "MT", "#8b5cf6"),
-            new("Working with clients",
-                "I talk to clients directly: clarify requirements, show solutions and stay focused on results " +
-                "under tight deadlines.", "PM", "#ec4899"),
-        ],
         Languages:
         [
             new("Kazakh", "Native", "KZ", 100),
@@ -433,7 +401,7 @@ public static class ProfileData
         Stats:
         [
             new("5", "Жыл тәжірибе"),
-            new("40+", "Технология"),
+            new("30+", "Технология"),
             new("4", "Сертификат"),
             new("3", "Тіл"),
         ],
@@ -480,18 +448,6 @@ public static class ProfileData
         ],
         Projects:
         [
-            new("PayLedger — қос жазбалы төлем сервисі",
-                "Финтех-жоба: шоттар, аударымдар және қос жазба қағидасы бойынша проводкалар.",
-                [
-                    "Spring Boot 4-тегі REST API: Problem Details, OpenAPI, health checks",
-                    "Қос жазба: әр аударым — бір транзакциядағы теңгерілген проводкалар",
-                    "Екі рет жұмсаудан қорғау: optimistic locking және қақтығыс кезінде қайталау",
-                    "Idempotency-Key тақырыбы бойынша аударымдардың идемпотенттілігі",
-                    "Құрылымдалған JSON-логтар, PostgreSQL және Flyway-миграциялар",
-                    "Әрі қарай: Transactional Outbox → Kafka, Testcontainers тесттері, CI",
-                ],
-                PayLedgerTags,
-                "https://github.com/yeldos13/PayLedger"),
             new("OrderFlow — оқиғаларды сенімді жеткізетін тапсырыстар сервисі",
                 "Оқиғаларды Kafka арқылы сыртқы жүйеге жіберетін және оның ақауларына төзімді тапсырыстар сервисі.",
                 [
@@ -515,6 +471,18 @@ public static class ProfileData
                 ],
                 PlatformTags,
                 "https://github.com/yeldos13/Platform"),
+            new("PayLedger — қос жазбалы төлем сервисі",
+                "Финтех-жоба: шоттар, аударымдар және қос жазба қағидасы бойынша проводкалар.",
+                [
+                    "Spring Boot 4-тегі REST API: Problem Details, OpenAPI, health checks",
+                    "Қос жазба: әр аударым — бір транзакциядағы теңгерілген проводкалар",
+                    "Екі рет жұмсаудан қорғау: optimistic locking және қақтығыс кезінде қайталау",
+                    "Idempotency-Key тақырыбы бойынша аударымдардың идемпотенттілігі",
+                    "Құрылымдалған JSON-логтар, PostgreSQL және Flyway-миграциялар",
+                    "Transactional Outbox → Kafka, Testcontainers тесттері, GitHub Actions-та CI",
+                ],
+                PayLedgerTags,
+                "https://github.com/yeldos13/PayLedger"),
             new("AnikiChatBot — топтық чаттарға арналған Telegram-бот",
                 "Чаттарға пайдалы командалары бар .NET 10 (Worker Service) Telegram-боты.",
                 [
@@ -529,7 +497,7 @@ public static class ProfileData
         Experience:
         [
             new(".NET әзірлеушісі", "PBSOFT", "https://pbsoft.kz/",
-                "маус. 2021 — нау. 2026", "4 жыл 10 ай",
+                "маус. 2021 — нау. 2026", "5 жыл",
                 "C# және .NET-те серверлік қосымшалар мен сервистерді әзірлеу және сүйемелдеу: бизнес-логика, " +
                 "дерекқормен жұмыс, сыртқы жүйелермен интеграция.",
                 [
@@ -562,18 +530,6 @@ public static class ProfileData
             new("2025", "PostgreSQL Certification Exam", "W3Schools"),
             new("2019", "CCNA: Networking", "Cisco"),
             new("2019", "CCST: Cybersecurity", "Cisco"),
-        ],
-        Principles:
-        [
-            new("Код сапасы",
-                "Code review-ға қатысамын және OOP, SOLID, Clean Code қағидаттарын ұстанамын — код қалай оңай " +
-                "жазылса, солай оңай оқылуы керек.", "CR", "#6366f1"),
-            new("Тәлімгерлік",
-                "Тағылымдамашыларды бейімдеп, олардың техникалық дағдыларын дамытуға көмектесемін — күшті команда " +
-                "бір күшті әзірлеушіден маңыздырақ.", "MT", "#8b5cf6"),
-            new("Тапсырыс берушімен жұмыс",
-                "Тапсырыс берушімен тікелей сөйлесемін: талаптарды нақтылаймын, шешімдерді көрсетемін және " +
-                "қысқа мерзімде нәтижеге назар аударамын.", "PM", "#ec4899"),
         ],
         Languages:
         [

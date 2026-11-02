@@ -322,13 +322,6 @@ a.row-title:hover { color: var(--accent); }
 
 .edu-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 1.25rem; }
 
-.principle { display: flex; flex-direction: column; }
-.principle-badge {
-    display: grid; place-items: center; width: 44px; height: 44px; margin-bottom: 1.25rem; border-radius: 12px;
-    font-size: .8125rem; font-weight: 700; letter-spacing: .02em; color: #fff; background: var(--c);
-}
-.principle .card-title { margin-bottom: .5rem; }
-
 .lang { display: flex; flex-direction: column; gap: .25rem; }
 .lang-head { display: flex; justify-content: space-between; align-items: baseline; }
 .lang .card-title { margin-bottom: 0; }

@@ -13,7 +13,6 @@ public record Profile(
     IReadOnlyList<Job> Experience,
     IReadOnlyList<Education> Education,
     IReadOnlyList<Certificate> Certificates,
-    IReadOnlyList<Principle> Principles,
     IReadOnlyList<SpokenLanguage> Languages,
     string WorkPreferences);
 
@@ -47,6 +46,5 @@ public record Education(string Year, string Degree, string Institution, string D
 
 public record Certificate(string Year, string Title, string Issuer);
 
-public record Principle(string Title, string Text, string Initials, string Color);
 
 public record SpokenLanguage(string Name, string Level, string Code, int Percent);

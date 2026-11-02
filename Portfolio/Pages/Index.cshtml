@@ -353,22 +353,6 @@
         </div>
     </section>
 
-    <section class="section" id="principles">
-        <div class="container">
-            <h2 class="section-title reveal">@ui.SectionPrinciples</h2>
-            <div class="grid-3">
-                @foreach (var pr in p.Principles)
-                {
-                    <figure class="card principle reveal">
-                        <span class="principle-badge" style="--c:@pr.Color">@pr.Initials</span>
-                        <h3 class="card-title">@pr.Title</h3>
-                        <blockquote class="card-text">@pr.Text</blockquote>
-                    </figure>
-                }
-            </div>
-        </div>
-    </section>
-
     <section class="section contact" id="contact">
         <div class="container">
             <div class="contact-card reveal">
