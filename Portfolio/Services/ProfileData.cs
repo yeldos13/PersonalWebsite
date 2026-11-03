@@ -35,8 +35,6 @@ public static class ProfileData
     private static readonly string[] PayLedgerTags =
         ["Java 21", "Spring Boot 4", "Spring Data JPA", "PostgreSQL", "Flyway", "Maven", "Kafka", "Docker"];
 
-    private static readonly string[] AnikiTags = ["C#", ".NET 10", "Worker Service", "Telegram Bot API", "xUnit"];
-
     private static readonly string[] PlatformTags =
         ["Kubernetes", "k3d", "Helm", "OpenTelemetry", "Tempo", "Prometheus", "Grafana", "k6", "Kafka", "PostgreSQL"];
 
@@ -183,16 +181,6 @@ public static class ProfileData
                 ],
                 PayLedgerTags,
                 "https://github.com/yeldos13/PayLedger"),
-            new("AnikiChatBot — Telegram-бот для групповых чатов",
-                "Telegram-бот на .NET 10 (Worker Service) с полезными командами для чатов.",
-                [
-                    "Курсы валют и погода по команде",
-                    "Антиспам для групп",
-                    "Статистика активности чата",
-                    "Unit-тесты на xUnit",
-                ],
-                AnikiTags,
-                "https://github.com/yeldos13/TelegramBot"),
         ],
         Experience:
         [
@@ -333,16 +321,6 @@ public static class ProfileData
                 ],
                 PayLedgerTags,
                 "https://github.com/yeldos13/PayLedger"),
-            new("AnikiChatBot — Telegram bot for group chats",
-                "A Telegram bot on .NET 10 (Worker Service) with handy commands for chats.",
-                [
-                    "Exchange rates and weather on command",
-                    "Anti-spam for groups",
-                    "Chat activity statistics",
-                    "Unit tests with xUnit",
-                ],
-                AnikiTags,
-                "https://github.com/yeldos13/TelegramBot"),
         ],
         Experience:
         [
@@ -483,16 +461,6 @@ public static class ProfileData
                 ],
                 PayLedgerTags,
                 "https://github.com/yeldos13/PayLedger"),
-            new("AnikiChatBot — топтық чаттарға арналған Telegram-бот",
-                "Чаттарға пайдалы командалары бар .NET 10 (Worker Service) Telegram-боты.",
-                [
-                    "Команда бойынша валюта бағамы және ауа райы",
-                    "Топтарға арналған антиспам",
-                    "Чат белсенділігінің статистикасы",
-                    "xUnit-тегі unit-тесттер",
-                ],
-                AnikiTags,
-                "https://github.com/yeldos13/TelegramBot"),
         ],
         Experience:
         [
