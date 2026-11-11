@@ -38,10 +38,13 @@ public partial class VisitLog
     // Secret for /stats?key=..., also salts visitor hashes so they can't be reversed to an IP.
     public string Key { get; }
 
-    public void Add(HttpContext ctx, string kind, string target)
+    // Set by /stats so the owner's own visits are not counted.
+    public const string IgnoreCookie = "notrack";
+
+    public void Add(HttpContext ctx, string kind, string target, string? referrerUrl = null)
     {
         var ua = ctx.Request.Headers.UserAgent.ToString();
-        if (ua.Length == 0 || BotRegex().IsMatch(ua)) return;
+        if (ua.Length == 0 || BotRegex().IsMatch(ua) || ctx.Request.Cookies.ContainsKey(IgnoreCookie)) return;
 
         var now = DateTimeOffset.UtcNow;
         var ip = ctx.Connection.RemoteIpAddress;
@@ -52,7 +55,7 @@ public partial class VisitLog
         var (country, city) = _geo.Lookup(ip);
 
         string? referrer = null;
-        if (Uri.TryCreate(ctx.Request.Headers.Referer.ToString(), UriKind.Absolute, out var r)
+        if (Uri.TryCreate(referrerUrl ?? ctx.Request.Headers.Referer.ToString(), UriKind.Absolute, out var r)
             && !r.Host.EndsWith("sozakbay.dev") && !r.Host.EndsWith("sozakbay.asia") && r.Host != "localhost")
             referrer = r.Host.StartsWith("www.") ? r.Host[4..] : r.Host;
 

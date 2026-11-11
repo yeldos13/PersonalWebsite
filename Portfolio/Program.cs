@@ -43,9 +43,7 @@ app.Use(async (ctx, next) =>
     await next();
     if (!HttpMethods.IsGet(ctx.Request.Method) || ctx.Response.StatusCode != 200) return;
     var path = ctx.Request.Path.Value ?? "";
-    if (path is "/" or "/ru" or "/en" or "/kk")
-        visits.Add(ctx, "view", ProfileData.Normalize(path.TrimStart('/')));
-    else if (path.StartsWith("/files/") && path.EndsWith(".pdf"))
+    if (path.StartsWith("/files/") && path.EndsWith(".pdf"))
         visits.Add(ctx, "cv", ProfileData.Normalize(path[^6..^4]));
 });
 
@@ -55,9 +53,11 @@ app.UseRouting();
 app.MapRazorPages();
 
 string[] clickTargets = ["telegram", "phone", "email", "github", "linkedin", "project"];
-app.MapPost("/t", (string e, HttpContext ctx) =>
+// Page views come from a script beacon, not the page request: scanners that fake a browser user-agent rarely run JS.
+app.MapPost("/t", (string e, string? lang, string? r, HttpContext ctx) =>
 {
-    if (clickTargets.Contains(e)) visits.Add(ctx, "click", e);
+    if (e == "view") visits.Add(ctx, "view", ProfileData.Normalize(lang), r);
+    else if (clickTargets.Contains(e)) visits.Add(ctx, "click", e);
     return Results.NoContent();
 });
 

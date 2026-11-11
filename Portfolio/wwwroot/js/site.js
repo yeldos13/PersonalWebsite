@@ -41,6 +41,8 @@
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
 
+    navigator.sendBeacon?.("/t?e=view&lang=" + root.lang + "&r=" + encodeURIComponent(document.referrer));
+
     const clickTarget = href =>
         href.startsWith("tel:") ? "phone" :
         href.startsWith("mailto:") ? "email" :
