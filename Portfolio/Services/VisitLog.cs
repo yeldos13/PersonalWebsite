@@ -5,20 +5,29 @@ using System.Text.RegularExpressions;
 
 namespace Portfolio.Services;
 
-public record Visit(DateTimeOffset Time, string Kind, string Target, string? Referrer, bool Mobile, string Visitor);
+public record Visit(DateTimeOffset Time, string Kind, string Target, string? Referrer, bool Mobile, string Visitor,
+    string? Country = null, string? City = null);
 
 // shortcut: append-only JSON lines file read whole on /stats, fine for a portfolio; move to SQLite past ~1M lines
 public partial class VisitLog
 {
     private readonly string _file;
     private readonly Lock _lock = new();
+    private readonly GeoIp _geo;
 
     // Outside the publish folder so deploys keep the data; dev runs on the same machine get their own folder.
-    public VisitLog(IHostEnvironment env)
+    public static string DataDir(IHostEnvironment env)
     {
         var dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData),
             env.IsDevelopment() ? "Portfolio-dev" : "Portfolio");
         Directory.CreateDirectory(dir);
+        return dir;
+    }
+
+    public VisitLog(IHostEnvironment env, GeoIp geo)
+    {
+        _geo = geo;
+        var dir = DataDir(env);
         _file = Path.Combine(dir, "visits.jsonl");
         var keyFile = Path.Combine(dir, "stats-key.txt");
         if (!File.Exists(keyFile))
@@ -35,17 +44,19 @@ public partial class VisitLog
         if (ua.Length == 0 || BotRegex().IsMatch(ua)) return;
 
         var now = DateTimeOffset.UtcNow;
-        var ip = ctx.Connection.RemoteIpAddress?.ToString() ?? "";
+        var ip = ctx.Connection.RemoteIpAddress;
         // Day in the hash: a visitor is unique per day, never tracked across days.
         var visitor = Convert.ToHexString(SHA256.HashData(
             Encoding.UTF8.GetBytes($"{Key}|{now:yyyy-MM-dd}|{ip}|{ua}")))[..12];
+
+        var (country, city) = _geo.Lookup(ip);
 
         string? referrer = null;
         if (Uri.TryCreate(ctx.Request.Headers.Referer.ToString(), UriKind.Absolute, out var r)
             && !r.Host.EndsWith("sozakbay.dev") && !r.Host.EndsWith("sozakbay.asia") && r.Host != "localhost")
             referrer = r.Host.StartsWith("www.") ? r.Host[4..] : r.Host;
 
-        var line = JsonSerializer.Serialize(new Visit(now, kind, target, referrer, ua.Contains("Mobi"), visitor));
+        var line = JsonSerializer.Serialize(new Visit(now, kind, target, referrer, ua.Contains("Mobi"), visitor, country, city));
         lock (_lock) File.AppendAllText(_file, line + "\n");
     }
 

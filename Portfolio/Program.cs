@@ -22,6 +22,9 @@ builder.Services.ConfigureHttpJsonOptions(options =>
 
 builder.Services.AddRazorPages();
 builder.Services.AddMemoryCache();
+builder.Services.AddHttpClient();
+builder.Services.AddSingleton<GeoIp>();
+builder.Services.AddHostedService(sp => sp.GetRequiredService<GeoIp>());
 builder.Services.AddSingleton<VisitLog>();
 builder.Services.AddHttpClient<GitHubActivityService>(GitHubActivityService.Configure);
 
