@@ -22,6 +22,7 @@ builder.Services.ConfigureHttpJsonOptions(options =>
 
 builder.Services.AddRazorPages();
 builder.Services.AddMemoryCache();
+builder.Services.AddSingleton<VisitLog>();
 builder.Services.AddHttpClient<GitHubActivityService>(GitHubActivityService.Configure);
 
 var app = builder.Build();
@@ -33,9 +34,28 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+var visits = app.Services.GetRequiredService<VisitLog>();
+app.Use(async (ctx, next) =>
+{
+    await next();
+    if (!HttpMethods.IsGet(ctx.Request.Method) || ctx.Response.StatusCode != 200) return;
+    var path = ctx.Request.Path.Value ?? "";
+    if (path is "/" or "/ru" or "/en" or "/kk")
+        visits.Add(ctx, "view", ProfileData.Normalize(path.TrimStart('/')));
+    else if (path.StartsWith("/files/") && path.EndsWith(".pdf"))
+        visits.Add(ctx, "cv", ProfileData.Normalize(path[^6..^4]));
+});
+
 app.UseStaticFiles();
 app.UseRouting();
 
 app.MapRazorPages();
+
+string[] clickTargets = ["telegram", "phone", "email", "github", "linkedin", "project"];
+app.MapPost("/t", (string e, HttpContext ctx) =>
+{
+    if (clickTargets.Contains(e)) visits.Add(ctx, "click", e);
+    return Results.NoContent();
+});
 
 app.Run();

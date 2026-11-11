@@ -1,0 +1,130 @@
+@page "/stats"
+@model StatsModel
+@{
+    Layout = null;
+    var v = Model.Visits;
+    var views = v.Where(x => x.Kind == "view").ToList();
+    var local = (Visit x) => DateOnly.FromDateTime(x.Time.ToOffset(StatsModel.Astana).DateTime);
+    var byDay = Enumerable.Range(0, Model.Days)
+        .Select(i => DateOnly.FromDateTime(DateTimeOffset.UtcNow.ToOffset(StatsModel.Astana).DateTime).AddDays(-i))
+        .Select(d => (Day: d,
+            Views: views.Count(x => local(x) == d),
+            Visitors: views.Where(x => local(x) == d).Select(x => x.Visitor).Distinct().Count(),
+            Cv: v.Count(x => x.Kind == "cv" && local(x) == d)))
+        .ToList();
+    var max = Math.Max(1, byDay.Max(d => d.Views));
+    var top = (IEnumerable<string> keys) => keys.GroupBy(k => k).Select(g => (g.Key, Count: g.Count())).OrderByDescending(g => g.Count).ToList();
+    var visitors = byDay.Sum(d => d.Visitors);
+}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Статистика сайта</title>
+    <style>
+        :root { --bg: #fff; --fg: #18181b; --muted: #71717a; --line: #e4e4e7; --bar: #6366f1; }
+        @@media (prefers-color-scheme: dark) { :root { --bg: #09090b; --fg: #fafafa; --muted: #a1a1aa; --line: #27272a; } }
+        body { margin: 0; padding: 24px 16px; background: var(--bg); color: var(--fg); font: 14px/1.5 system-ui, sans-serif; }
+        main { max-width: 960px; margin: 0 auto; }
+        h1 { font-size: 22px; margin: 0 0 4px; } h2 { font-size: 16px; margin: 28px 0 8px; }
+        .muted { color: var(--muted); } a { color: var(--bar); }
+        .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 16px; }
+        .tile { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+        .tile b { display: block; font-size: 24px; }
+        .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0 24px; }
+        table { width: 100%; border-collapse: collapse; }
+        td, th { padding: 4px 6px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap; }
+        td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
+        .bar { height: 8px; border-radius: 4px; background: var(--bar); min-width: 1px; }
+        .scroll { overflow-x: auto; }
+    </style>
+</head>
+<body>
+<main>
+    <h1>Статистика sozakbay.dev</h1>
+    <div class="muted">
+        За @Model.Days дн. ·
+        @foreach (var d in new[] { 7, 30, 90, 365 })
+        {
+            <a href="?key=@Model.Key&days=@d">@d</a>
+        }
+    </div>
+
+    <div class="tiles">
+        <div class="tile"><b>@views.Count</b><span class="muted">просмотров</span></div>
+        <div class="tile"><b>@visitors</b><span class="muted">посетителей (по дням)</span></div>
+        <div class="tile"><b>@v.Count(x => x.Kind == "cv")</b><span class="muted">скачиваний резюме</span></div>
+        <div class="tile"><b>@v.Count(x => x.Kind == "click")</b><span class="muted">кликов по контактам</span></div>
+        <div class="tile"><b>@(views.Count == 0 ? 0 : views.Count(x => x.Mobile) * 100 / views.Count)%</b><span class="muted">с телефона</span></div>
+    </div>
+
+    <div class="cols">
+        <div>
+            <h2>Откуда пришли</h2>
+            <table>
+                @foreach (var (key, count) in top(views.Select(x => x.Referrer ?? "напрямую")).Take(15))
+                {
+                    <tr><td>@key</td><td class="n">@count</td></tr>
+                }
+            </table>
+        </div>
+        <div>
+            <h2>Язык страницы</h2>
+            <table>
+                @foreach (var (key, count) in top(views.Select(x => x.Target)))
+                {
+                    <tr><td>@key</td><td class="n">@count</td></tr>
+                }
+            </table>
+            <h2>Резюме по языкам</h2>
+            <table>
+                @foreach (var (key, count) in top(v.Where(x => x.Kind == "cv").Select(x => x.Target)))
+                {
+                    <tr><td>@key</td><td class="n">@count</td></tr>
+                }
+            </table>
+            <h2>Клики</h2>
+            <table>
+                @foreach (var (key, count) in top(v.Where(x => x.Kind == "click").Select(x => x.Target)))
+                {
+                    <tr><td>@key</td><td class="n">@count</td></tr>
+                }
+            </table>
+        </div>
+    </div>
+
+    <h2>По дням</h2>
+    <div class="scroll">
+        <table>
+            <tr><th>Дата</th><th class="n">Просм.</th><th class="n">Посет.</th><th class="n">Резюме</th><th style="width:50%"></th></tr>
+            @foreach (var d in byDay)
+            {
+                <tr>
+                    <td>@d.Day.ToString("dd.MM ddd", new System.Globalization.CultureInfo("ru-RU"))</td>
+                    <td class="n">@d.Views</td><td class="n">@d.Visitors</td><td class="n">@d.Cv</td>
+                    <td><div class="bar" style="width:@(d.Views * 100 / max)%"></div></td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    <h2>Последние события</h2>
+    <div class="scroll">
+        <table>
+            <tr><th>Время</th><th>Событие</th><th>Что</th><th>Откуда</th><th>Устройство</th><th>Посетитель</th></tr>
+            @foreach (var x in v.AsEnumerable().Reverse().Take(50))
+            {
+                <tr>
+                    <td>@x.Time.ToOffset(StatsModel.Astana).ToString("dd.MM HH:mm")</td>
+                    <td>@(x.Kind switch { "view" => "просмотр", "cv" => "резюме", _ => "клик" })</td>
+                    <td>@x.Target</td><td>@(x.Referrer ?? "—")</td>
+                    <td>@(x.Mobile ? "телефон" : "компьютер")</td><td class="muted">@x.Visitor[..6]</td>
+                </tr>
+            }
+        </table>
+    </div>
+</main>
+</body>
+</html>

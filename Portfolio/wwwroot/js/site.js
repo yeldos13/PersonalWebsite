@@ -40,4 +40,17 @@
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
+
+    const clickTarget = href =>
+        href.startsWith("tel:") ? "phone" :
+        href.startsWith("mailto:") ? "email" :
+        href.includes("t.me/") ? "telegram" :
+        href.includes("linkedin.com") ? "linkedin" :
+        /github\.com\/yeldos13\/./.test(href) ? "project" :
+        href.includes("github.com") ? "github" : null;
+    document.addEventListener("click", e => {
+        const a = e.target.closest("a[href]");
+        const t = a && clickTarget(a.getAttribute("href"));
+        if (t) navigator.sendBeacon?.("/t?e=" + t);
+    });
 })();
