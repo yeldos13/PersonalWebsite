@@ -39,6 +39,8 @@ public static class ProfileData
         ["Kubernetes", "k3d", "Helm", "OpenTelemetry", "Tempo", "Prometheus", "Grafana", "k6", "Kafka", "PostgreSQL"];
 
     private static readonly string[] PlatformImages = ["/img/platform-dashboard.png", "/img/platform-trace.png"];
+    private static readonly string[] OrderFlowImages = ["/img/orderflow-api.png", "/img/orderflow-trace.png"];
+    private static readonly string[] PayLedgerImages = ["/img/payledger-api.png", "/img/payledger-trace.png"];
 
     private static readonly string[] OrderFlowTags =
         ["ASP.NET Core", "EF Core", "PostgreSQL", "Kafka", "Outbox", "Polly", "xUnit", "Testcontainers", "Serilog", "Docker"];
@@ -127,7 +129,7 @@ public static class ProfileData
                     "Unit-тесты и интеграционные тесты на Testcontainers",
                 ],
                 OrderFlowTags,
-                "https://github.com/yeldos13/OrderFlow"),
+                "https://github.com/yeldos13/OrderFlow", OrderFlowImages),
             new("Platform — Kubernetes и observability для OrderFlow и PayLedger",
                 "Локальное окружение, близкое к продакшену: k3d-кластер на Helm поднимается одной командой.",
                 [
@@ -150,19 +152,10 @@ public static class ProfileData
                     "Transactional Outbox → Kafka, тесты на Testcontainers, CI в GitHub Actions",
                 ],
                 PayLedgerTags,
-                "https://github.com/yeldos13/PayLedger"),
+                "https://github.com/yeldos13/PayLedger", PayLedgerImages),
         ],
         Experience:
         [
-            new("Backend-разработчик", "Фриланс", "",
-                "апр 2026 — сейчас", "",
-                "Частные заказы на C# и .NET и собственные пет-проекты.",
-                [
-                    "OrderFlow: сервис заказов на ASP.NET Core с Transactional Outbox и доставкой событий в Kafka",
-                    "PayLedger: платёжный сервис с двойной записью на Java и Spring Boot",
-                    "Platform: k3d-кластер на Helm, трейсы в Tempo, метрики в Prometheus и Grafana, нагрузочные тесты на k6",
-                ],
-                ["C#", ".NET", "ASP.NET Core", "Kafka", "Java", "Spring Boot", "Kubernetes", "Grafana"]),
             new(".NET разработчик", "PBSOFT", "https://pbsoft.kz/",
                 "июн 2021 — мар 2026", "5 лет",
                 "Разработка и сопровождение серверных приложений и сервисов на C# и .NET: бизнес-логика, " +
@@ -178,6 +171,15 @@ public static class ProfileData
                     "Курировал стажёров, участвовал в code review",
                 ],
                 ["C#", ".NET", "ASP.NET Core", "EF Core", "PostgreSQL", "MS SQL", "Redis", "Kafka", "xUnit", "Agile/Scrum"]),
+            new("Backend-разработчик", "Фриланс", "",
+                "апр 2026 — сейчас", "",
+                "Частные заказы на C# и .NET и собственные пет-проекты.",
+                [
+                    "OrderFlow: сервис заказов на ASP.NET Core с Transactional Outbox и доставкой событий в Kafka",
+                    "PayLedger: платёжный сервис с двойной записью на Java и Spring Boot",
+                    "Platform: k3d-кластер на Helm, трейсы в Tempo, метрики в Prometheus и Grafana, нагрузочные тесты на k6",
+                ],
+                ["C#", ".NET", "ASP.NET Core", "Kafka", "Java", "Spring Boot", "Kubernetes", "Grafana"]),
         ],
         Education:
         [
@@ -276,7 +278,7 @@ public static class ProfileData
                     "Unit tests and integration tests with Testcontainers",
                 ],
                 OrderFlowTags,
-                "https://github.com/yeldos13/OrderFlow"),
+                "https://github.com/yeldos13/OrderFlow", OrderFlowImages),
             new("Platform — Kubernetes and observability for OrderFlow and PayLedger",
                 "A local production-like environment: a k3d cluster deployed with Helm, brought up by one command.",
                 [
@@ -299,19 +301,10 @@ public static class ProfileData
                     "Transactional Outbox → Kafka, Testcontainers tests, CI on GitHub Actions",
                 ],
                 PayLedgerTags,
-                "https://github.com/yeldos13/PayLedger"),
+                "https://github.com/yeldos13/PayLedger", PayLedgerImages),
         ],
         Experience:
         [
-            new("Backend Developer", "Freelance", "",
-                "Apr 2026 — now", "",
-                "Private orders in C# and .NET plus my own side projects.",
-                [
-                    "OrderFlow: an ASP.NET Core order service with Transactional Outbox and event delivery to Kafka",
-                    "PayLedger: a double-entry payment service in Java and Spring Boot",
-                    "Platform: a k3d cluster on Helm, traces in Tempo, metrics in Prometheus and Grafana, load tests with k6",
-                ],
-                ["C#", ".NET", "ASP.NET Core", "Kafka", "Java", "Spring Boot", "Kubernetes", "Grafana"]),
             new(".NET Developer", "PBSOFT", "https://pbsoft.kz/",
                 "Jun 2021 — Mar 2026", "5 years",
                 "Developing and maintaining server-side applications and services in C# and .NET: business logic, " +
@@ -327,6 +320,15 @@ public static class ProfileData
                     "Supervised interns and took part in code reviews",
                 ],
                 ["C#", ".NET", "ASP.NET Core", "EF Core", "PostgreSQL", "MS SQL", "Redis", "Kafka", "xUnit", "Agile/Scrum"]),
+            new("Backend Developer", "Freelance", "",
+                "Apr 2026 — now", "",
+                "Private orders in C# and .NET plus my own side projects.",
+                [
+                    "OrderFlow: an ASP.NET Core order service with Transactional Outbox and event delivery to Kafka",
+                    "PayLedger: a double-entry payment service in Java and Spring Boot",
+                    "Platform: a k3d cluster on Helm, traces in Tempo, metrics in Prometheus and Grafana, load tests with k6",
+                ],
+                ["C#", ".NET", "ASP.NET Core", "Kafka", "Java", "Spring Boot", "Kubernetes", "Grafana"]),
         ],
         Education:
         [
@@ -425,7 +427,7 @@ public static class ProfileData
                     "Unit-тесттер және Testcontainers-тегі интеграциялық тесттер",
                 ],
                 OrderFlowTags,
-                "https://github.com/yeldos13/OrderFlow"),
+                "https://github.com/yeldos13/OrderFlow", OrderFlowImages),
             new("Platform — OrderFlow және PayLedger үшін Kubernetes және observability",
                 "Продакшенге жақын жергілікті орта: Helm арқылы k3d-кластер бір командамен көтеріледі.",
                 [
@@ -448,19 +450,10 @@ public static class ProfileData
                     "Transactional Outbox → Kafka, Testcontainers тесттері, GitHub Actions-та CI",
                 ],
                 PayLedgerTags,
-                "https://github.com/yeldos13/PayLedger"),
+                "https://github.com/yeldos13/PayLedger", PayLedgerImages),
         ],
         Experience:
         [
-            new("Backend әзірлеуші", "Фриланс", "",
-                "сәу. 2026 — қазір", "",
-                "C# және .NET бойынша жеке тапсырыстар және өз пет-жобаларым.",
-                [
-                    "OrderFlow: ASP.NET Core-тағы тапсырыс сервисі, Transactional Outbox және Kafka-ға оқиғаларды жеткізу",
-                    "PayLedger: Java және Spring Boot-тағы қос жазба принципі бар төлем сервисі",
-                    "Platform: Helm-дегі k3d-кластер, Tempo-да трейстер, Prometheus пен Grafana-да метрикалар, k6-пен жүктеме тесттері",
-                ],
-                ["C#", ".NET", "ASP.NET Core", "Kafka", "Java", "Spring Boot", "Kubernetes", "Grafana"]),
             new(".NET әзірлеушісі", "PBSOFT", "https://pbsoft.kz/",
                 "маус. 2021 — нау. 2026", "5 жыл",
                 "C# және .NET-те серверлік қосымшалар мен сервистерді әзірлеу және сүйемелдеу: бизнес-логика, " +
@@ -476,6 +469,15 @@ public static class ProfileData
                     "Тағылымдамашыларға жетекшілік еттім, code review-ға қатыстым",
                 ],
                 ["C#", ".NET", "ASP.NET Core", "EF Core", "PostgreSQL", "MS SQL", "Redis", "Kafka", "xUnit", "Agile/Scrum"]),
+            new("Backend әзірлеуші", "Фриланс", "",
+                "сәу. 2026 — қазір", "",
+                "C# және .NET бойынша жеке тапсырыстар және өз пет-жобаларым.",
+                [
+                    "OrderFlow: ASP.NET Core-тағы тапсырыс сервисі, Transactional Outbox және Kafka-ға оқиғаларды жеткізу",
+                    "PayLedger: Java және Spring Boot-тағы қос жазба принципі бар төлем сервисі",
+                    "Platform: Helm-дегі k3d-кластер, Tempo-да трейстер, Prometheus пен Grafana-да метрикалар, k6-пен жүктеме тесттері",
+                ],
+                ["C#", ".NET", "ASP.NET Core", "Kafka", "Java", "Spring Boot", "Kubernetes", "Grafana"]),
         ],
         Education:
         [
