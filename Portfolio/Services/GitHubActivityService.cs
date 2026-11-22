@@ -15,6 +15,7 @@ public partial class GitHubActivityService(HttpClient http, IMemoryCache cache, 
 {
     public const string User = "yeldos13";
     private const string CacheKey = "github-activity";
+    private const string LastGoodKey = "github-activity-last";
 
     public async Task<GitHubActivity?> GetAsync()
     {
@@ -35,6 +36,9 @@ public partial class GitHubActivityService(HttpClient http, IMemoryCache cache, 
             logger.LogWarning(ex, "Не удалось получить активность GitHub");
         }
 
+        // A failed refresh keeps showing the last good data instead of hiding the section.
+        if (result is null) cache.TryGetValue(LastGoodKey, out result);
+        else cache.Set(LastGoodKey, result);
         cache.Set(CacheKey, result, result is null ? TimeSpan.FromMinutes(5) : TimeSpan.FromHours(1));
         return result;
     }
@@ -91,7 +95,8 @@ public partial class GitHubActivityService(HttpClient http, IMemoryCache cache, 
 
     public static void Configure(HttpClient client)
     {
-        client.Timeout = TimeSpan.FromSeconds(3);
+        // The contributions page is ~230 KB and GitHub sometimes sends it slowly.
+        client.Timeout = TimeSpan.FromSeconds(15);
         client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("sozakbay-dev", "1.0"));
     }
 
