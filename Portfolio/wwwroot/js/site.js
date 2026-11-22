@@ -52,7 +52,9 @@
         href.includes("github.com") ? "github" : null;
     document.addEventListener("click", e => {
         const a = e.target.closest("a[href]");
-        const t = a && clickTarget(a.getAttribute("href"));
+        const href = a?.getAttribute("href") ?? "";
+        const cv = /CV-(\w+)\.pdf$/.exec(href);
+        const t = cv ? "cv&lang=" + cv[1] : a && clickTarget(href);
         if (t) navigator.sendBeacon?.("/t?e=" + t);
     });
 })();

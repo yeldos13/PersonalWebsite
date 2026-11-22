@@ -38,53 +38,23 @@ public static class ProfileData
     private static readonly string[] PlatformTags =
         ["Kubernetes", "k3d", "Helm", "OpenTelemetry", "Tempo", "Prometheus", "Grafana", "k6", "Kafka", "PostgreSQL"];
 
+    private static readonly string[] PlatformImages = ["/img/platform-dashboard.png", "/img/platform-trace.png"];
+
     private static readonly string[] OrderFlowTags =
         ["ASP.NET Core", "EF Core", "PostgreSQL", "Kafka", "Outbox", "Polly", "xUnit", "Testcontainers", "Serilog", "Docker"];
 
-    private static IReadOnlyList<SkillGroup> SkillGroups(string languages, string platform, string data, string oop) =>
+    private static IReadOnlyList<SkillGroup> SkillGroups(string languages, string platform, string data) =>
     [
-        new(languages,
-        [
-            "C#",
-            "SQL",
-            "Java",
-        ]),
+        new(languages, ["C#", "SQL", "Python", "JavaScript"]),
         new(platform,
         [
-            ".NET",
-            "ASP.NET Core",
-            "Web API",
-            "Entity Framework Core",
-            "LINQ",
-            "MVC",
-            "REST",
-            "SOAP",
-            oop,
-            "xUnit",
-            "Windows Forms",
-            ".NET Framework",
-            "gRPC",
-            "DDD",
-            "Spring Boot",
-            "Spring Data JPA",
-            "Hibernate",
-            "JUnit 5",
+            ".NET", ".NET Core", ".NET Framework", "ASP.NET", "ASP.NET Core", "Entity Framework",
+            "REST API", "gRPC", "DDD", "WPF",
         ]),
         new(data,
         [
-            "PostgreSQL",
-            "MS SQL Server",
-            "Redis",
-            "Apache Kafka",
-            "Docker",
-            "Git",
-            "CI/CD",
-            "StimulSoft",
-            "Kubernetes",
-            "Grafana",
-            "Maven",
-            "Flyway",
-            "Testcontainers",
+            "PostgreSQL", "MS SQL", "MySQL", "MongoDB", "ClickHouse", "Redis", "Apache Kafka", "RabbitMQ",
+            "Docker", "Kubernetes", "Linux", "Git", "CI/CD", "Grafana",
         ]),
     ];
 
@@ -99,11 +69,11 @@ public static class ProfileData
         Stats:
         [
             new("5", "Лет опыта"),
-            new("30+", "Технологий"),
+            new("25+", "Технологий"),
             new("4", "Сертификата"),
             new("3", "Языка"),
         ],
-        SkillGroups: SkillGroups("Языки", "Платформа и подходы", "Данные и инструменты", "ООП / SOLID"),
+        SkillGroups: SkillGroups("Языки", "Платформа и подходы", "Данные и инструменты"),
         Cases:
         [
             new("Ускорение отчётов и запросов к базе данных",
@@ -168,7 +138,7 @@ public static class ProfileData
                     "Нашёл узкое место в публикации outbox PayLedger: пик очереди упал с 19 000 до 236",
                 ],
                 PlatformTags,
-                "https://github.com/yeldos13/Platform"),
+                "https://github.com/yeldos13/Platform", PlatformImages),
             new("PayLedger — платёжный сервис с двойной записью",
                 "Финтех-проект, счета, переводы и проводки по принципу двойной записи.",
                 [
@@ -184,6 +154,15 @@ public static class ProfileData
         ],
         Experience:
         [
+            new("Backend-разработчик", "Фриланс", "",
+                "апр 2026 — сейчас", "",
+                "Частные заказы на C# и .NET и собственные пет-проекты.",
+                [
+                    "OrderFlow: сервис заказов на ASP.NET Core с Transactional Outbox и доставкой событий в Kafka",
+                    "PayLedger: платёжный сервис с двойной записью на Java и Spring Boot",
+                    "Platform: k3d-кластер на Helm, трейсы в Tempo, метрики в Prometheus и Grafana, нагрузочные тесты на k6",
+                ],
+                ["C#", ".NET", "ASP.NET Core", "Kafka", "Java", "Spring Boot", "Kubernetes", "Grafana"]),
             new(".NET разработчик", "PBSOFT", "https://pbsoft.kz/",
                 "июн 2021 — мар 2026", "5 лет",
                 "Разработка и сопровождение серверных приложений и сервисов на C# и .NET: бизнес-логика, " +
@@ -239,11 +218,11 @@ public static class ProfileData
         Stats:
         [
             new("5", "Years of experience"),
-            new("30+", "Technologies"),
+            new("25+", "Technologies"),
             new("4", "Certificates"),
             new("3", "Languages"),
         ],
-        SkillGroups: SkillGroups("Languages", "Platform & practices", "Data & tools", "OOP / SOLID"),
+        SkillGroups: SkillGroups("Languages", "Platform & practices", "Data & tools"),
         Cases:
         [
             new("Speeding up reports and database queries",
@@ -308,7 +287,7 @@ public static class ProfileData
                     "Found the bottleneck in PayLedger outbox publishing: peak backlog dropped from 19,000 to 236",
                 ],
                 PlatformTags,
-                "https://github.com/yeldos13/Platform"),
+                "https://github.com/yeldos13/Platform", PlatformImages),
             new("PayLedger — double-entry payment ledger",
                 "A fintech project: accounts, transfers and double-entry postings.",
                 [
@@ -324,6 +303,15 @@ public static class ProfileData
         ],
         Experience:
         [
+            new("Backend Developer", "Freelance", "",
+                "Apr 2026 — now", "",
+                "Private orders in C# and .NET plus my own side projects.",
+                [
+                    "OrderFlow: an ASP.NET Core order service with Transactional Outbox and event delivery to Kafka",
+                    "PayLedger: a double-entry payment service in Java and Spring Boot",
+                    "Platform: a k3d cluster on Helm, traces in Tempo, metrics in Prometheus and Grafana, load tests with k6",
+                ],
+                ["C#", ".NET", "ASP.NET Core", "Kafka", "Java", "Spring Boot", "Kubernetes", "Grafana"]),
             new(".NET Developer", "PBSOFT", "https://pbsoft.kz/",
                 "Jun 2021 — Mar 2026", "5 years",
                 "Developing and maintaining server-side applications and services in C# and .NET: business logic, " +
@@ -379,11 +367,11 @@ public static class ProfileData
         Stats:
         [
             new("5", "Жыл тәжірибе"),
-            new("30+", "Технология"),
+            new("25+", "Технология"),
             new("4", "Сертификат"),
             new("3", "Тіл"),
         ],
-        SkillGroups: SkillGroups("Тілдер", "Платформа және тәсілдер", "Деректер және құралдар", "OOP / SOLID"),
+        SkillGroups: SkillGroups("Тілдер", "Платформа және тәсілдер", "Деректер және құралдар"),
         Cases:
         [
             new("Есептер мен дерекқор сұраныстарын жылдамдату",
@@ -448,7 +436,7 @@ public static class ProfileData
                     "PayLedger outbox жариялауындағы тар жерді таптым: кезек шыңы 19 000-нан 236-ға түсті",
                 ],
                 PlatformTags,
-                "https://github.com/yeldos13/Platform"),
+                "https://github.com/yeldos13/Platform", PlatformImages),
             new("PayLedger — қос жазбалы төлем сервисі",
                 "Финтех-жоба: шоттар, аударымдар және қос жазба қағидасы бойынша проводкалар.",
                 [
@@ -464,6 +452,15 @@ public static class ProfileData
         ],
         Experience:
         [
+            new("Backend әзірлеуші", "Фриланс", "",
+                "сәу. 2026 — қазір", "",
+                "C# және .NET бойынша жеке тапсырыстар және өз пет-жобаларым.",
+                [
+                    "OrderFlow: ASP.NET Core-тағы тапсырыс сервисі, Transactional Outbox және Kafka-ға оқиғаларды жеткізу",
+                    "PayLedger: Java және Spring Boot-тағы қос жазба принципі бар төлем сервисі",
+                    "Platform: Helm-дегі k3d-кластер, Tempo-да трейстер, Prometheus пен Grafana-да метрикалар, k6-пен жүктеме тесттері",
+                ],
+                ["C#", ".NET", "ASP.NET Core", "Kafka", "Java", "Spring Boot", "Kubernetes", "Grafana"]),
             new(".NET әзірлеушісі", "PBSOFT", "https://pbsoft.kz/",
                 "маус. 2021 — нау. 2026", "5 жыл",
                 "C# және .NET-те серверлік қосымшалар мен сервистерді әзірлеу және сүйемелдеу: бизнес-логика, " +

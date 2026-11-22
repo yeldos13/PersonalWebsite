@@ -79,7 +79,7 @@
   <span class="k">&lt;name&gt;</span><span class="s">@p.FullName</span><span class="k">&lt;/name&gt;</span>
   <span class="k">&lt;role&gt;</span><span class="s">@p.Role</span><span class="k">&lt;/role&gt;</span>
   <span class="k">&lt;location&gt;</span><span class="s">@p.Location</span><span class="k">&lt;/location&gt;</span>
-  <span class="k">&lt;experience&gt;</span><span class="s">@p.Experience[0].Duration</span><span class="k">&lt;/experience&gt;</span>
+  <span class="k">&lt;experience&gt;</span><span class="s">@p.Experience[^1].Duration</span><span class="k">&lt;/experience&gt;</span>
   <span class="k">&lt;skills&gt;</span>
     <span class="k">&lt;skill&gt;</span><span class="s">C#</span><span class="k">&lt;/skill&gt;</span>
     <span class="k">&lt;skill&gt;</span><span class="s">.NET</span><span class="k">&lt;/skill&gt;</span>
@@ -114,9 +114,16 @@
                     <div class="job-head">
                         <div>
                             <h3 class="job-title">@j.Title</h3>
-                            <a href="@j.CompanyUrl" target="_blank" rel="noopener" class="company">@j.Company ↗</a>
+                            @if (j.CompanyUrl.Length > 0)
+                            {
+                                <a href="@j.CompanyUrl" target="_blank" rel="noopener" class="company">@j.Company ↗</a>
+                            }
+                            else
+                            {
+                                <span class="company">@j.Company</span>
+                            }
                         </div>
-                        <span class="period">@j.Period · @j.Duration</span>
+                        <span class="period">@j.Period@(j.Duration.Length > 0 ? " · " + j.Duration : "")</span>
                     </div>
                     <p class="card-text">@j.Description</p>
                     <ul class="list two-col">
@@ -204,6 +211,15 @@
                             <a class="btn btn-secondary" href="@pr.Url" target="_blank" rel="noopener">@Icon("github") GitHub</a>
                         </div>
                         <p class="card-text">@pr.Description</p>
+                        @if (pr.Images is { Count: > 0 })
+                        {
+                            <div class="shots">
+                                @foreach (var img in pr.Images)
+                                {
+                                    <a href="@img" target="_blank" rel="noopener"><img src="@img" alt="@pr.Title" loading="lazy" /></a>
+                                }
+                            </div>
+                        }
                         <ul class="list two-col">
                             @foreach (var h in pr.Highlights)
                             {

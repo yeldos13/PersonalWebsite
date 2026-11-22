@@ -1,0 +1,31 @@
+@page "/404"
+@{
+    // No layout: the layout's script would count this as a page view.
+    Layout = null;
+    Response.StatusCode = 404;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <meta name="color-scheme" content="light dark" />
+    <title>404 · sozakbay.dev</title>
+    <link rel="icon" href="~/favicon.svg" type="image/svg+xml" />
+    <script>
+        try {
+            var t = localStorage.getItem("theme");
+            if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) { }
+    </script>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <main class="container" style="min-height:100vh;display:flex;flex-direction:column;justify-content:center;gap:1rem">
+        <h1 style="font-size:4rem;margin:0">404</h1>
+        <p style="margin:0">Page not found · Страница не найдена · Бет табылмады</p>
+        <p style="margin:0"><a class="btn btn-primary" href="/">sozakbay.dev</a></p>
+    </main>
+</body>
+</html>

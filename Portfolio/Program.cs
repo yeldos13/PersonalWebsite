@@ -38,25 +38,18 @@ if (!app.Environment.IsDevelopment())
 }
 
 var visits = app.Services.GetRequiredService<VisitLog>();
-app.Use(async (ctx, next) =>
-{
-    await next();
-    if (!HttpMethods.IsGet(ctx.Request.Method) || ctx.Response.StatusCode != 200) return;
-    var path = ctx.Request.Path.Value ?? "";
-    if (path.StartsWith("/files/") && path.EndsWith(".pdf"))
-        visits.Add(ctx, "cv", ProfileData.Normalize(path[^6..^4]));
-});
 
+app.UseStatusCodePagesWithReExecute("/404");
 app.UseStaticFiles();
 app.UseRouting();
 
 app.MapRazorPages();
 
 string[] clickTargets = ["telegram", "phone", "email", "github", "linkedin", "project"];
-// Page views come from a script beacon, not the page request: scanners that fake a browser user-agent rarely run JS.
+// Views and CV downloads come from a script beacon, not the request itself: scanners that fake a browser user-agent rarely run JS.
 app.MapPost("/t", (string e, string? lang, string? r, HttpContext ctx) =>
 {
-    if (e == "view") visits.Add(ctx, "view", ProfileData.Normalize(lang), r);
+    if (e is "view" or "cv") visits.Add(ctx, e, ProfileData.Normalize(lang), r);
     else if (clickTargets.Contains(e)) visits.Add(ctx, "click", e);
     return Results.NoContent();
 });

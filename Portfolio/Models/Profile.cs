@@ -30,7 +30,8 @@ public record SkillGroup(string Title, IReadOnlyList<string> Items);
 
 public record CaseStudy(string Title, string Problem, IReadOnlyList<string> Solution, IReadOnlyList<string> Stack, string Result);
 
-public record Project(string Title, string Description, IReadOnlyList<string> Highlights, IReadOnlyList<string> Tags, string Url);
+public record Project(string Title, string Description, IReadOnlyList<string> Highlights, IReadOnlyList<string> Tags, string Url,
+    IReadOnlyList<string>? Images = null);
 
 public record Job(
     string Title,
