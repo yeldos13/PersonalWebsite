@@ -11,4 +11,8 @@
     <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="10.0.12" />
   </ItemGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="Portfolio.Tests" />
+  </ItemGroup>
+
 </Project>

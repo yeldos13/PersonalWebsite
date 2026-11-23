@@ -55,9 +55,11 @@ public partial class VisitLog
         var (country, city) = _geo.Lookup(ip);
 
         string? referrer = null;
-        if (Uri.TryCreate(referrerUrl ?? ctx.Request.Headers.Referer.ToString(), UriKind.Absolute, out var r)
-            && !r.Host.EndsWith("sozakbay.dev") && !r.Host.EndsWith("sozakbay.asia") && r.Host != "localhost")
-            referrer = r.Host.StartsWith("www.") ? r.Host[4..] : r.Host;
+        if (Uri.TryCreate(referrerUrl ?? ctx.Request.Headers.Referer.ToString(), UriKind.Absolute, out var r))
+        {
+            var host = r.Host.StartsWith("www.") ? r.Host[4..] : r.Host;
+            if (host is not ("sozakbay.dev" or "sozakbay.asia" or "localhost")) referrer = host;
+        }
 
         var line = JsonSerializer.Serialize(new Visit(now, kind, target, referrer, ua.Contains("Mobi"), visitor, country, city));
         lock (_lock) File.AppendAllText(_file, line + "\n");
@@ -68,7 +70,14 @@ public partial class VisitLog
         if (!File.Exists(_file)) return [];
         string[] lines;
         lock (_lock) lines = File.ReadAllLines(_file);
-        return lines.Select(l => JsonSerializer.Deserialize<Visit>(l)!).Where(v => v.Time >= from).ToList();
+        return lines.Select(Parse).OfType<Visit>().Where(v => v.Time >= from).ToList();
+    }
+
+    // A line cut short by a crash mid-write is skipped instead of breaking /stats.
+    internal static Visit? Parse(string line)
+    {
+        try { return JsonSerializer.Deserialize<Visit>(line); }
+        catch (JsonException) { return null; }
     }
 
     [GeneratedRegex(@"bot|crawl|spider|slurp|curl|wget|python|java/|go-http|headless|preview|monitor|scan|facebookexternalhit|okhttp|axios|httpclient",

@@ -17,19 +17,32 @@ public partial class GitHubActivityService(HttpClient http, IMemoryCache cache, 
     private const string CacheKey = "github-activity";
     private const string LastGoodKey = "github-activity-last";
 
-    public async Task<GitHubActivity?> GetAsync()
-    {
-        if (cache.TryGetValue(CacheKey, out GitHubActivity? cached)) return cached;
+    // Static: the typed client is transient, but one refresh must be shared by all requests.
+    private static readonly Lock RefreshLock = new();
+    private static Task<GitHubActivity?>? _refresh;
 
+    // Stale data is served at once while a single background refresh runs; only a cold start waits for GitHub.
+    public Task<GitHubActivity?> GetAsync()
+    {
+        if (cache.TryGetValue(CacheKey, out GitHubActivity? fresh)) return Task.FromResult(fresh);
+        Task<GitHubActivity?> refresh;
+        lock (RefreshLock) refresh = _refresh ??= RefreshAsync();
+        return cache.TryGetValue(LastGoodKey, out GitHubActivity? last) ? Task.FromResult(last) : refresh;
+    }
+
+    private async Task<GitHubActivity?> RefreshAsync()
+    {
+        await Task.Yield(); // _refresh must be set before this task can finish and clear it
         GitHubActivity? result = null;
         try
         {
             var commits = LoadCommitsAsync();
-            var days = await LoadCalendarAsync();
+            var days = ParseCalendar(await http.GetStringAsync($"https://github.com/users/{User}/contributions"));
             IReadOnlyList<RecentCommit> recent = [];
             try { recent = await commits; }
             catch (Exception ex) { logger.LogWarning(ex, "Не удалось получить коммиты GitHub"); }
-            result = new GitHubActivity(days, recent);
+            if (days.Count > 0) result = new GitHubActivity(days, recent);
+            else logger.LogWarning("В календаре GitHub не найдено ни одного дня");
         }
         catch (Exception ex)
         {
@@ -40,13 +53,12 @@ public partial class GitHubActivityService(HttpClient http, IMemoryCache cache, 
         if (result is null) cache.TryGetValue(LastGoodKey, out result);
         else cache.Set(LastGoodKey, result);
         cache.Set(CacheKey, result, result is null ? TimeSpan.FromMinutes(5) : TimeSpan.FromHours(1));
+        lock (RefreshLock) _refresh = null;
         return result;
     }
 
-    private async Task<IReadOnlyList<ContributionDay>> LoadCalendarAsync()
+    internal static IReadOnlyList<ContributionDay> ParseCalendar(string html)
     {
-        var html = await http.GetStringAsync($"https://github.com/users/{User}/contributions");
-
         var counts = TooltipRegex().Matches(html).ToDictionary(
             m => m.Groups["id"].Value,
             m => m.Groups["n"].Value == "No" ? 0 : int.Parse(m.Groups["n"].Value.Replace(",", "")));
